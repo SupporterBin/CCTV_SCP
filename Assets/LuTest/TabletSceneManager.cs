@@ -11,6 +11,9 @@ public class TabletSceneManager : MonoBehaviour
     [SerializeField]
     private GameObject[] tabletPanels;
 
+    [SerializeField]
+    private Button9 button9;
+
     private bool isPlaying = false;
     private void Awake()
     {
@@ -55,7 +58,23 @@ public class TabletSceneManager : MonoBehaviour
     private void GameStart(int panelBtIndex)
     {
         isPlaying = true;
-        Debug.Log($"isPlayer : {isPlaying} & PanelNumber : {panelBtIndex + 1}");
+
+        if (panelBtIndex == 0)
+        {
+            button9.StartButton9();
+            tabletPanels[0].SetActive(false);
+        }
+        else if (panelBtIndex == 1)
+        {
+
+        }
+        else if (panelBtIndex == 2)
+        { 
+        
+        }
+
+
+            Debug.Log($"isPlayer : {isPlaying} & PanelNumber : {panelBtIndex + 1}");
     }
 
     // 아직 구현안함
