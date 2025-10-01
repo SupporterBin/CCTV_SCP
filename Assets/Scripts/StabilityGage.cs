@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class StabilityGage : MonoBehaviour
 {
-    //¾ÈÁ¤È­ ÃÖ´ë ¼öÄ¡
+    //í˜„ì¬ ì´ìƒí˜„ìƒ ìµœëŒ€ì¹˜
     public float maxStability = 100;
-    //¾ÈÁ¤È­ ¼öÄ¡
+    //í˜„ì¬ ì´ìƒí˜„ìƒ ìˆ˜ì¹˜
     public float currentStability;
     
-    //ÀÌ»óÇö»óÀÌ ÀÏ¾î³µ³ª¿ä?
+    //ì´ìƒí˜„ìƒ ë°œìƒí•¨?
     public bool isAbnormal;
 
-
-    //¿Ö µû·Î +/- ºĞ¸®ÇÔ?
-    //-> Æ¯¼ö È¿°ú È¤Àº Ãß°¡ÀûÀÎ ÄÚµå°¡ ÇÊ¿äÇÒ±îºÁ
+    //ì•ˆì •í™” ìˆ˜ì¹˜ ì¡°ì ˆ
+    //-> ë‹¤ìš´, ìƒìŠ¹ ì´ë²¤íŠ¸ ë•Œë¬¸ì— ë‚˜ëˆ ë‘ .
     public void StabilizationDown(float value)
     {
         currentStability = Mathf.Clamp(currentStability -= value, 0f, maxStability);

@@ -3,25 +3,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-    [Header("½ÃÁ¡ µ¹¸®±â ¼Óµµ")]
+    [Header("ìºë¦­í„° í™”ë©´ ì´ë™ ì†ë„")]
     public float sensitivity = 20f;
     float rotX = 0f;
 
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ìºë¦­í„° ìŠ¤í”¼ë“œ")]
     public float speed = 3;
 
-    Vector2 lookDelta; //½ÃÁ¡ ÄÚµå
-    Vector2 moveInput; //ÀÌµ¿ ÄÚµå
+    Vector2 lookDelta; 
+    Vector2 moveInput;
 
     public GameObject headObject;
 
     void Update()
     {
-        //ÀÌµ¿
+        //ì›€ì§ì„
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
         transform.Translate(move * Time.deltaTime * speed);
 
-        //½ÃÁ¡
+        //ì¹´ë©”ë¼ íšŒì „
         float mouseX = lookDelta.x * sensitivity * Time.deltaTime;
         float mouseY = lookDelta.y * sensitivity * Time.deltaTime;
 
