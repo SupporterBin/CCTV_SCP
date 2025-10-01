@@ -9,10 +9,13 @@ public class TabletSceneManager : MonoBehaviour
 
     // ÆÐ³Î 3°³
     [SerializeField]
-    private GameObject[] tabletPanels;
+    public GameObject[] tabletPanels;
 
     [SerializeField]
     private Button9 button9;
+
+    [SerializeField]
+    private AJae aJae;
 
     private bool isPlaying = false;
     private void Awake()
@@ -70,7 +73,8 @@ public class TabletSceneManager : MonoBehaviour
         }
         else if (panelBtIndex == 2)
         { 
-        
+            aJae.StartAJae();
+            tabletPanels[2].SetActive(false);
         }
 
 
