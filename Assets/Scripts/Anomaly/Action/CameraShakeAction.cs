@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Anomalies/Actions (Second)/Camera Shake")]
+[CreateAssetMenu(menuName = "Anomalies/Actions/Camera Shake")]
 
 public class CameraShakeAction : BaseAnomalyActionSO
 {
