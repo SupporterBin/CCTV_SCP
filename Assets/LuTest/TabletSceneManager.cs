@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,9 @@ public class TabletSceneManager : MonoBehaviour
 
     [SerializeField]
     private AJae aJae;
+
+    [SerializeField]
+    private Fishing fishing;
 
     private bool isPlaying = false;
     private void Awake()
@@ -69,7 +73,8 @@ public class TabletSceneManager : MonoBehaviour
         }
         else if (panelBtIndex == 1)
         {
-
+            fishing.StartFishing();
+            tabletPanels[1].SetActive(false);
         }
         else if (panelBtIndex == 2)
         { 
