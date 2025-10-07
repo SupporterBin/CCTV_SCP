@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public bool isGameStop;
     public bool isTimeStop;
 
+
     void Awake()
     {
         if (Instance != null && Instance != this)
