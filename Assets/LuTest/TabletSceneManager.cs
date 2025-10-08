@@ -21,7 +21,7 @@ public class TabletSceneManager : MonoBehaviour
     [SerializeField]
     private Fishing fishing;
 
-    private bool isPlaying = false;
+    public bool isPlaying = false;
     private void Awake()
     {
         for (int i = 0; i < startBts.Length; i++)
@@ -68,27 +68,24 @@ public class TabletSceneManager : MonoBehaviour
 
         if (panelBtIndex == 0)
         {
+            isPlaying = true;
             button9.StartButton9();
             tabletPanels[0].SetActive(false);
         }
         else if (panelBtIndex == 1)
         {
+            isPlaying = true;
             fishing.StartFishing();
             tabletPanels[1].SetActive(false);
         }
         else if (panelBtIndex == 2)
-        { 
+        {
+            isPlaying = true;
             aJae.StartAJae();
             tabletPanels[2].SetActive(false);
         }
 
 
             Debug.Log($"isPlayer : {isPlaying} & PanelNumber : {panelBtIndex + 1}");
-    }
-
-    // 아직 구현안함
-    private void EndStart()
-    {
-        isPlaying = false;
     }
 }

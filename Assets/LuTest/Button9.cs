@@ -30,6 +30,8 @@ public class Button9 : MonoBehaviour
     // 버튼을 알려주고 있는가? 음 이건 순서대로 버튼 나올 때 입력 못 받게 하는? 그런느낌으로 씀
     private bool isStagePlaying = false;
 
+    [SerializeField]
+    TabletSceneManager tabletSceneManager;
     private void Awake()
     {
        // 각각의 버튼 배열에 OnClick 기능을 넣어줌
@@ -52,11 +54,13 @@ public class Button9 : MonoBehaviour
     // 스테이지 초기화, 버튼 순서 초기화, 스테이지 시작이 있음.
     public void StartButton9()
     {
-        button9Panel.SetActive(true);
-        curStage = 1;
-        buttonSequence.Clear();
-
-        StartCoroutine(StageStart());
+        if (tabletSceneManager.isPlaying)
+        {
+            button9Panel.SetActive(true);
+            curStage = 1;
+            buttonSequence.Clear();
+            StartCoroutine(StageStart());
+        }
     }
     
     // 스테이지 시작 함수
@@ -156,5 +160,7 @@ public class Button9 : MonoBehaviour
     private void EndGame()
     {
         button9Panel.SetActive(false);
+        tabletSceneManager.tabletPanels[0].SetActive(true);
+        tabletSceneManager.isPlaying = false;
     }
 }

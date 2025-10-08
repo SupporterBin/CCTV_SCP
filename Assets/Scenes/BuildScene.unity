@@ -198,6 +198,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 339371963}
     - target: {fileID: 4266985314766924686, guid: d0ac64aae83a2d847a1982cf832cadc4, type: 3}
+      propertyPath: tabletSceneManager
+      value: 
+      objectReference: {fileID: 1072439143}
+    - target: {fileID: 4266985314766924686, guid: d0ac64aae83a2d847a1982cf832cadc4, type: 3}
       propertyPath: 'buttons.Array.data[0]'
       value: 
       objectReference: {fileID: 339371962}
@@ -1887,6 +1891,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 339371953}
+    - target: {fileID: 6695642176679758195, guid: e6e1087ad5486f34ca66f2ff679ca472, type: 3}
+      propertyPath: tabletSceneManager
+      value: 
+      objectReference: {fileID: 1072439143}
     - target: {fileID: 6695642176679758195, guid: e6e1087ad5486f34ca66f2ff679ca472, type: 3}
       propertyPath: 'texts.Array.data[0]'
       value: 
@@ -4046,6 +4054,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6385833438ad46a4b82284616e98a7be, type: 3}
+--- !u!114 &1072439143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4614679098173098366, guid: 6385833438ad46a4b82284616e98a7be, type: 3}
+  m_PrefabInstance: {fileID: 1072439142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb53fc7e25f8334cbb8dc39533e953c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1087285335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7685,6 +7704,10 @@ PrefabInstance:
       propertyPath: gaugeBarTransform
       value: 
       objectReference: {fileID: 3444596369668478437}
+    - target: {fileID: 958605362369831778, guid: 31c99370d0051f5458e84669cad726f0, type: 3}
+      propertyPath: tabletSceneManager
+      value: 
+      objectReference: {fileID: 1072439143}
     - target: {fileID: 958605362369831778, guid: 31c99370d0051f5458e84669cad726f0, type: 3}
       propertyPath: playerMakerTransform
       value: 

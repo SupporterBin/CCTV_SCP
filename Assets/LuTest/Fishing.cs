@@ -39,19 +39,25 @@ public class Fishing : MonoBehaviour
     private bool isReeling = false; // 키 눌름과 연관됨
     private bool isFishingPlaying = false; // 미니게임 여부와 연관
 
+    [SerializeField]
+    TabletSceneManager tabletSceneManager;
+
     public void StartFishing()
     {
-        // 미니게임 시작시 패널 활성화 및 게임 여부
-        fishingPanel.SetActive(true);
-        isFishingPlaying = true;
+        if(tabletSceneManager.isPlaying)
+        {
+            // 미니게임 시작시 패널 활성화 및 게임 여부
+            fishingPanel.SetActive(true);
+            isFishingPlaying = true;
 
-        // 이건 알겠지 뭐 대충 초기화 내용
-        curTime = totalTime;
-        progressTime = 0f;
-        playerVelocity = 0f;
+            // 이건 알겠지 뭐 대충 초기화 내용
+            curTime = totalTime;
+            progressTime = 0f;
+            playerVelocity = 0f;
 
-        // 성공 범위 배치 함수
-        SuccessZonePlacement();
+            // 성공 범위 배치 함수
+            SuccessZonePlacement();
+        }
     }
 
     private void Start()
@@ -164,6 +170,8 @@ public class Fishing : MonoBehaviour
         // 이건 걍 미니 게임 끝났을 때 하는 거
         isFishingPlaying = false;
         fishingPanel.SetActive(false);
+        tabletSceneManager.tabletPanels[1].SetActive(true);
+        tabletSceneManager.isPlaying = false;
 
         if (success)
         {

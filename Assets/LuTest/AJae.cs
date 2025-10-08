@@ -38,7 +38,7 @@ public class AJae : MonoBehaviour
     // 이건 좀 봐야댐 일단 프로토 타입으로 제작
     private bool isAjaePlaying = false;
 
-
+    [SerializeField]
     TabletSceneManager tabletSceneManager;
     private void Start()
     {
@@ -93,11 +93,14 @@ public class AJae : MonoBehaviour
 
     public void StartAJae()
     {
-        // 패널 온, 리스트 정리, 함수 시작
-        aJaePanel.SetActive(true);
-        aJaeSequence.Clear();
-        inputSequence.Clear();
-        StartCoroutine(StartStage());
+        if(tabletSceneManager.isPlaying)
+        {
+            // 패널 온, 리스트 정리, 함수 시작
+            aJaePanel.SetActive(true);
+            aJaeSequence.Clear();
+            inputSequence.Clear();
+            StartCoroutine(StartStage());
+        }
     }
 
     private IEnumerator StartStage()
@@ -166,5 +169,6 @@ public class AJae : MonoBehaviour
         isAjaePlaying = false;
         aJaePanel.SetActive(false);
         tabletSceneManager.tabletPanels[2].SetActive(true);
+        tabletSceneManager.isPlaying = false;
     }
 }
