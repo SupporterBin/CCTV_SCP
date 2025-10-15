@@ -4,6 +4,17 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
+using UnityEngine.UI;
+
+// 텍스트로 하니까 안 이뻐서 키 이미지 가져와서 하려고 만들었습니다.
+// 키랑 쓸 이미지랑 매칭 클래스
+[System.Serializable]
+public class Link_Image_And_Key
+{
+    public string key;
+    public Sprite keyImage;
+}
 
 public class AJae : MonoBehaviour
 {
@@ -11,16 +22,16 @@ public class AJae : MonoBehaviour
     [SerializeField]
     private GameObject aJaePanel;
 
+    [SerializeField]
+    private Link_Image_And_Key[] Link;
+
     // 게임 시작시 글자 띄어주려고
     [SerializeField]
-    private TextMeshProUGUI[] texts;
+    private Image[] ShowImages;
 
     // 타이머 보여주려고
     [SerializeField]
     private TextMeshProUGUI timerText;
-
-    // 입력에 사용하는 키 및 리스트에 넣을 키
-    private string[] usingKey = { "q", "w", "e", "a", "s", "d" };
 
     // 현 스테이지[일차]
     private int curStage = 1;
@@ -113,20 +124,25 @@ public class AJae : MonoBehaviour
 
         for(int i = 0; i < stageLen + (2 * (curStage - 1)); i++)
         {
-            int index = Random.Range(0, usingKey.Length);
-            aJaeSequence.Add(usingKey[index]);
+            int index = Random.Range(0, Link.Length);
+            aJaeSequence.Add(Link[index].key);
         }
 
         // 보여줄 리스트 크기 만큼 실행하며, 스테이지에 쓰이는 갯수보다 적어지면 캇 나머지는 안보임
-        for (int i = 0; i < texts.Length; i++)
+        for (int i = 0; i < ShowImages.Length; i++)
         {
             if(i < aJaeSequence.Count)
             {
-                texts[i].text = aJaeSequence[i];
+                string currentKey = aJaeSequence[i];
+                // 배열 찾고있는 게 맞으면 이미지 가져오고, 아님 말고
+                Sprite sprite = Link.FirstOrDefault(x => x.key == currentKey)?.keyImage;
+
+                ShowImages[i].sprite = sprite;
+                ShowImages[i].gameObject.SetActive(true);
             }
             else
             {
-                texts[i].text = "";
+                ShowImages[i].gameObject.SetActive(false);
             }
         }
 
