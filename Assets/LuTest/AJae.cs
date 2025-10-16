@@ -119,6 +119,12 @@ public class AJae : MonoBehaviour
         // 플레이 중, 리스트 정리, 1초 기다리기
         aJaeSequence.Clear();
         inputSequence.Clear();
+        timerText.text = limitTimer.ToString("F1");
+
+        foreach(var images in ShowImages)
+        {
+            images.gameObject.SetActive(false);
+        }
 
         // 스테이지 마다 갯수 증가 및 중복가능한 랜덤 뽑아 리스트에 넣기
 
@@ -138,7 +144,7 @@ public class AJae : MonoBehaviour
                 Sprite sprite = Link.FirstOrDefault(x => x.key == currentKey)?.keyImage;
 
                 ShowImages[i].sprite = sprite;
-                ShowImages[i].gameObject.SetActive(true);
+                
             }
             else
             {
@@ -149,6 +155,13 @@ public class AJae : MonoBehaviour
         // n초 기다렸다, 타이머 설정,  플레이 중
         yield return new WaitForSeconds(1f);
 
+        for(int i = 0; i < ShowImages.Length; i++)
+        {
+            if(i < aJaeSequence.Count)
+            {
+                ShowImages[i].gameObject.SetActive(true);
+            }
+        }
         timer = limitTimer;
         isAjaePlaying = true;
     }
@@ -163,6 +176,8 @@ public class AJae : MonoBehaviour
         // 누른 입력값 입력 리스트에 추가
         inputSequence.Add(inputKey);
 
+        int currentKey = inputSequence.Count - 1;
+
         // 나온거랑 이상하게 치면
         if (inputSequence[inputSequence.Count - 1] != aJaeSequence[inputSequence.Count - 1])
         {
@@ -170,12 +185,17 @@ public class AJae : MonoBehaviour
             isAjaePlaying = false;
             EndGame();
         }
+        else if (inputSequence[currentKey] == aJaeSequence[currentKey])
+        {
+            ShowImages[currentKey].gameObject.SetActive(false);
+        }
 
         if (inputSequence.Count == aJaeSequence.Count)
         {
             // 성공 함수여기 부분 고쳐야됨 테스트용으로 계속 나오게 만듬.
             curStage++;
-            StartCoroutine(StartStage());
+            Debug.Log($"{curStage} 스테이지");
+            EndGame();
         }
     }
 
