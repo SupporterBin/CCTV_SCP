@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DaySystem : MonoBehaviour
@@ -51,7 +52,12 @@ public class DaySystem : MonoBehaviour
         else nowDay += 1; return; //마지막 날 아님 Day +1
     }
 
-    public string GetClock() { return hour + ":" + minute; }
+    public string GetClock()
+    {
+        if(minute/10 == 0) { return hour + ":0" + minute; }
+        else return hour + ":" + minute;
+    }
+
     public string GetDay() { return "Day " + nowDay; }
 
 }
