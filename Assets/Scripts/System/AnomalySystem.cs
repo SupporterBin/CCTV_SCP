@@ -4,14 +4,17 @@ public class AnomalySystem : MonoBehaviour
 {
     public float globalCheckTime;
 
+    [Header("가지고 있는 이벤트")]
+    public BasicEventAnomaly[] anomalyEvents;
+
     //클리어 타임 세기
-    public float clearTime;
+    [HideInInspector] public float clearTime;
 
-    [Header("이상현상 카운트(해당 시간 넘기면 작동)")]
-    public float anomalyStartTime;
+    //[Header("이상현상 카운트(해당 시간 넘기면 작동)")]
+    [HideInInspector] public float anomalyStartTime;
 
-    [Header("이상현상이 발생했나요?")]
-    public bool isAnomaly;
+    //"이상현상이 발생했나요?"
+    [HideInInspector] public bool isAnomaly;
 
     // Update is called once per frame
     void Update()
