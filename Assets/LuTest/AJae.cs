@@ -192,6 +192,7 @@ public class AJae : MonoBehaviour
 
         if (inputSequence.Count == aJaeSequence.Count)
         {
+            StabilityManager.Instance.StabilizationUp(10, 0);
             // 성공 함수여기 부분 고쳐야됨 테스트용으로 계속 나오게 만듬.
             curStage++;
             Debug.Log($"{curStage} 스테이지");

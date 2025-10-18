@@ -13,18 +13,20 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
 
     private GameObject spawnObject; 
 
-    public override void Execute()
+    public override EventType Execute()
     {
         //소환
         spawnObject = Instantiate(spawnObject, spawnObjVector, SpawnObjQuaternion);
 
-        throw new System.NotImplementedException();
+        return eventType;
     }
 
     public override void Clear()
     {
+        Debug.Log("이상현 클리어 처리 완료");
         Destroy(spawnObject);
         spawnObject = null;
+
         throw new System.NotImplementedException();
     }
 }
