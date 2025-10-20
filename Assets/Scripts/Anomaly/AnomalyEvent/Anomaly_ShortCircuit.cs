@@ -16,7 +16,10 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
     public override EventType Execute()
     {
         //소환
-        spawnObject = Instantiate(spawnObject, spawnObjVector, SpawnObjQuaternion);
+        if (spawnObject == null)
+            Debug.Log("이상현상_스파클_SO 배치 안됨.");
+        else
+            spawnObject = Instantiate(spawnObject, spawnObjVector, SpawnObjQuaternion);
 
         return eventType;
     }
@@ -24,7 +27,12 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
     public override void Clear()
     {
         Debug.Log("이상현 클리어 처리 완료");
-        Destroy(spawnObject);
+
+        if (spawnObject == null)
+            Debug.Log("이상현상_스파클_SO 못 가져옴.");
+        else
+            Destroy(spawnObject);
+        
         spawnObject = null;
 
         throw new System.NotImplementedException();

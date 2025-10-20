@@ -39,8 +39,8 @@ public class DaySystem : MonoBehaviour
             TimeUpdate();
 
         //임시 시간 텍스트 업데이트
-        dayText.text = GetDay();
-        clockText.text = GetClock();
+        dayText.text = GetDayText();
+        clockText.text = GetClockText();
     }
 
     private void TimeUpdate()
@@ -62,7 +62,7 @@ public class DaySystem : MonoBehaviour
         else nowDay += 1; return; //마지막 날 아님 Day +1
     }
 
-    public string GetClock()
+    public string GetClockText()
     {
         int hour = totalMinute / 60;
         int minute = totalMinute % 60;
@@ -71,7 +71,16 @@ public class DaySystem : MonoBehaviour
         else return hour + ":" + minute;
     }
 
-    public string GetDay() { return "Day " + nowDay; }
+    public string GetDayText() { return "Day " + nowDay; }
+
+    /// <summary>
+    /// int 시간(분) 가져오기
+    /// </summary>
+    /// <returns></returns>
+    public int GetClock()
+    {
+        return totalMinute;
+    }
 
     /// <summary>
     /// 시간 리셋

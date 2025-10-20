@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 게임이 멈췄거나 애니메이션과 같은 일시정지 상태인가요?
+    /// 게임이 멈췄거나 컷씬 애니메이션 재생과 같은 시간 일시정지 상태인가요?
     /// </summary>
     /// <returns></returns>
     public bool AllStopCheck()
