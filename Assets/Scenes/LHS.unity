@@ -4933,8 +4933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalCheckTime: 0
   anomalyEvents: []
-  clearTime: 0
-  anomalyStartTime: 0
+  currentClearTime: 0
+  startAnomalyTime: 0
   isAnomaly: 0
   eventAnomalys:
   - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
