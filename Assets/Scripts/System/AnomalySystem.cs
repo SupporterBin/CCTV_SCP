@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class AnomalySystem : MonoBehaviour
 {
-    public float globalCheckTime;
-
     [Header("가지고 있는 이벤트")]
     public BasicEventAnomaly[] anomalyEvents;
 
     //이상현상 남은 클리어 시간
-    [HideInInspector] public float currentClearTime;
+    [HideInInspector] public float currentAnomalyClearTime;
 
-    //[Header("이상현상 카운트(해당 시간 넘기면 작동)")]
+    //가장 최근에 작동한 이상 현상.
     [HideInInspector] public int startAnomalyTime;
-    private float setAnomalyTime;
 
     //"이상현상이 발생했나요?"
     public bool isAnomaly;
@@ -33,7 +30,7 @@ public class AnomalySystem : MonoBehaviour
     void Update()
     {
         //만약 게임이 정지 안해있으면
-        if (!GameManager.Instance.AllStopCheck())
+        if (GameManager.Instance.AllStopCheck())
         {
             return;
         }
@@ -41,24 +38,36 @@ public class AnomalySystem : MonoBehaviour
         //이상현상 발생 중!
         if (isAnomaly)
         {
-            currentClearTime = Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
+            currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
             StabilityManager.Instance?.StabilizationDown(10 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
 
-            if(currentClearTime >= 60) //이상현상 감지 실패한 경우
+            if(currentAnomalyClearTime >= 30) //이상현상 감지 실패한 경우, 이건 실제 초임(미닛토탈아님).
             {
                 StabilityManager.Instance?.StabilizationDown(10, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
+
+                //이상현상 실패 처리 및 이상현상 깔려있는거 제거 및 초기화.
+                startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
+
+                Debug.Log("야호 이상현을 충분히 막아냈어요");
+
+                currentEventAnomaly.Fail();
+                currentEventAnomaly = null;
+                currentEventPlace = EventPlace.None;
+                currentEventType = EventType.None;
+
                 isAnomaly = false;
-                currentClearTime = 0;
+                currentAnomalyClearTime = 0;
+                AnomalyTimeSetting(30, 40);
             }
         }
 
+
         //이상현상 발생 시간 세기
-        if (globalCheckTime > currentClearTime)
+        if (startAnomalyTime < GameManager.Instance.daySystem.GetClock() && !isAnomaly)
         {
-            globalCheckTime = 0;
-            AnomalyTimeSetting(80, 100);
             EventAnomalyStart();
         }
+        
     }
 
     /// <summary>
@@ -66,7 +75,10 @@ public class AnomalySystem : MonoBehaviour
     /// </summary>
     private void AnomalyTimeSetting(int min, int max)
     {
-        startAnomalyTime = Random.Range(startAnomalyTime + min, startAnomalyTime + max);
+        if(startAnomalyTime == 0)
+            startAnomalyTime = Random.Range(GameManager.Instance.daySystem.GetClock() + min, GameManager.Instance.daySystem.GetClock() + max);
+        else
+            startAnomalyTime = Random.Range(startAnomalyTime + min, startAnomalyTime + max);
     }
 
     /// <summary>
@@ -74,6 +86,7 @@ public class AnomalySystem : MonoBehaviour
     /// </summary>
     public void EventAnomalyStart()
     {
+        Debug.Log("EventAnomalyStart 발생, 이상현상 발생");
         isAnomaly = true;
         startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
 
@@ -88,7 +101,6 @@ public class AnomalySystem : MonoBehaviour
         {
             //클리어
             isAnomaly = false;
-            startAnomalyTime = 0;
             Debug.Log("야호 이상현을 충분히 막아냈어요");
 
             currentEventAnomaly.Clear();

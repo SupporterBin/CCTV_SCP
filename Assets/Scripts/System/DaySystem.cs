@@ -45,8 +45,8 @@ public class DaySystem : MonoBehaviour
 
     private void TimeUpdate()
     {
-        if(!GameManager.Instance.AllStopCheck())
-        {
+        if(!GameManager.Instance.AllStopCheck() && !GameManager.Instance.anomalySystem.isAnomaly)
+        {//
             if (minuteUpCountingTime < MINUTEUP_TIME) { minuteUpCountingTime += Time.deltaTime; }
             else
             {
