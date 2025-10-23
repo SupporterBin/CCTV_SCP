@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CCTV1RenderMaterial 2
+  m_Name: RoomF_CCTVRenderMaterial
   m_Shader: {fileID: -6465566751694194690, guid: cf6177915013b53459131c8abc23fdfd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _CCTVTexture:
-        m_Texture: {fileID: 8400000, guid: d00520e017c596949a5f472ccfd73980, type: 2}
+        m_Texture: {fileID: 8400000, guid: f62d7d169a1c2d94398a0b5404bd8903, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_3920ab8bcef0470c8021ee3ba7b48f2d_Texture_1_Texture2D:

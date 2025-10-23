@@ -1,8 +1,11 @@
 // TentacleVerletChain.cs
 using UnityEngine;
-
+public interface IChainPos
+{
+    public Vector3[] Positions { get; }
+}
 /// 한 가닥의 포즈를 매 프레임 계산(Verlet + 노이즈 + 중심 SDF 충돌)
-public class TentacleVerletChain : MonoBehaviour
+public class TentacleVerletChain : MonoBehaviour, IChainPos
 {
     [Header("Chain")]
     [Range(4, 128)] public int segments = 32;
@@ -26,7 +29,7 @@ public class TentacleVerletChain : MonoBehaviour
     [Range(0f, 2f)] public float baseCurvature = 0.4f; // 기본 만곡(더 유기적으로)
 
     public  Vector3[] pos, prev;
-    public Vector3[] Positions => pos; // 외부(Renderer)가 읽어감
+    public Vector3[] Positions => pos;
 
     void Awake()
     {
@@ -39,6 +42,12 @@ public class TentacleVerletChain : MonoBehaviour
             pos[i] = root + Vector3.up * (i * segmentLength);
             prev[i] = pos[i];
         }
+    }
+
+    public void Init(float damp)
+    {
+        damp = Mathf.Clamp(damp, 0.9f, 0.999f);
+        damping = damp;
     }
     void Update()
     {
