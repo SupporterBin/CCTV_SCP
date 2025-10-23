@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,13 +13,15 @@ public enum CCTVLocation
 
 public class CCTVManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerMove move;
+
     // 플레이어 카메라와 태블릿 카메라 위치 및 회전 값
     [SerializeField]
     private Transform playerCamera;
 
-    // cctv을 켰을 때 이동 관련
-    [SerializeField]
-    private MonoBehaviour playerMove;
+    /*[SerializeField]
+    private MonoBehaviour playerMove;*/
 
     [SerializeField]
     private GameObject[] panels;
@@ -43,8 +47,9 @@ public class CCTVManager : MonoBehaviour
 
     // 태블릿 온 오프 여부
     public bool isOnCCTV = false;
+    public bool isMovingCamera = false;
     // 플레이어 시작 FOV, Far 값
-    private float startFOV;
+    private float startFov;
     private float startFar;
 
     // 세팅한 Test의 위치, 회전, FOV, Far값
@@ -55,7 +60,7 @@ public class CCTVManager : MonoBehaviour
     private Quaternion CenterCCTVRotation = Quaternion.Euler(0f, 0f, 0f);
     private Vector3 RightCCTVPosition = new Vector3(0.364f, 1.571f, -1.39f);
     private Quaternion RightCCTVRotation = Quaternion.Euler(0f, 24.904f, 0f);
-    private float CCTVFOV = 21f;
+    private float CCTVFov = 21f;
     private float CCTVFar = 3f;
 
     // 카메라 세팅 관련
@@ -72,15 +77,15 @@ public class CCTVManager : MonoBehaviour
     void Start()
     {
         // 그냥 넣음 이건
-        if (playerMove != null)
+        if (move != null)
         {
-            playerMove.enabled = true;
+            move.enabled = true;
         }
 
         playerCamSetting = playerCamera.GetComponent<Camera>();
         if (playerCamSetting != null)
         {
-            startFOV = playerCamSetting.fieldOfView;
+            startFov = playerCamSetting.fieldOfView;
             startFar = playerCamSetting.farClipPlane;
         }
         else
@@ -89,40 +94,21 @@ public class CCTVManager : MonoBehaviour
         }
 
         timer = moveDuration + 5f;
+
     }
 
-    void Update()
+    public bool IsMoving()
     {
-        if (timer < moveDuration)
-        {
-            timer += Time.deltaTime;
-            float t = timer / moveDuration;
-
-            if (playerCamSetting != null)
-            {
-                if (isOnCCTV)
-                {
-                    playerCamera.transform.position = Vector3.Lerp(renewalPos, curCCTVPos, t);
-                    playerCamera.transform.rotation = Quaternion.Slerp(renewalRot, curCCTVRot, t);
-
-                    playerCamSetting.fieldOfView = Mathf.Lerp(renewalFov, CCTVFOV, t);
-                    playerCamSetting.farClipPlane = Mathf.Lerp(renewalFar, CCTVFar, t);
-                }
-                else
-                {
-                    playerCamera.transform.position = Vector3.Lerp(renewalPos, originalPlayerPos, t);
-                    playerCamera.transform.rotation = Quaternion.Slerp(renewalRot, originalPlayerRot, t);
-
-                    playerCamSetting.fieldOfView = Mathf.Lerp(renewalFov, startFOV, t);
-                    playerCamSetting.farClipPlane = Mathf.Lerp(renewalFar, startFar, t);
-                }
-            }
-        }
-
+        return isMovingCamera;
     }
 
     public void CCTV_Pos_Rot(CCTVLocation Location)
     {
+
+        if (isMovingCamera)
+        {
+            return;
+        }
         renewalPos = playerCamera.transform.position;
         renewalRot = playerCamera.transform.rotation;
 
@@ -149,32 +135,73 @@ public class CCTVManager : MonoBehaviour
             targetRot = RightCCTVRotation;
         }
 
-        if(isOnCCTV && curCCTVPos == targetPos)
+        if (isOnCCTV && curCCTVPos == targetPos)
         {
             isOnCCTV = false;
-            if(playerMove != null) 
-            {
-                playerMove.enabled = true;
-            }
+            StartCoroutine(MovingCamera(false));
         }
         else
         {
-            if(!isOnCCTV)
+            if (!isOnCCTV)
             {
                 originalPlayerPos = renewalPos;
                 originalPlayerRot = renewalRot;
-                if(playerMove != null)
-                {
-                    playerMove.enabled = false;
-                }
             }
 
+            isOnCCTV = true;
             curCCTVPos = targetPos;
             curCCTVRot = targetRot;
-            isOnCCTV = true;
+            StartCoroutine(MovingCamera(true));
+        }
+    }
+
+    private IEnumerator MovingCamera(bool ismoving)
+    {
+        isMovingCamera = true;
+        float timer = 0f;
+
+        if (ismoving)
+        {
+            if (move != null && move.enabled)
+            {
+                move.enabled = false;
+            }
         }
 
-        timer = 0;
+        Vector3 startPos = renewalPos;
+        Quaternion startRot = renewalRot;
+        float startFov = renewalFov;
+        float startFar = renewalFar;
+
+        Vector3 endPos = ismoving ? curCCTVPos : originalPlayerPos;
+        Quaternion endRot = ismoving ? curCCTVRot : originalPlayerRot;
+        float endFov = ismoving ? CCTVFov : this.startFov;
+        float endFar = ismoving ? CCTVFar : this.startFar;
+
+        while (timer < moveDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / moveDuration;
+
+            playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
+            playerCamera.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            playerCamSetting.fieldOfView = Mathf.Lerp(startFov, endFov, t);
+            playerCamSetting.farClipPlane = Mathf.Lerp(startFar, endFar, t);
+
+            yield return null;
+        }
+
+        if (!ismoving)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            if (move != null && !move.enabled)
+            {
+                move.enabled = true;
+            }
+        }
+
+        isMovingCamera = false;
     }
 }
 

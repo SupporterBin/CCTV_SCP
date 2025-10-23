@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,14 +28,13 @@ public class InteractiveObject : MonoBehaviour
 
     [SerializeField]
     private CCTVManager cctvManager;
-    // 아 핫로드 왜 안돼
 
     // Update is called once per frame
     void Update()
     {
         InteractionObject();
 
-        if(Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null)
+        if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving())
         {
             if (rayCollisionObject == LeftMonitor)
             {
@@ -60,14 +60,12 @@ public class InteractiveObject : MonoBehaviour
         // ray는 스크린 가로 세로의 중앙의 값 정중앙
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-        Debug.DrawRay(ray.origin, ray.direction * InteractionDistance, Color.blue);
-
         RaycastHit hit; // Hit 당한 오브젝트를 hit에 저장
 
         if (Physics.Raycast(ray, out hit, InteractionDistance))
         {
             GameObject hitObject = hit.collider.gameObject;
-            if(hitObject == LeftMonitor || hitObject == CenterMonitor || 
+            if (hitObject == LeftMonitor || hitObject == CenterMonitor ||
                 hitObject == RightMonitor || hitObject == Tablet)
             {
                 rayCollisionObject = hitObject;
@@ -101,6 +99,6 @@ public class InteractiveObject : MonoBehaviour
     }
     void InteractTablet()
     {
-        
+
     }
 }
