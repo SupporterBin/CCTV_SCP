@@ -8,19 +8,14 @@ public class TentacleSimple : MonoBehaviour
     public int count = 12;
     public Vector3 spawnRadius = new Vector3(0.05f, 0.05f, 0.05f);
 
-    [Header("Random Ranges")]
-    public Vector2 outwardBias = new Vector2(0f, 1.2f);
-    public Vector2 targetLenScale = new Vector2(0.9f, 1.3f);
-    public Vector2 noiseAmp = new Vector2(0.6f, 1.1f);
-    public Vector2 noiseFreq = new Vector2(0.6f, 1.0f);
-
     public Material tubeMaterial;
     [Header("TubeRad A-B")]
     public float rootRadius = 0;
     public float tipRadius = 0;
-    [Header("ChainDamp")]
-    public float damp = 0;
 
+    public bool EnableDirOffset = false;
+    public Axis3D alongAxis = Axis3D.Z;         // 뻗는 주축 (오브젝트 로컬 기준)
+    public bool reverseAlong = false;           // 음의 방향으로 뻗을지
     void Start()
     {
         for (int i = 0; i < count; i++)
@@ -31,7 +26,11 @@ public class TentacleSimple : MonoBehaviour
                 Random.Range(-spawnRadius.y, spawnRadius.y),
                 Random.Range(-spawnRadius.z, spawnRadius.z)
             );
-
+            if (EnableDirOffset)
+            {
+                t.alongAxis = alongAxis;
+                t.reverseAlong = reverseAlong;
+            }
             var tube = Instantiate(tubePrefab, t.transform);
             tube.Init(rootRadius, tipRadius);
             tube.transform.localPosition = Vector3.zero;
