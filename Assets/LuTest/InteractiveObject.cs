@@ -29,12 +29,15 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField]
     private CCTVManager cctvManager;
 
+    [SerializeField]
+    private TestManager testManager;
+
     // Update is called once per frame
     void Update()
     {
         InteractionObject();
 
-        if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving())
+        if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving() && !testManager.IsMoving())
         {
             if (rayCollisionObject == LeftMonitor)
             {
@@ -99,6 +102,6 @@ public class InteractiveObject : MonoBehaviour
     }
     void InteractTablet()
     {
-
+        testManager.MovingTabletView();
     }
 }

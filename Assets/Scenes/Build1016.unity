@@ -1528,7 +1528,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8747836318599976390, guid: 5ea61f67bb6637a4aa20505e8318b67d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1221396435}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea61f67bb6637a4aa20505e8318b67d, type: 3}
 --- !u!114 &339371953 stripped
 MonoBehaviour:
@@ -2519,8 +2522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 330585546}
-  playerMove: {fileID: 216343720}
+  move: {fileID: 216343721}
   isOnTablet: 0
+  isMovingTabletCamera: 0
 --- !u!4 &554960487
 Transform:
   m_ObjectHideFlags: 0
@@ -2698,6 +2702,9 @@ MonoBehaviour:
   noiseAmp: {x: 0.6, y: 1.1}
   noiseFreq: {x: 0.6, y: 1}
   tubeMaterial: {fileID: 2100000, guid: 8b15e37cf96593b499530a94a56fb232, type: 2}
+  rootRadius: 0
+  tipRadius: 0
+  damp: 0
 --- !u!1 &615967504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,6 +2800,9 @@ MonoBehaviour:
   noiseAmp: {x: 0.6, y: 1.1}
   noiseFreq: {x: 0.6, y: 1}
   tubeMaterial: {fileID: 2100000, guid: 8b15e37cf96593b499530a94a56fb232, type: 2}
+  rootRadius: 0
+  tipRadius: 0
+  damp: 0
 --- !u!1 &768335913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,6 +2971,10 @@ PrefabInstance:
       propertyPath: cctvManager
       value: 
       objectReference: {fileID: 1020660303}
+    - target: {fileID: 4491220803988335512, guid: 39b70c72e4a9c8b4091d5fceabbf2e43, type: 3}
+      propertyPath: testManager
+      value: 
+      objectReference: {fileID: 554960486}
     - target: {fileID: 4491220803988335512, guid: 39b70c72e4a9c8b4091d5fceabbf2e43, type: 3}
       propertyPath: RightMonitor
       value: 
@@ -3654,13 +3668,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f94f21439bf53408c02a5b9ccb7294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 216343721}
   playerCamera: {fileID: 330585546}
-  playerMove: {fileID: 216343720}
   panels:
   - {fileID: 1373170585}
   - {fileID: 1463057267}
   - {fileID: 871017389}
   isOnCCTV: 0
+  isMovingCamera: 0
 --- !u!4 &1020660304
 Transform:
   m_ObjectHideFlags: 0
@@ -4334,6 +4349,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8747836318599976390, guid: 5ea61f67bb6637a4aa20505e8318b67d, type: 3}
   m_PrefabInstance: {fileID: 339371952}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1221396435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221396430}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.65, y: 4.22, z: 0.21}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1257940766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4491,7 +4527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8343f797b5523184a8e5991fae321c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anomalyEvents: []
+  monsters: []
   currentAnomalyClearTime: 0
   startAnomalyTime: 0
   isAnomaly: 0
@@ -5914,6 +5950,9 @@ MonoBehaviour:
   noiseAmp: {x: 0.6, y: 1.1}
   noiseFreq: {x: 0.6, y: 1}
   tubeMaterial: {fileID: 2100000, guid: 8b15e37cf96593b499530a94a56fb232, type: 2}
+  rootRadius: 0
+  tipRadius: 0
+  damp: 0
 --- !u!1 &1595756570
 GameObject:
   m_ObjectHideFlags: 0
