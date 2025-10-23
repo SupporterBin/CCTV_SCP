@@ -39,4 +39,6 @@ public abstract class BasicEventAnomaly : ScriptableObject
     public abstract EventType Execute();
 
     public abstract void Clear();
+
+    public abstract void Fail();
 }

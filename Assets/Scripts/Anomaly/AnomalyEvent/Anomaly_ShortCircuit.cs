@@ -5,7 +5,7 @@ using UnityEngine;
 public class Anomaly_ShortCircuit : BasicEventAnomaly
 {
     [Header("스파클 프리팹 넣기")]
-    public GameObject sparklePreafab;
+    public GameObject sparklePrefab;
     [Header("스파클 위치, 회전 값 넣기")]
     public Vector3 spawnObjVector;
     public Quaternion SpawnObjQuaternion;
@@ -16,10 +16,10 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
     public override EventType Execute()
     {
         //소환
-        if (spawnObject == null)
+        if (sparklePrefab == null)
             Debug.Log("이상현상_스파클_SO 배치 안됨.");
         else
-            spawnObject = Instantiate(spawnObject, spawnObjVector, SpawnObjQuaternion);
+            spawnObject = Instantiate(sparklePrefab, spawnObjVector, SpawnObjQuaternion);
 
         return eventType;
     }
@@ -36,5 +36,17 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
         spawnObject = null;
 
         throw new System.NotImplementedException();
+    }
+
+    public override void Fail()
+    {
+        Debug.Log("이상현 실패 처리 완료");
+
+        if(spawnObject == null)
+            Debug.Log("이상현상_스파클_SO 못 가져옴.");
+        else
+            Destroy(spawnObject);
+
+        spawnObject = null;
     }
 }
