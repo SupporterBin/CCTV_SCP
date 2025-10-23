@@ -50,7 +50,7 @@ public class DaySystem : MonoBehaviour
             if (minuteUpCountingTime < MINUTEUP_TIME) { minuteUpCountingTime += Time.deltaTime; }
             else
             {
-                totalMinute += 1;
+                totalMinute += 4;
                 minuteUpCountingTime = 0;
             }
         }

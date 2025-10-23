@@ -31,24 +31,25 @@ public class Anomaly_Restraint : BasicEventAnomaly
         return eventType;
     }
 
+    private void Cleanup()
+    {
+        if (spawnObj != null)
+        {
+            Destroy(spawnObj[0]);
+            Destroy(spawnObj[1]);
+        }
+        GameManager.Instance.anomalySystem.monsters[2].transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public override void Clear()
     {
-        Destroy(spawnObj[0]);
-        Destroy(spawnObj[1]);
-
-        GameManager.Instance.anomalySystem.monsters[2].transform.GetChild(0).gameObject.SetActive(true);
-
+        Cleanup();
         Debug.Log("끝, 성공");
     }
 
     public override void Fail()
     {
-        Destroy(spawnObj[0]);
-        Destroy(spawnObj[1]);
-
-        GameManager.Instance.anomalySystem.monsters[2].transform.GetChild(0).gameObject.SetActive(true);
-
-
+        Cleanup();
         Debug.Log("끝, 실패");
     }
 }

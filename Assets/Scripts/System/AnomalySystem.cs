@@ -24,7 +24,7 @@ public class AnomalySystem : MonoBehaviour
     public EventPlace currentEventPlace;
     public EventType currentEventType;
 
-    private void Awake()
+    private void Start()
     {
         AnomalyTimeSetting(30, 40);
     }
