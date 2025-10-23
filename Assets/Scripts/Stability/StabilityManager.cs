@@ -5,13 +5,12 @@ public class StabilityManager : MonoBehaviour
     private static StabilityManager instance;
     public static StabilityManager Instance => instance;
 
-    //ÇöÀç ÀÌ»óÇö»ó ÃÖ´ëÄ¡
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡
     static public float maxStability = 100;
-    //ÇöÀç ÀÌ»óÇö»ó ¼öÄ¡
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     private float[] currentStability;
     public float[] CurrentStability => currentStability;
-    //ÀÌ»óÇö»ó ¹ß»ýÇÔ?
-    public bool isAbnormal;
+
     private void Awake()
     {
         if (instance == null)
@@ -23,11 +22,10 @@ public class StabilityManager : MonoBehaviour
         currentStability[0] = maxStability;
         currentStability[1] = maxStability;
         currentStability[2] = maxStability;
-
     }
 
-    //¾ÈÁ¤È­ ¼öÄ¡ Á¶Àý
-    //-> ´Ù¿î, »ó½Â ÀÌº¥Æ® ¶§¹®¿¡ ³ª´²µÒ.
+    //ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
+    //-> ï¿½Ù¿ï¿½, ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     public void StabilizationDown(float value, int index)
     {
         currentStability[index] = Mathf.Clamp(currentStability[index] -= value, 0f, maxStability);
