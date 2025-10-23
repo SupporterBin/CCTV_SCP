@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static System.TimeZoneInfo;
@@ -9,42 +10,44 @@ public class TestManager : MonoBehaviour
     private Transform playerCamera;
 
     // 태블릿을 켰을 때 이동 관련
-    [SerializeField] 
-    private MonoBehaviour playerMove;
+    [SerializeField]
+    private PlayerMove move;
 
     // // 태블릿 온 오프시 시점 이동 및 시간 관련 변수 [부드러운 시점 변환?]
     private Vector3 startCameraPosition;
     private Quaternion startCameraRotation;
+
+    // 플레이어 시작 FOV, Far 값
+    private float startFov;
+    private float startFar;
+
     private float moveDuration = 0.5f;
     private float timer = 0f;
 
     // 태블릿 온 오프 여부
     public bool isOnTablet = false;
-
-    // 플레이어 시작 FOV, Far 값
-    private float startFOV;
-    private float startFar;
+    public bool isMovingTabletCamera = false;
 
     // 세팅한 Test의 위치, 회전, FOV, Far값
     private Vector3 tabletPosition = new Vector3(-2.045f, 2.5f, -0.464f);
     private Quaternion tabletRotation = Quaternion.Euler(90f, 0f, 0f);
-    private float tabletFOV = 11.8f;
+    private float tabletFov = 11.8f;
     private float tabletFar = 6f;
 
     // 카메라 세팅 관련
     private Camera playerCamSetting;
-     void Start()
+    void Start()
     {
         // 그냥 넣음 이건
-        if(playerMove != null)
+        if (move != null)
         {
-            playerMove.enabled = true;
+            move.enabled = true;
         }
 
         playerCamSetting = playerCamera.GetComponent<Camera>();
         if (playerCamSetting != null)
         {
-            startFOV = playerCamSetting.fieldOfView;
+            startFov = playerCamSetting.fieldOfView;
             startFar = playerCamSetting.farClipPlane;
         }
         else
@@ -55,60 +58,98 @@ public class TestManager : MonoBehaviour
         timer = moveDuration + 5f;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (isOnTablet && !isMovingTabletCamera && Input.GetKeyDown(KeyCode.F))
         {
-            isOnTablet = !isOnTablet;
-            timer = 0;
+            isOnTablet = false;
+            StartCoroutine(MovingTabletCamera(false));
+        }
+    }
 
-            if (isOnTablet)
+    public bool IsMoving()
+    {
+        return isMovingTabletCamera;
+    }
+
+    public void MovingTabletView()
+    {
+        if (isMovingTabletCamera || isOnTablet)
+        {
+            return;
+        }
+        isOnTablet = true;
+
+        StartCoroutine(MovingTabletCamera(true));
+    }
+
+    private IEnumerator MovingTabletCamera(bool ismoving)
+    {
+        isMovingTabletCamera = true;
+        timer = 0f;
+
+        if (ismoving)
+        {
+            if (move != null && move.enabled)
             {
-                startCameraPosition = playerCamera.transform.position;
-                startCameraRotation = playerCamera.transform.rotation;
-
-                if (playerMove != null)
-                {
-                    playerMove.enabled = false;
-                }
-                Debug.Log($"{isOnTablet} is True");
-            }
-            else if (isOnTablet == false)
-            {
-                if (playerMove != null)
-                {
-                    playerMove.enabled = true;
-                }
-
-                Debug.Log($"{isOnTablet} is False");
+                move.enabled = false;
             }
         }
 
-        if (timer < moveDuration)
+        Vector3 startPos;
+        Quaternion startRot;
+        float startFov;
+        float startFar;
+
+        if (ismoving) // 켜질 때
+        {
+            // 현재 플레이어 위치를 start.. 으로 저장
+            startPos = playerCamera.transform.position;
+            startRot = playerCamera.transform.rotation;
+            startFov = playerCamSetting.fieldOfView;
+            startFar = playerCamSetting.farClipPlane;
+
+            // 나중에 꺼질 때를 위해 각각 위치 회전 값 저장
+            startCameraPosition = startPos;
+            startCameraRotation = startRot;
+        }
+        else // 꺼질 때
+        {
+            // 태블릿에서 시작하기에 각각 시작 점을 태블릿의 값으로 저장
+            startPos = tabletPosition;
+            startRot = tabletRotation;
+            startFov = tabletFov;
+            startFar = tabletFar;
+        }
+        // ismoving 즉 켜질 때면 도착 지점의 값을 tablet 아니면 꺼질 때니까 플레이어 값
+        Vector3 endPos = ismoving ? tabletPosition : startCameraPosition;
+        Quaternion endRot = ismoving ? tabletRotation : startCameraRotation;
+        float endFov = ismoving ? tabletFov : this.startFov;
+        float endFar = ismoving ? tabletFar : this.startFar;
+
+        while (timer < moveDuration)
         {
             timer += Time.deltaTime;
             float t = timer / moveDuration;
 
-            if (playerCamSetting != null)
+            playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
+            playerCamera.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            playerCamSetting.fieldOfView = Mathf.Lerp(startFov, endFov, t);
+            playerCamSetting.farClipPlane = Mathf.Lerp(startFar, endFar, t);
+
+            yield return null;
+        }
+
+        if (!ismoving) /// 움직일 때가 아닐 때
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            if (move != null && !move.enabled)
             {
-                if (isOnTablet)
-                {
-                    playerCamera.transform.position = Vector3.Lerp(startCameraPosition, tabletPosition, t);
-                    playerCamera.transform.rotation = Quaternion.Slerp(startCameraRotation, tabletRotation, t);
-
-                    playerCamSetting.fieldOfView = Mathf.Lerp(startFOV, tabletFOV, t);
-                    playerCamSetting.farClipPlane = Mathf.Lerp(startFar, tabletFar, t);
-                }
-                else
-                {
-                    playerCamera.transform.position = Vector3.Lerp(tabletPosition, startCameraPosition, t);
-                    playerCamera.transform.rotation = Quaternion.Slerp(tabletRotation, startCameraRotation, t);
-
-                    playerCamSetting.fieldOfView = Mathf.Lerp(tabletFOV, startFOV, t);
-                    playerCamSetting.farClipPlane = Mathf.Lerp(tabletFar, startFar, t);
-                }
+                move.enabled = true;
             }
         }
 
+        isMovingTabletCamera = false;
     }
 }
