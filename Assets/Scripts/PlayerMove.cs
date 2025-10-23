@@ -18,6 +18,10 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        // ▼▼▼ 마우스 고정 및 숨기기 ▼▼▼
+        Cursor.lockState = CursorLockMode.Locked; // 커서를 화면 중앙에 고정
+        Cursor.visible = false;
+
         // Rigidbody 컴포넌트를 시작할 때 가져옵니다.
         rb = GetComponent<Rigidbody>();
     }
@@ -25,10 +29,6 @@ public class PlayerMove : MonoBehaviour
     // Update는 카메라 회전처럼 물리와 관련 없는 로직만 처리합니다.
     void Update()
     {
-        // ▼▼▼ 마우스 고정 및 숨기기 ▼▼▼
-        Cursor.lockState = CursorLockMode.Locked; // 커서를 화면 중앙에 고정
-        Cursor.visible = false;                   // 커서를 보이지 않게 설정
-
         //카메라 회전
         float mouseX = lookDelta.x * sensitivity * Time.deltaTime;
         float mouseY = lookDelta.y * sensitivity * Time.deltaTime;
