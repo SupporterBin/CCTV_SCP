@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class AnomalySystem : MonoBehaviour
 {
-    [Header("가지고 있는 이벤트")]
-    public BasicEventAnomaly[] anomalyEvents;
+    [Header("현재 맵에 배치되어있는 몬스터 /1번 왼쪽 /2번 가운데 /3번 오른쪽")]
+    public GameObject[] monsters;
+
+    //[Header("실행했던 가지고 있는 이벤트")]
+    private BasicEventAnomaly[] anomalyEvents;
 
     //이상현상 남은 클리어 시간
     [HideInInspector] public float currentAnomalyClearTime;
@@ -11,7 +14,7 @@ public class AnomalySystem : MonoBehaviour
     //가장 최근에 작동한 이상 현상.
     [HideInInspector] public int startAnomalyTime;
 
-    //"이상현상이 발생했나요?"
+    [Header("이상현상이 발생했나요?")]
     public bool isAnomaly;
 
     [Header("이벤트 모음")]

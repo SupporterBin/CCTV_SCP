@@ -29,13 +29,11 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
         Debug.Log("이상현 클리어 처리 완료");
 
         if (spawnObject == null)
-            Debug.Log("이상현상_스파클_SO 못 가져옴.");
+            Debug.Log("이상현상_스파클_SO_오브제 못 가져옴.");
         else
             Destroy(spawnObject);
         
         spawnObject = null;
-
-        throw new System.NotImplementedException();
     }
 
     public override void Fail()
@@ -43,7 +41,7 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
         Debug.Log("이상현 실패 처리 완료");
 
         if(spawnObject == null)
-            Debug.Log("이상현상_스파클_SO 못 가져옴.");
+            Debug.Log("이상현상_스파클_SO_오브제 못 가져옴.");
         else
             Destroy(spawnObject);
 
