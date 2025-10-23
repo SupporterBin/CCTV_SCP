@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Anomalies/Event/Anomaly_OverproductionOfWires")]
@@ -12,19 +13,27 @@ public class Anomaly_OverproductionOfWires : BasicEventAnomaly
 
     private GameObject spawnObject;
 
-
+    
     public override EventType Execute()
     {
-        throw new System.NotImplementedException();
+        TentacleAnomalyController inst = TentacleAnomalyController.Instance;
+        if (inst == null) throw new NullReferenceException();
+        inst.TentacleGrow();
+
+        return eventType;
     }
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+        TentacleAnomalyController inst = TentacleAnomalyController.Instance;
+        if (inst == null) throw new NullReferenceException();
+        inst.TentacleBurn();
     }
 
     public override void Fail()
     {
-        throw new System.NotImplementedException();
+        TentacleAnomalyController inst = TentacleAnomalyController.Instance;
+        if (inst == null) throw new NullReferenceException();
+        inst.TentacleFadeAway();
     }
 }

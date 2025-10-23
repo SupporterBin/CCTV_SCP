@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TentacleAnomalyController : MonoBehaviour
 {
+    private static TentacleAnomalyController instance;
+    public static TentacleAnomalyController Instance => instance;
+
     [SerializeField]
     private TentacleWallhug tentacle1;
     [SerializeField]
@@ -13,6 +16,15 @@ public class TentacleAnomalyController : MonoBehaviour
     // -0.3쯤 되면 다 사라짐 1이면 멀쩡한 상태
     private float burnValue = 1f;
     private float MinBurnValue = -0.5f;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else 
+            Destroy(gameObject);
+    }
+
     public void TentacleGrow()
     {
         tentacle1.gameObject.SetActive(true);
