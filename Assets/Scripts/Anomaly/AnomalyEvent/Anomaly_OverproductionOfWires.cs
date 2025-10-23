@@ -15,16 +15,36 @@ public class Anomaly_OverproductionOfWires : BasicEventAnomaly
 
     public override EventType Execute()
     {
-        throw new System.NotImplementedException();
+        //소환
+        if (wiresPrefab == null)
+            Debug.Log("이상현상_전선_SO 배치 안됨.");
+        else
+            spawnObject = Instantiate(wiresPrefab, spawnObjVector, SpawnObjQuaternion);
+
+        return eventType;
     }
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("이상현 클리어 처리 완료");
+
+        if (spawnObject == null)
+            Debug.Log("이상현상_전선_SO_오브제 못 가져옴.");
+        else
+            Destroy(spawnObject);
+
+        spawnObject = null;
     }
 
     public override void Fail()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("이상현 실패 처리 완료");
+
+        if (spawnObject == null)
+            Debug.Log("이상현상_전선_SO_오브제 못 가져옴.");
+        else
+            Destroy(spawnObject);
+
+        spawnObject = null;
     }
 }
