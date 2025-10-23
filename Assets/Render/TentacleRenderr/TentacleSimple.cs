@@ -16,6 +16,14 @@ public class TentacleSimple : MonoBehaviour
     public bool EnableDirOffset = false;
     public Axis3D alongAxis = Axis3D.Z;         // 뻗는 주축 (오브젝트 로컬 기준)
     public bool reverseAlong = false;           // 음의 방향으로 뻗을지
+
+    public bool applyLen = false;
+    public float len = 0.5f;
+
+    public bool applyAmplitude = false;
+    public float amplitude = 0.01f;
+    public bool applyOffset = false;
+    public float MaxRadOffset = 2;
     void Start()
     {
         for (int i = 0; i < count; i++)
@@ -31,6 +39,12 @@ public class TentacleSimple : MonoBehaviour
                 t.alongAxis = alongAxis;
                 t.reverseAlong = reverseAlong;
             }
+            if (applyLen)
+                t.totalLength = len;
+            if(applyAmplitude)
+                t.amplitude = amplitude;
+            if (applyOffset)
+                t.phaseOffset = Random.Range(0, MaxRadOffset);
             var tube = Instantiate(tubePrefab, t.transform);
             tube.Init(rootRadius, tipRadius);
             tube.transform.localPosition = Vector3.zero;

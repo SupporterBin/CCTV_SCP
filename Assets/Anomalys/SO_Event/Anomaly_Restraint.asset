@@ -17,6 +17,6 @@ MonoBehaviour:
   eventType: 2
   baseAnomalyActionSO: []
   chairPrefab: {fileID: 919132149155446097, guid: 424548f73b86451449dad2d704e53cdc, type: 3}
-  monsterPrefab: {fileID: 919132149155446097, guid: 39b3943b812756b469fd05de46c40cd0, type: 3}
+  monsterPrefab: {fileID: 8719046898202086419, guid: f4f8742b03e823045a4f1336c739e2d4, type: 3}
   monster_Transform: {x: 0.01, y: 0, z: 0.8}
   monster_Quaternion: {x: 0, y: 0.40673664, z: 0, w: 0.9135454}

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using static System.TimeZoneInfo;
@@ -35,7 +36,8 @@ public class TestManager : MonoBehaviour
     private float tabletFar = 1000f;
 
     // 카메라 세팅 관련
-    private Camera playerCamSetting;
+    //private Camera playerCamSetting;
+    private CinemachineCamera playerCamSetting;
     void Start()
     {
         // 그냥 넣음 이건
@@ -44,11 +46,14 @@ public class TestManager : MonoBehaviour
             move.enabled = true;
         }
 
-        playerCamSetting = playerCamera.GetComponent<Camera>();
+        //playerCamSetting = playerCamera.GetComponent<Camera>();
+        playerCamSetting = playerCamera.GetComponent<CinemachineCamera>();
         if (playerCamSetting != null)
         {
-            startFov = playerCamSetting.fieldOfView;
-            startFar = playerCamSetting.farClipPlane;
+            //startFov = playerCamSetting.fieldOfView;
+            //startFar = playerCamSetting.farClipPlane;
+            startFov = playerCamSetting.Lens.FieldOfView;
+            startFar = playerCamSetting.Lens.FarClipPlane;
         }
         else
         {
@@ -106,8 +111,10 @@ public class TestManager : MonoBehaviour
             // 현재 플레이어 위치를 start.. 으로 저장
             startPos = playerCamera.transform.position;
             startRot = playerCamera.transform.rotation;
-            startFov = playerCamSetting.fieldOfView;
-            startFar = playerCamSetting.farClipPlane;
+            //startFov = playerCamSetting.fieldOfView;
+            //startFar = playerCamSetting.farClipPlane;
+            startFov = playerCamSetting.Lens.FieldOfView;
+            startFar = playerCamSetting.Lens.FarClipPlane;
 
             // 나중에 꺼질 때를 위해 각각 위치 회전 값 저장
             startCameraPosition = startPos;
@@ -134,8 +141,10 @@ public class TestManager : MonoBehaviour
 
             playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
             playerCamera.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
-            playerCamSetting.fieldOfView = Mathf.Lerp(startFov, endFov, t);
-            playerCamSetting.farClipPlane = Mathf.Lerp(startFar, endFar, t);
+            //playerCamSetting.fieldOfView = Mathf.Lerp(startFov, endFov, t);
+            //playerCamSetting.farClipPlane = Mathf.Lerp(startFar, endFar, t);
+            playerCamSetting.Lens.FieldOfView = Mathf.Lerp(startFov, endFov, t);
+            playerCamSetting.Lens.FarClipPlane = Mathf.Lerp(startFar, endFar, t);
 
             yield return null;
         }
