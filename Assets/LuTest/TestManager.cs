@@ -31,8 +31,8 @@ public class TestManager : MonoBehaviour
     // 세팅한 Test의 위치, 회전, FOV, Far값
     private Vector3 tabletPosition = new Vector3(-2.045f, 2.5f, -0.464f);
     private Quaternion tabletRotation = Quaternion.Euler(90f, 0f, 0f);
-    private float tabletFov = 11.8f;
-    private float tabletFar = 6f;
+    private float tabletFov = 13f;
+    private float tabletFar = 1000f;
 
     // 카메라 세팅 관련
     private Camera playerCamSetting;

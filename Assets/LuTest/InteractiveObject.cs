@@ -62,7 +62,7 @@ public class InteractiveObject : MonoBehaviour
     {
         // ray는 스크린 가로 세로의 중앙의 값 정중앙
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-
+        Debug.DrawRay(ray.origin, ray.direction);
         RaycastHit hit; // Hit 당한 오브젝트를 hit에 저장
 
         if (Physics.Raycast(ray, out hit, InteractionDistance))

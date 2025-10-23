@@ -2671,8 +2671,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -0.15
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -4298,8 +4298,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -2
   m_ChildAlignment: 4
-  m_Spacing: -0.15
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -5482,6 +5482,7 @@ GameObject:
   - component: {fileID: 6357413534515751049}
   - component: {fileID: 7716007128870303450}
   - component: {fileID: 5192635359128554992}
+  - component: {fileID: 2167284832211045431}
   m_Layer: 5
   m_Name: TabletCanvas
   m_TagString: Untagged
@@ -5577,6 +5578,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &2167284832211045431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747836318599976390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.65, y: 4.22, z: 0.21}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8836067974645785566
 GameObject:
   m_ObjectHideFlags: 0

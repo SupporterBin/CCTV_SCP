@@ -54,14 +54,20 @@ public class CCTVManager : MonoBehaviour
 
     // 세팅한 Test의 위치, 회전, FOV, Far값
     // 왼쪽 가운데 오른쪽 
-    private Vector3 LeftCCTVPosition = new Vector3(-0.364f, 1.571f, -1.39f);
+    private Vector3 LeftCCTVPosition = new Vector3(-0.483f, 1.58f, -1.08f);
+    private Quaternion LeftCCTVRotation = Quaternion.Euler(0f, -25.7f, 0f);
+    private Vector3 CenterCCTVPosition = new Vector3(0f, 1.58f, -0.982f);
+    private Quaternion CenterCCTVRotation = Quaternion.Euler(0f, 0.25f, 0f);
+    private Vector3 RightCCTVPosition = new Vector3(0.483f, 1.58f, -1.08f);
+    private Quaternion RightCCTVRotation = Quaternion.Euler(0f, 25.9f, 0f);
+    /*private Vector3 LeftCCTVPosition = new Vector3(-0.364f, 1.571f, -1.39f);
     private Quaternion LeftCCTVRotation = Quaternion.Euler(0f, -24.904f, 0f);
     private Vector3 CenterCCTVPosition = new Vector3(0, 1.571f, -1.32f);
     private Quaternion CenterCCTVRotation = Quaternion.Euler(0f, 0f, 0f);
     private Vector3 RightCCTVPosition = new Vector3(0.364f, 1.571f, -1.39f);
-    private Quaternion RightCCTVRotation = Quaternion.Euler(0f, 24.904f, 0f);
-    private float CCTVFov = 21f;
-    private float CCTVFar = 3f;
+    private Quaternion RightCCTVRotation = Quaternion.Euler(0f, 24.904f, 0f);*/
+    private float CCTVFov = 26f;
+    private float CCTVFar = 1000f;
 
     // 카메라 세팅 관련
     private Camera playerCamSetting;
