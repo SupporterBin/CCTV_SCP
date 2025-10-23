@@ -776,8 +776,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9:30
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3541,8 +3541,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Day 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4088,6 +4088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayText: {fileID: 1069879365}
   clockText: {fileID: 212145457}
+  MINUTEUP_TIME: 0.1
+  TIME_START: 6
 --- !u!1 &1257940766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4246,8 +4248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalCheckTime: 0
-  clearTime: 0
-  anomalyStartTime: 10
+  anomalyEvents: []
+  currentClearTime: 0
+  startAnomalyTime: 0
   isAnomaly: 0
   eventAnomalys:
   - {fileID: 11400000, guid: fa74a2fb0fb6e9345a5e8c455f1964a1, type: 2}

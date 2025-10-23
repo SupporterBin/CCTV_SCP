@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7953670932122697339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5314564160279085783}
+  - component: {fileID: 5412771938656210520}
+  m_Layer: 0
+  m_Name: WallTentacle1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5314564160279085783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953670932122697339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.17, y: 0.032, z: -6.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5412771938656210520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953670932122697339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cd75d6c00859b46ba83ced7618557f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tentaclePrefab: {fileID: 3413848004334246405, guid: 4fb3a7d54b7ef7747bcc017371ac09eb, type: 3}
+  tubePrefab: {fileID: 4263175803424392943, guid: 16809354fbf422241b04dc4bad757fe5, type: 3}
+  blobCenter: {fileID: 0}
+  count: 30
+  spawnRadius: {x: 0.05, y: 4, z: 0.05}
+  tubeMaterial: {fileID: 2100000, guid: 5945b40832ff7494393cec09c442db35, type: 2}
+  rootRadius: 0.2
+  tipRadius: 0.05
+  damp: 0
+  EnableDirOffset: 0
+  alongAxis: 2
+  reverseAlong: 0

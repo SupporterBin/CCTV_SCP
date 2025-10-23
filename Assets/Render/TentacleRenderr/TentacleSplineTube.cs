@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class TentacleSplineTube : MonoBehaviour
 {
-    public TentacleVerletChain source;
+    public IChainPos source;
     [Header("Tube Shape")]
     [Range(8, 64)] public int radialSegments = 16; // 단면 원 세그먼트
     [Range(8, 256)] public int samples = 64;       // 길이 방향 샘플
@@ -25,7 +25,13 @@ public class TentacleSplineTube : MonoBehaviour
         GetComponent<MeshFilter>().sharedMesh = mesh;
         Allocate();
     }
-
+    public void Init(float rootRad, float tipRad)
+    {
+        if(rootRad > 0)
+            radiusRoot = rootRad;
+        if (tipRad > 0)
+            radiusTip = tipRad;
+    }
     void Allocate()
     {
         int ring = radialSegments;
