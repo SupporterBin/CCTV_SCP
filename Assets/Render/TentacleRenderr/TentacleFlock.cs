@@ -22,8 +22,10 @@ public class TentacleFlock : MonoBehaviour
     [Header("ChainDamp")]
     public float damp = 0;
 
-    public bool applySegLen = false;
-    public float len = 0.01f;
+    public bool applyFlow = false;
+    public Vector3 flow = Vector3.zero;
+    public bool applySegment = false;
+    public int segment = 12;
     void Start()
     {
         for (int i = 0; i < count; i++)
@@ -39,7 +41,10 @@ public class TentacleFlock : MonoBehaviour
             t.targetLenScale = Random.Range(targetLenScale.x, targetLenScale.y);
             t.noiseAmp = Random.Range(noiseAmp.x, noiseAmp.y);
             t.noiseFreq = Random.Range(noiseFreq.x, noiseFreq.y);
-            t.segmentLength = len;
+            if(applySegment)
+                t.segments = segment;
+            if(applyFlow)
+                t.flow = flow;
             
             var tube = Instantiate(tubePrefab, t.transform);
             tube.Init(rootRadius, tipRadius);

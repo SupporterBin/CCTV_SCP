@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e3770d8188962241b71371192d81a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segments: 32
+  segments: 12
   segmentLength: 0.06
   stiffness: 0.8
   constraintIterations: 6

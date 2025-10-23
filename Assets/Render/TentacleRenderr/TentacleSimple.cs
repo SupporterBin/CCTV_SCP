@@ -24,6 +24,8 @@ public class TentacleSimple : MonoBehaviour
     public float amplitude = 0.01f;
     public bool applyOffset = false;
     public float MaxRadOffset = 2;
+    public bool applySegment = false;
+    public float segmentCnt = 8;
     void Start()
     {
         for (int i = 0; i < count; i++)

@@ -761,7 +761,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &216343716
 BoxCollider:
@@ -2698,6 +2698,8 @@ MonoBehaviour:
   amplitude: 0.01
   applyOffset: 0
   MaxRadOffset: 2
+  applySegment: 0
+  segmentCnt: 8
 --- !u!114 &665564758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6401,8 +6403,10 @@ MonoBehaviour:
   rootRadius: 0.003
   tipRadius: 0.001
   damp: 0
-  applySegLen: 1
-  len: 0.01
+  applyFlow: 0
+  flow: {x: 0, y: 0, z: 0}
+  applySegment: 0
+  segment: 12
 --- !u!1 &1465385342
 GameObject:
   m_ObjectHideFlags: 0
