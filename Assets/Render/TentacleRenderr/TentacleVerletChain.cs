@@ -8,7 +8,7 @@ public interface IChainPos
 public class TentacleVerletChain : MonoBehaviour, IChainPos
 {
     [Header("Chain")]
-    [Range(4, 128)] public int segments = 32;
+    [Range(4, 128)] public int segments = 12;
     public float segmentLength = 0.06f;
     [Range(0.2f, 1f)] public float stiffness = 0.8f;
     [Range(1, 16)] public int constraintIterations = 6;
