@@ -19,8 +19,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         // ▼▼▼ 마우스 고정 및 숨기기 ▼▼▼
-        //Cursor.lockState = CursorLockMode.Locked; // 커서를 화면 중앙에 고정
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; // 커서를 화면 중앙에 고정
+        Cursor.visible = false;
 
         // Rigidbody 컴포넌트를 시작할 때 가져옵니다.
         rb = GetComponent<Rigidbody>();
