@@ -24,11 +24,12 @@ public class StabilityManager : MonoBehaviour
         currentStability[1] = maxStability;
         currentStability[2] = maxStability;
     }
-
+    bool dam = true;
     private void Update()
     {
-        if (currentStability[0] <= 0)
+        if (currentStability[0] <= 0 && dam)
         {
+            dam = false;
             ExecutionTimeLineManager.instance.PlayExecutionTimeline(0);
         }
     }
