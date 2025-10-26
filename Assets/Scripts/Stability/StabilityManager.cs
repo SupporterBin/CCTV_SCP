@@ -24,6 +24,11 @@ public class StabilityManager : MonoBehaviour
         currentStability[2] = maxStability;
     }
 
+    private void Update()
+    {
+        
+    }
+
     //����ȭ ��ġ ����
     //-> �ٿ�, ��� �̺�Ʈ ������ ������.
     public void StabilizationDown(float value, int index)

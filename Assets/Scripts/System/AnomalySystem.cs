@@ -42,7 +42,7 @@ public class AnomalySystem : MonoBehaviour
         if (isAnomaly)
         {
             currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
-            StabilityManager.Instance?.StabilizationDown(10 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+            StabilityManager.Instance?.StabilizationDown(3 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
 
             if(currentAnomalyClearTime >= 30) //이상현상 감지 실패한 경우, 이건 실제 초임(미닛토탈아님).
             {
@@ -51,7 +51,7 @@ public class AnomalySystem : MonoBehaviour
                 //이상현상 실패 처리 및 이상현상 깔려있는거 제거 및 초기화.
                 startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
 
-                Debug.Log("야호 이상현을 충분히 막아냈어요");
+                Debug.Log("힝 이상현을 충분히 못막았어용..");
 
                 currentEventAnomaly.Fail();
                 currentEventAnomaly = null;
