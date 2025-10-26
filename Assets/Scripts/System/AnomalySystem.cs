@@ -42,7 +42,7 @@ public class AnomalySystem : MonoBehaviour
         if (isAnomaly)
         {
             currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
-            StabilityManager.Instance?.StabilizationDown(3 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+            StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
 
             if(currentAnomalyClearTime >= 30) //이상현상 감지 실패한 경우, 이건 실제 초임(미닛토탈아님).
             {
@@ -109,11 +109,14 @@ public class AnomalySystem : MonoBehaviour
             currentEventAnomaly.Clear();
             currentEventAnomaly = null;
             currentEventPlace = EventPlace.None;
-            currentEventType = EventType.None;
+
+            AnomalyTimeSetting(25, 40);
         }
         else
         {
+            StabilityManager.Instance?.StabilizationDown(10, 0);
             Debug.Log("이런 이상현을 충분히 실패했어요");
+            //대충 잘못눌렀을 경우.조건
             //노클리어 디버프
         }
     }

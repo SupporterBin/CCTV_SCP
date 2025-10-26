@@ -15,6 +15,8 @@ public class ExecutionTimeLineManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        playableDirector = GetComponent<PlayableDirector>();
     }
 
     public void PlayExecutionTimeline(int index)

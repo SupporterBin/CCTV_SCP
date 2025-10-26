@@ -17,7 +17,7 @@ public class CCTVManager : MonoBehaviour
     [SerializeField]
     private PlayerMove move;
 
-    // ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó¿Í ÅÂºí¸´ Ä«¸Þ¶ó À§Ä¡ ¹× È¸Àü °ª
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ ï¿½Âºï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½
     [SerializeField]
     private Transform playerCamera;
 
@@ -27,16 +27,16 @@ public class CCTVManager : MonoBehaviour
     [SerializeField]
     private GameObject[] panels;
 
-    // // ÅÂºí¸´ ¿Â ¿ÀÇÁ½Ã ½ÃÁ¡ ÀÌµ¿ ¹× ½Ã°£ °ü·Ã º¯¼ö [ºÎµå·¯¿î ½ÃÁ¡ º¯È¯?]
-    // ½ÃÀÛÇß´ø ±× ¿ø·¡ À§Ä¡
+    // // ï¿½Âºï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ [ï¿½Îµå·¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯?]
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     private Vector3 originalPlayerPos;
     private Quaternion originalPlayerRot;
 
-    // ÇöÀç °ª
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     private Vector3 curCCTVPos;
     private Quaternion curCCTVRot;
 
-    // °»½Å °ª
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     private Vector3 renewalPos;
     private Quaternion renewalRot;
 
@@ -46,15 +46,15 @@ public class CCTVManager : MonoBehaviour
     private float moveDuration = 0.5f;
     private float timer = 0f;
 
-    // ÅÂºí¸´ ¿Â ¿ÀÇÁ ¿©ºÎ
+    // ï¿½Âºï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool isOnCCTV = false;
     public bool isMovingCamera = false;
-    // ÇÃ·¹ÀÌ¾î ½ÃÀÛ FOV, Far °ª
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ FOV, Far ï¿½ï¿½
     private float startFov;
     private float startFar;
 
-    // ¼¼ÆÃÇÑ TestÀÇ À§Ä¡, È¸Àü, FOV, Far°ª
-    // ¿ÞÂÊ °¡¿îµ¥ ¿À¸¥ÂÊ 
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Testï¿½ï¿½ ï¿½ï¿½Ä¡, È¸ï¿½ï¿½, FOV, Farï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îµ¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     private Vector3 LeftCCTVPosition = new Vector3(-0.483f, 1.58f, -1.08f);
     private Quaternion LeftCCTVRotation = Quaternion.Euler(0f, -25.7f, 0f);
     private Vector3 CenterCCTVPosition = new Vector3(0f, 1.58f, -0.982f);
@@ -70,7 +70,7 @@ public class CCTVManager : MonoBehaviour
     private float CCTVFov = 26f;
     private float CCTVFar = 1000f;
 
-    // Ä«¸Þ¶ó ¼¼ÆÃ °ü·Ã
+    // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //private Camera playerCamSetting;
     private CinemachineCamera playerCamSetting;
 
@@ -84,7 +84,7 @@ public class CCTVManager : MonoBehaviour
 
     void Start()
     {
-        // ±×³É ³ÖÀ½ ÀÌ°Ç
+        // ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½
         if (move != null)
         {
             move.enabled = true;
@@ -101,7 +101,7 @@ public class CCTVManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó ¼¼ÆÃ null");
+            Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ null");
         }
 
         timer = moveDuration + 5f;

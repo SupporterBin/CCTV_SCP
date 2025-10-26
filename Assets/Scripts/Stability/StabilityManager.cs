@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class StabilityManager : MonoBehaviour
 {
@@ -26,7 +27,10 @@ public class StabilityManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (currentStability[0] <= 0)
+        {
+            ExecutionTimeLineManager.instance.PlayExecutionTimeline(0);
+        }
     }
 
     //����ȭ ��ġ ����

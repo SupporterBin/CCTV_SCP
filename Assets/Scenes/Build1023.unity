@@ -3446,6 +3446,7 @@ GameObject:
   - component: {fileID: 580823140}
   - component: {fileID: 580823139}
   - component: {fileID: 580823141}
+  - component: {fileID: 580823142}
   m_Layer: 0
   m_Name: ExecutionDirector
   m_TagString: Untagged
@@ -3667,6 +3668,21 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &580823142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580823133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d624544d73e7e48bbdc5d5f0797b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirector: {fileID: 0}
+  executionTimelineAssets:
+  - {fileID: 11400000, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
 --- !u!1 &605187923
 GameObject:
   m_ObjectHideFlags: 0
