@@ -2,9 +2,10 @@ using System.Collections;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static System.TimeZoneInfo;
 // 해당 테스트 스크립트입니다. 
-public class TestManager : MonoBehaviour
+public class TabletManager : MonoBehaviour
 {
     // 플레이어 카메라와 태블릿 카메라 위치 및 회전 값
     [SerializeField]
@@ -38,6 +39,13 @@ public class TestManager : MonoBehaviour
     // 카메라 세팅 관련
     //private Camera playerCamSetting;
     private CinemachineCamera playerCamSetting;
+
+    [SerializeField]
+    private Button[] interactionTabletButtons;
+
+    [SerializeField]
+    private Canvas crossHairCanvas;
+
     void Start()
     {
         // 그냥 넣음 이건
@@ -65,6 +73,23 @@ public class TestManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isOnTablet)
+        {
+            crossHairCanvas.enabled = true;
+            for (int i = 0; i < interactionTabletButtons.Length; i++)
+            {
+                interactionTabletButtons[i].interactable = false;
+            }
+        }
+        else
+        {
+            crossHairCanvas.enabled = false;
+            for (int i = 0; i < interactionTabletButtons.Length; i++)
+            {
+                interactionTabletButtons[i].interactable = true;
+            }
+        }
+
         if (isOnTablet && !isMovingTabletCamera && Input.GetKeyDown(KeyCode.F))
         {
             isOnTablet = false;

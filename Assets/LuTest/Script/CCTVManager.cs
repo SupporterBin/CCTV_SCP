@@ -74,6 +74,9 @@ public class CCTVManager : MonoBehaviour
     //private Camera playerCamSetting;
     private CinemachineCamera playerCamSetting;
 
+    [SerializeField]
+    private Button[] interactionCCTVButtons;
+
     private void Awake()
     {
         panels[0].transform.Find("RightBt").GetComponent<Button>().onClick.AddListener(() => CCTV_Pos_Rot(CCTVLocation.Center));
@@ -108,6 +111,23 @@ public class CCTVManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (!isOnCCTV)
+        {
+            for (int i = 0; i < interactionCCTVButtons.Length; i++)
+            {
+                interactionCCTVButtons[i].interactable = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < interactionCCTVButtons.Length; i++)
+            {
+                interactionCCTVButtons[i].interactable = true;
+            }
+        }
+    }
     public bool IsMoving()
     {
         return isMovingCamera;

@@ -5,7 +5,7 @@ public class ScreenCursor : MonoBehaviour
     [SerializeField]
     private CCTVManager cctvManager;
     [SerializeField]
-    private TestManager testManager;
+    private TabletManager testManager;
 
     private void Update()
     {

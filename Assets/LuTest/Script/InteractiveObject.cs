@@ -30,7 +30,7 @@ public class InteractiveObject : MonoBehaviour
     private CCTVManager cctvManager;
 
     [SerializeField]
-    private TestManager testManager;
+    private TabletManager testManager;
 
     // Update is called once per frame
     void Update()
