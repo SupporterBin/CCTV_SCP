@@ -98,9 +98,9 @@ public class AnomalySystem : MonoBehaviour
         currentEventType = currentEventAnomaly.Execute();
     }
 
-    private void ProcessEventClear(EventType Type)
+    private void ProcessEventClear(EventType Type, int index)
     {
-        if (Type == currentEventType)
+        if (Type == currentEventType && index == (int)currentEventPlace + 2)
         {
             //클리어
             isAnomaly = false;
@@ -122,9 +122,9 @@ public class AnomalySystem : MonoBehaviour
     }
 
     // 유니티 버튼 OnClick()에 연결할 함수들
-    public void ClearCCTVSystemCheck() { ProcessEventClear(EventType.CCTV_SystemCheck); }
-    public void ClearCCTVResonance() { ProcessEventClear(EventType.CCTV_Resonance); }
-    public void ClearCCTVIncinerate() { ProcessEventClear(EventType.CCTV_Incinerate); }
-    public void ClearCCTVElectricity() { ProcessEventClear(EventType.CCTV_Electricity); }
-    public void ClearMission() { ProcessEventClear(EventType.Mission); }
+    public void ClearCCTVSystemCheck(int index) { ProcessEventClear(EventType.CCTV_SystemCheck, index); }
+    public void ClearCCTVResonance(int index) { ProcessEventClear(EventType.CCTV_Resonance, index); }
+    public void ClearCCTVIncinerate(int index) { ProcessEventClear(EventType.CCTV_Incinerate, index); }
+    public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
+    public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
 }
