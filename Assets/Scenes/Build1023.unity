@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 134044327}
   - component: {fileID: 134044326}
   m_Layer: 5
-  m_Name: SystemCheckButton
+  m_Name: SystemCheckButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1671,7 +1671,7 @@ GameObject:
   - component: {fileID: 161875391}
   - component: {fileID: 161875390}
   m_Layer: 5
-  m_Name: ResonanceButton
+  m_Name: ResonanceButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2177,7 +2177,7 @@ GameObject:
   - component: {fileID: 252931297}
   - component: {fileID: 252931296}
   m_Layer: 5
-  m_Name: ResonanceButton
+  m_Name: ResonanceButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4641,7 +4641,7 @@ GameObject:
   - component: {fileID: 728099538}
   - component: {fileID: 728099537}
   m_Layer: 5
-  m_Name: FireButton
+  m_Name: FireButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 730058592}
   - component: {fileID: 730058591}
   m_Layer: 5
-  m_Name: FireButton
+  m_Name: FireButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5994,7 +5994,7 @@ GameObject:
   - component: {fileID: 973519065}
   - component: {fileID: 973519064}
   m_Layer: 5
-  m_Name: DistnbutionButton
+  m_Name: DistnbutionButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6245,7 +6245,7 @@ GameObject:
   - component: {fileID: 1025196034}
   - component: {fileID: 1025196033}
   m_Layer: 5
-  m_Name: SystemCheckButton
+  m_Name: SystemCheckButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6378,7 +6378,7 @@ GameObject:
   - component: {fileID: 1033355925}
   - component: {fileID: 1033355924}
   m_Layer: 5
-  m_Name: SystemCheckButton
+  m_Name: SystemCheckButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7382,6 +7382,7 @@ Transform:
   - {fileID: 100531054}
   - {fileID: 251498750}
   - {fileID: 1047453458}
+  - {fileID: 2101013842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123345388
@@ -7397,7 +7398,7 @@ GameObject:
   - component: {fileID: 1123345391}
   - component: {fileID: 1123345390}
   m_Layer: 5
-  m_Name: DistnbutionButton
+  m_Name: DistnbutionButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8334,7 +8335,7 @@ GameObject:
   - component: {fileID: 1276661095}
   - component: {fileID: 1276661094}
   m_Layer: 5
-  m_Name: DistnbutionButton
+  m_Name: DistnbutionButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8455,7 +8456,7 @@ GameObject:
   - component: {fileID: 1295110725}
   - component: {fileID: 1295110724}
   m_Layer: 5
-  m_Name: FireButton
+  m_Name: FireButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8717,7 +8718,7 @@ GameObject:
   - component: {fileID: 1298789129}
   - component: {fileID: 1298789128}
   m_Layer: 5
-  m_Name: LightningButton
+  m_Name: LightningButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10602,7 +10603,7 @@ GameObject:
   - component: {fileID: 1525887904}
   - component: {fileID: 1525887903}
   m_Layer: 5
-  m_Name: LightningButton
+  m_Name: LightningButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10779,7 +10780,7 @@ GameObject:
   - component: {fileID: 1535525888}
   - component: {fileID: 1535525887}
   m_Layer: 5
-  m_Name: LightningButton
+  m_Name: LightningButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11702,7 +11703,7 @@ GameObject:
   - component: {fileID: 1641641766}
   - component: {fileID: 1641641765}
   m_Layer: 5
-  m_Name: ResonanceButton
+  m_Name: ResonanceButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13835,9 +13836,9 @@ MonoBehaviour:
   startAnomalyTime: 0
   isAnomaly: 0
   eventAnomalys:
-  - {fileID: 11400000, guid: 382c77bd79d8f9942975f7e01297192b, type: 2}
-  - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
-  - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentEventPlace: 0
   currentEventType: 0
 --- !u!1 &2035046591
@@ -13961,6 +13962,74 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &2101013841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101013842}
+  - component: {fileID: 2101013843}
+  m_Layer: 0
+  m_Name: MonitorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2101013842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101013841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1113930493}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101013843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101013841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5647ded695445264cba0d7891273db1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCameraObject: {fileID: 1399082384}
+  leftMonitorScreen: {fileID: 1266406729}
+  leftButtons:
+  - {fileID: 728099537}
+  - {fileID: 1525887903}
+  - {fileID: 1641641765}
+  - {fileID: 1033355924}
+  - {fileID: 973519064}
+  centerCameraObject: {fileID: 1298697854}
+  centerMonitorScreen: {fileID: 1563699028}
+  centerButtons:
+  - {fileID: 1295110724}
+  - {fileID: 1535525887}
+  - {fileID: 161875390}
+  - {fileID: 1025196033}
+  - {fileID: 1123345390}
+  rightCameraObject: {fileID: 93470961}
+  rightMonitorScreen: {fileID: 100807782}
+  rightButtons:
+  - {fileID: 730058591}
+  - {fileID: 1298789128}
+  - {fileID: 252931296}
+  - {fileID: 134044326}
+  - {fileID: 1276661094}
 --- !u!1 &2103289061
 GameObject:
   m_ObjectHideFlags: 0

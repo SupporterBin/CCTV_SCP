@@ -21,9 +21,6 @@ public class Button9 : MonoBehaviour
     private Color defaultColor = Color.white;
     private Color lightColor = Color.cyan;
 
-    // 현재 스테이지 
-    private int curStage = 1;
-
     // 버튼 알려주는 시간
     private float lightDuration = 0.5f;
 
@@ -57,7 +54,6 @@ public class Button9 : MonoBehaviour
         if (tabletSceneManager.isPlaying)
         {
             button9Panel.SetActive(true);
-            curStage = 1;
             buttonSequence.Clear();
             StartCoroutine(StageStart());
         }
@@ -66,7 +62,6 @@ public class Button9 : MonoBehaviour
     // 스테이지 시작 함수
     private IEnumerator StageStart()
     {
-        Debug.Log($"현재 스테이지 {curStage}");
         // 스테이지 시작 변수 활성화 [버튼 켜질 때 입력 막기위함]
         isStagePlaying = true;
         // 입력 및 순서 초기화
@@ -81,7 +76,7 @@ public class Button9 : MonoBehaviour
         }
 
         // 스테이지 별 활성화 버튼 수 및 순서 정하기
-        for(int i = 0; i < curStage; i++)
+        for(int i = 0; i < 4 + GameManager.Instance.daySystem.GetNowDay(); i++)
         {
             // 예비용 리스트에 2개 이상 있을 때 이걸 왜쓰냐 순서를 Random.Range로 뽑을건데
             // Random.Range는 (최소, 최대)이고 (0, 1) 이라했을때 최대의 -1 까지 뽑는거라 0밖에 안뽑임 확정
@@ -143,14 +138,14 @@ public class Button9 : MonoBehaviour
         {
             if (inputSequence.Count == 9)
             {
-                Debug.Log("게임 클리어");
+                Debug.Log("5일차");
                 EndGame();
             }
             else
             {
-                Debug.Log("다음 스테이지로 이동");
-                curStage++;
-                StartCoroutine(StageStart());
+                Debug.Log($"{GameManager.Instance.daySystem.GetNowDay()} 일차 클리어");
+                StabilityManager.Instance.StabilizationUp(10, 0);
+                EndGame();
             }
         }
         Debug.Log($"버튼 {buttonindex + 1} 눌림");

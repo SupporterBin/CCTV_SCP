@@ -5,7 +5,7 @@ using UnityEngine;
 public class DaySystem : MonoBehaviour
 {
     private int maxDay;
-    private int nowDay;
+    private int nowDay = 1;
 
     private int totalMinute;
     private float minuteUpCountingTime;
@@ -72,6 +72,8 @@ public class DaySystem : MonoBehaviour
     }
 
     public string GetDayText() { return "Day " + nowDay; }
+
+    public int GetNowDay() { return nowDay; }
 
     /// <summary>
     /// int 시간(분) 가져오기
