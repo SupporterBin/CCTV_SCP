@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class Anomaly_CryingMask : MonoBehaviour
+public class Anomaly_CryingMask : BasicEventAnomaly
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Clear()
     {
+        //아직 순서 [0]몬스터 위치 안정해져서 정해지면 수정.
         
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override EventType Execute()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public override void Fail()
+    {
+        throw new System.NotImplementedException();
     }
 }

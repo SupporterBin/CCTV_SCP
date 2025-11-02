@@ -12,7 +12,10 @@ public class UISystem : MonoBehaviour
     private void Update()
     {
         //나머지는 나중에 추가 1,2는
-        anomalyGageBar[0].value = StabilityManager.Instance.CurrentStability[0] / 100;
+        for (int i = 0; i < anomalyGageBar.Length; i++)
+        {
+            anomalyGageBar[i].value = StabilityManager.Instance.CurrentStability[i] / 100;
+        }
     }
 
     public void SubButtonOpen(int index)

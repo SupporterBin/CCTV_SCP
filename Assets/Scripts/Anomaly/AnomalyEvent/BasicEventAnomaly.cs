@@ -18,6 +18,7 @@ public enum EventType
     CCTV_Resonance,
     CCTV_Incinerate,
     CCTV_Electricity,
+    CCTV_FoodRefeel,
     Mission
 }
 

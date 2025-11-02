@@ -126,5 +126,6 @@ public class AnomalySystem : MonoBehaviour
     public void ClearCCTVResonance(int index) { ProcessEventClear(EventType.CCTV_Resonance, index); }
     public void ClearCCTVIncinerate(int index) { ProcessEventClear(EventType.CCTV_Incinerate, index); }
     public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
+    public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
 }
