@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anomaly_Short Circuit
   m_EditorClassIdentifier: 
   eventName: "\uD569\uC120"
-  eventPlace: 2
+  eventPlace: 4
   eventType: 1
   baseAnomalyActionSO: []
   sparklePrefab: {fileID: 1695421255909618417, guid: b1819d680033bc243a5433fd4c134f23, type: 3}

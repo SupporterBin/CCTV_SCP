@@ -37,12 +37,43 @@ public class AnomalySystem : MonoBehaviour
         {
             return;
         }
-        
+
         //이상현상 발생 중!
         if (isAnomaly)
         {
             currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
-            StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, 0); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+
+            int mapValue = 0;
+            switch(currentEventPlace)
+            {
+                case EventPlace.LeftRoom:
+                    mapValue = 0;
+                    break;
+                case EventPlace.CenterRoom:
+                    mapValue = 1;
+                    break;
+                case EventPlace.RightRoom:
+                    mapValue = 2;
+                    break;
+                case EventPlace.All:
+                    mapValue = 10;
+                    break;
+                case EventPlace.None:
+                    mapValue = 999;
+                    break;
+            }
+
+            if (mapValue == 10)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, i);
+                }
+            }
+            else
+            {
+                StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, mapValue); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+            }
 
             if(currentAnomalyClearTime >= 30) //이상현상 감지 실패한 경우, 이건 실제 초임(미닛토탈아님).
             {
@@ -100,7 +131,13 @@ public class AnomalySystem : MonoBehaviour
 
     private void ProcessEventClear(EventType Type, int index)
     {
-        if (Type == currentEventType && index == (int)currentEventPlace + 2)
+        if (!isAnomaly)
+        {
+            StabilityManager.Instance?.StabilizationDown(10, index);
+            Debug.Log("이상현상이 아닌데 눌렀어요 -10");
+        }
+
+        if (Type == currentEventType && index == (int)currentEventPlace - 2)
         {
             //클리어
             isAnomaly = false;
@@ -108,16 +145,21 @@ public class AnomalySystem : MonoBehaviour
 
             currentEventAnomaly.Clear();
             currentEventAnomaly = null;
+            currentEventType = EventType.None;
             currentEventPlace = EventPlace.None;
 
             AnomalyTimeSetting(25, 40);
         }
         else
         {
-            StabilityManager.Instance?.StabilizationDown(10, 0);
+            StabilityManager.Instance?.StabilizationDown(10, index);
             Debug.Log("이런 이상현을 충분히 실패했어요");
-            //대충 잘못눌렀을 경우.조건
-            //노클리어 디버프
+            currentEventAnomaly.Fail();
+            currentEventAnomaly = null;
+            isAnomaly = false;
+            currentEventType = EventType.None;
+            currentEventPlace = EventPlace.None;
+            AnomalyTimeSetting(25, 40);
         }
     }
 

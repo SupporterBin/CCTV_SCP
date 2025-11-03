@@ -14414,9 +14414,9 @@ MonoBehaviour:
   startAnomalyTime: 0
   isAnomaly: 0
   eventAnomalys:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 382c77bd79d8f9942975f7e01297192b, type: 2}
+  - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
+  - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
   currentEventPlace: 0
   currentEventType: 0
 --- !u!1 &2035046591
