@@ -32,6 +32,25 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField]
     private TabletManager testManager;
 
+    [SerializeField]
+    private LayerMask outlineLayerMask;
+
+    private MeshRenderer curOutlineScale = null;
+
+    private MaterialPropertyBlock outlineBlock;
+
+    [SerializeField]
+    private string outlineProperty = "_Scale";
+
+    private float offOutlineScale = 0f;
+
+    private float onOutlineScale = 1.05f;
+
+    private void Start()
+    {
+        outlineBlock = new MaterialPropertyBlock();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -65,13 +84,16 @@ public class InteractiveObject : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction);
         RaycastHit hit; // Hit 당한 오브젝트를 hit에 저장
 
-        if (Physics.Raycast(ray, out hit, InteractionDistance))
+        GameObject outLineObject = null;
+
+        if (Physics.Raycast(ray, out hit, InteractionDistance, outlineLayerMask))
         {
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject == LeftMonitor || hitObject == CenterMonitor ||
                 hitObject == RightMonitor || hitObject == Tablet)
             {
                 rayCollisionObject = hitObject;
+                outLineObject = hitObject;
             }
             else
             {
@@ -82,6 +104,8 @@ public class InteractiveObject : MonoBehaviour
         {
             rayCollisionObject = null;
         }
+
+        ShowOutLine(outLineObject);
     }
 
     void InteractLeftMonitor()
@@ -103,5 +127,38 @@ public class InteractiveObject : MonoBehaviour
     void InteractTablet()
     {
         testManager.MovingTabletView();
+    }
+
+    private void ShowOutLine(GameObject outlineable)
+    {
+        MeshRenderer newOutLineObject = null;
+
+        if (outlineable != null)
+        {
+            newOutLineObject = outlineable.GetComponent<MeshRenderer>();
+
+        }
+
+        if (newOutLineObject != curOutlineScale)
+        {
+            if (curOutlineScale != null)
+            {
+                outlineBlock.SetFloat(outlineProperty, offOutlineScale);
+                curOutlineScale.SetPropertyBlock(outlineBlock, 1);
+
+                Debug.Log("끄기");
+            }
+
+            if (newOutLineObject != null)
+            {
+                outlineBlock.SetFloat(outlineProperty, onOutlineScale);
+                newOutLineObject.SetPropertyBlock(outlineBlock, 1);
+
+                Debug.Log("켜기");
+            }
+
+            curOutlineScale = newOutLineObject;
+        }
+
     }
 }
