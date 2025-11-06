@@ -189,7 +189,7 @@ public class AJae : MonoBehaviour
 
         if (inputSequence.Count == aJaeSequence.Count)
         {
-            StabilityManager.Instance.StabilizationUp(10, 0);
+            StabilityManager.Instance.StabilizationUp(10, 2);
             // 성공 함수여기 부분 고쳐야됨 테스트용으로 계속 나오게 만듬.
             Debug.Log($"{GameManager.Instance.daySystem.GetNowDay()} 일차");
             EndGame();

@@ -175,6 +175,7 @@ public class Fishing : MonoBehaviour
 
         if (success)
         {
+            StabilityManager.Instance.StabilizationUp(10, 1);
             Debug.Log("게임 성공!");
         }
         else
