@@ -32,6 +32,11 @@ public class StabilityManager : MonoBehaviour
             dam = false;
             ExecutionTimeLineManager.instance.PlayExecutionTimeline(0);
         }
+        else if (currentStability[1] <= 1 && dam)
+        {
+            dam = false;
+            ExecutionTimeLineManager.instance.PlayExecutionTimeline(1);
+        }
     }
 
     //����ȭ ��ġ ����
