@@ -27,7 +27,7 @@ public class StabilityManager : MonoBehaviour
     bool dam = true;
     private void Update()
     {
-        if (currentStability[0] <= 0 && dam)
+        if (currentStability[2] <= 0 && dam)
         {
             dam = false;
             ExecutionTimeLineManager.instance.PlayExecutionTimeline(0);

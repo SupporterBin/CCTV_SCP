@@ -4,7 +4,7 @@ public interface IChainPos
 {
     public Vector3[] Positions { get; }
 }
-/// ÇÑ °¡´ÚÀÇ Æ÷Áî¸¦ ¸Å ÇÁ·¹ÀÓ °è»ê(Verlet + ³ëÀÌÁî + Áß½É SDF Ãæµ¹)
+/// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸¦ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(Verlet + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½ß½ï¿½ SDF ï¿½æµ¹)
 public class TentacleVerletChain : MonoBehaviour, IChainPos
 {
     [Header("Chain")]
@@ -17,16 +17,16 @@ public class TentacleVerletChain : MonoBehaviour, IChainPos
     public float noiseAmp = 0.8f;
     public float noiseFreq = 0.7f;
     [Range(0.9f, 0.999f)] public float damping = 0.98f;
-    public Vector3 flow = new Vector3(0.3f, 0.2f, 0.1f); // Àü¿ª Èå¸§
-    [Range(0f, 2f)] public float outwardBias = 0.0f;     // ¹Ù±ùÀ¸·Î »¸´Â ÆíÇâ
-    [Range(0.5f, 2f)] public float targetLenScale = 1f;  // °¡´Ú ±æÀÌ ½ºÄÉÀÏ(·£´ýÈ­ ¿ë)
+    public Vector3 flow = new Vector3(0.3f, 0.2f, 0.1f); // ï¿½ï¿½ï¿½ï¿½ ï¿½å¸§
+    [Range(0f, 2f)] public float outwardBias = 0.0f;     // ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [Range(0.5f, 2f)] public float targetLenScale = 1f;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½)
 
     [Header("Clump / Blob SDF")]
     public Transform blobCenter;
-    public float attractRadius = 0.22f;   // Áß½ÉºÎ ¹Ý°æ
-    public float attractStrength = 6f;    // Áß½É ²ø¸²
-    public float repelStrength = 8f;      // ³»ºÎ Ä§Åõ ½Ã ¹Ý¹ß
-    [Range(0f, 2f)] public float baseCurvature = 0.4f; // ±âº» ¸¸°î(´õ À¯±âÀûÀ¸·Î)
+    public float attractRadius = 0.22f;   // ï¿½ß½Éºï¿½ ï¿½Ý°ï¿½
+    public float attractStrength = 6f;    // ï¿½ß½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float repelStrength = 8f;      // ï¿½ï¿½ï¿½ï¿½ Ä§ï¿½ï¿½ ï¿½ï¿½ ï¿½Ý¹ï¿½
+    [Range(0f, 2f)] public float baseCurvature = 0.4f; // ï¿½âº» ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 
     public  Vector3[] pos, prev;
     public Vector3[] Positions => pos;
@@ -54,9 +54,9 @@ public class TentacleVerletChain : MonoBehaviour, IChainPos
         float dt = Mathf.Clamp(Time.deltaTime, 0f, 0.033f);
         float segLen = segmentLength * targetLenScale;
 
-        // (¼±ÅÃ) ¿ùµå ¹Ù¶÷À» ¾²°í ½Í´Ù¸é ºÎ¸ð ·ÎÄÃ·Î º¯È¯
+        // (ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Í´Ù¸ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½È¯
         // Vector3 flowLocal = (transform.parent)
-        //     ? transform.parent.InverseTransformDirection(flow)  // flow°¡ "¿ùµå"¶ó°í °¡Á¤ÇÒ ¶§
+        //     ? transform.parent.InverseTransformDirection(flow)  // flowï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         //     : flow;
 
         for (int i = 1; i < segments; i++)
@@ -78,7 +78,7 @@ public class TentacleVerletChain : MonoBehaviour, IChainPos
             Vector3 tangent = Vector3.Cross(refAxis, dirPrev).normalized;
             Vector3 curveF = tangent * baseCurvature;
 
-            // ¡Ú blobCenter¸¦ ºÎ¸ð ·ÎÄÃ·Î º¯È¯ (ºÎ¸ð°¡ nullÀÌ¸é °ðÀå position »ç¿ë)
+            // ï¿½ï¿½ blobCenterï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½È¯ (ï¿½Î¸ï¿½ nullï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ position ï¿½ï¿½ï¿½)
             Vector3 blobLocal = Vector3.zero;
             if (blobCenter)
                 blobLocal = (transform.parent)
@@ -92,7 +92,7 @@ public class TentacleVerletChain : MonoBehaviour, IChainPos
                 ? -toC.normalized * (repelStrength * (attractRadius - dist))
                 : Vector3.zero;
 
-            // ¡Ú outwardBiasµµ ºÎ¸ð ·ÎÄÃ ÃàÀ¸·Î
+            // ï¿½ï¿½ outwardBiasï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Vector3 acc = noiseF
                         + /*flowLocal*/ flow
                         + Vector3.up * outwardBias
@@ -103,7 +103,7 @@ public class TentacleVerletChain : MonoBehaviour, IChainPos
             pos[i] = next;
         }
 
-        // Á¦¾à/·çÆ® °íÁ¤ (ºÎ¸ð ·ÎÄÃ)
+        // ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ (ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½)
         for (int iter = 0; iter < constraintIterations; iter++)
         {
             pos[0] = transform.localPosition;

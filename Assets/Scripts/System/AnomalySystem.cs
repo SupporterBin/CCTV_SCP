@@ -135,6 +135,7 @@ public class AnomalySystem : MonoBehaviour
         {
             StabilityManager.Instance?.StabilizationDown(10, index);
             Debug.Log("이상현상이 아닌데 눌렀어요 -10");
+            return;
         }
 
         if (Type == currentEventType && index == (int)currentEventPlace - 2)
