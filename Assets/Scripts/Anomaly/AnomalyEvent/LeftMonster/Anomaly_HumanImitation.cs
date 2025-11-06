@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Searcher.Searcher.AnalyticsEvent;
 
 public class Anomaly_HumanImitation : BasicEventAnomaly
 {
