@@ -4,39 +4,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static System.TimeZoneInfo;
-// ÇØ´ç Å×½ºÆ® ½ºÅ©¸³Æ®ÀÔ´Ï´Ù. 
+// ï¿½Ø´ï¿½ ï¿½×½ï¿½Æ® ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½Ô´Ï´ï¿½. 
 public class TabletManager : MonoBehaviour
 {
-    // ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó¿Í ÅÂºí¸´ Ä«¸Þ¶ó À§Ä¡ ¹× È¸Àü °ª
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ ï¿½Âºï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½
     [SerializeField]
     private Transform playerCamera;
 
-    // ÅÂºí¸´À» Ä×À» ¶§ ÀÌµ¿ °ü·Ã
+    // ï¿½Âºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     private PlayerMove move;
 
-    // // ÅÂºí¸´ ¿Â ¿ÀÇÁ½Ã ½ÃÁ¡ ÀÌµ¿ ¹× ½Ã°£ °ü·Ã º¯¼ö [ºÎµå·¯¿î ½ÃÁ¡ º¯È¯?]
+    // // ï¿½Âºï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ [ï¿½Îµå·¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯?]
     private Vector3 startCameraPosition;
     private Quaternion startCameraRotation;
 
-    // ÇÃ·¹ÀÌ¾î ½ÃÀÛ FOV, Far °ª
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ FOV, Far ï¿½ï¿½
     private float startFov;
     private float startFar;
 
     private float moveDuration = 0.5f;
     private float timer = 0f;
 
-    // ÅÂºí¸´ ¿Â ¿ÀÇÁ ¿©ºÎ
+    // ï¿½Âºï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool isOnTablet = false;
     public bool isMovingTabletCamera = false;
 
-    // ¼¼ÆÃÇÑ TestÀÇ À§Ä¡, È¸Àü, FOV, Far°ª
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Testï¿½ï¿½ ï¿½ï¿½Ä¡, È¸ï¿½ï¿½, FOV, Farï¿½ï¿½
     private Vector3 tabletPosition = new Vector3(-2.045f, 2.5f, -0.464f);
     private Quaternion tabletRotation = Quaternion.Euler(90f, 0f, 0f);
     private float tabletFov = 13f;
     private float tabletFar = 1000f;
 
-    // Ä«¸Þ¶ó ¼¼ÆÃ °ü·Ã
+    // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //private Camera playerCamSetting;
     private CinemachineCamera playerCamSetting;
 
@@ -48,7 +48,7 @@ public class TabletManager : MonoBehaviour
 
     void Start()
     {
-        // ±×³É ³ÖÀ½ ÀÌ°Ç
+        // ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½
         if (move != null)
         {
             move.enabled = true;
@@ -65,7 +65,7 @@ public class TabletManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó ¼¼ÆÃ null");
+            Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ null");
         }
 
         timer = moveDuration + 5f;
@@ -73,6 +73,7 @@ public class TabletManager : MonoBehaviour
 
     private void Update()
     {
+        if (crossHairCanvas == null) return;
         if (!isOnTablet)
         {
             crossHairCanvas.enabled = true;
@@ -131,9 +132,9 @@ public class TabletManager : MonoBehaviour
         float startFov;
         float startFar;
 
-        if (ismoving) // ÄÑÁú ¶§
+        if (ismoving) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         {
-            // ÇöÀç ÇÃ·¹ÀÌ¾î À§Ä¡¸¦ start.. À¸·Î ÀúÀå
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ start.. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             startPos = playerCamera.transform.position;
             startRot = playerCamera.transform.rotation;
             //startFov = playerCamSetting.fieldOfView;
@@ -141,19 +142,19 @@ public class TabletManager : MonoBehaviour
             startFov = playerCamSetting.Lens.FieldOfView;
             startFar = playerCamSetting.Lens.FarClipPlane;
 
-            // ³ªÁß¿¡ ²¨Áú ¶§¸¦ À§ÇØ °¢°¢ À§Ä¡ È¸Àü °ª ÀúÀå
+            // ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ È¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             startCameraPosition = startPos;
             startCameraRotation = startRot;
         }
-        else // ²¨Áú ¶§
+        else // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         {
-            // ÅÂºí¸´¿¡¼­ ½ÃÀÛÇÏ±â¿¡ °¢°¢ ½ÃÀÛ Á¡À» ÅÂºí¸´ÀÇ °ªÀ¸·Î ÀúÀå
+            // ï¿½Âºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Âºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             startPos = tabletPosition;
             startRot = tabletRotation;
             startFov = tabletFov;
             startFar = tabletFar;
         }
-        // ismoving Áï ÄÑÁú ¶§¸é µµÂø ÁöÁ¡ÀÇ °ªÀ» tablet ¾Æ´Ï¸é ²¨Áú ¶§´Ï±î ÇÃ·¹ÀÌ¾î °ª
+        // ismoving ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ tablet ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½
         Vector3 endPos = ismoving ? tabletPosition : startCameraPosition;
         Quaternion endRot = ismoving ? tabletRotation : startCameraRotation;
         float endFov = ismoving ? tabletFov : this.startFov;
@@ -174,7 +175,7 @@ public class TabletManager : MonoBehaviour
             yield return null;
         }
 
-        if (!ismoving) /// ¿òÁ÷ÀÏ ¶§°¡ ¾Æ´Ò ¶§
+        if (!ismoving) /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½
         {
             yield return new WaitForSeconds(0.2f);
 
