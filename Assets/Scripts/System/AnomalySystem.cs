@@ -63,21 +63,16 @@ public class AnomalySystem : MonoBehaviour
                     break;
             }
 
-            if (mapValue == 10)
+            if(mapValue != 999 && mapValue != 10)
             {
-                for(int i = 0; i < 3; i++)
-                {
-                    StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, i);
-                }
-            }
-            else
-            {
-                StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, mapValue); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+                //StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, mapValue); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
+                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, GameManager.Instance.daySystem.GetNowDay()); }
             }
 
-            if(currentAnomalyClearTime >= 30) //이상현상 감지 실패한 경우, 이건 실제 초임(미닛토탈아님).
+            //일정이상동안 이상현상 해결 못한 경우.
+            if (currentAnomalyClearTime >= 30) 
             {
-                StabilityManager.Instance?.StabilizationDown(10, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
+                StabilityManager.Instance?.StabilizationDown(15, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
 
                 //이상현상 실패 처리 및 이상현상 깔려있는거 제거 및 초기화.
                 startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
@@ -85,13 +80,8 @@ public class AnomalySystem : MonoBehaviour
                 Debug.Log("힝 이상현을 충분히 못막았어용..");
 
                 currentEventAnomaly.Fail();
-                currentEventAnomaly = null;
-                currentEventPlace = EventPlace.None;
-                currentEventType = EventType.None;
-
-                isAnomaly = false;
                 currentAnomalyClearTime = 0;
-                AnomalyTimeSetting(30, 40);
+                CleanAnomaly(25, 45);
             }
         }
 
@@ -133,8 +123,8 @@ public class AnomalySystem : MonoBehaviour
     {
         if (!isAnomaly)
         {
-            StabilityManager.Instance?.StabilizationDown(10, index);
-            Debug.Log("이상현상이 아닌데 눌렀어요 -10");
+            StabilityManager.Instance?.StabilizationDown(15, index);
+            Debug.Log("이상현상이 아닌데 눌렀어요 -15");
             return;
         }
 
@@ -145,22 +135,14 @@ public class AnomalySystem : MonoBehaviour
             Debug.Log("야호 이상현을 충분히 막아냈어요");
 
             currentEventAnomaly.Clear();
-            currentEventAnomaly = null;
-            currentEventType = EventType.None;
-            currentEventPlace = EventPlace.None;
-
-            AnomalyTimeSetting(25, 40);
+            CleanAnomaly(25, 40);
         }
         else
         {
             StabilityManager.Instance?.StabilizationDown(10, index);
             Debug.Log("이런 이상현을 충분히 실패했어요");
             currentEventAnomaly.Fail();
-            currentEventAnomaly = null;
-            isAnomaly = false;
-            currentEventType = EventType.None;
-            currentEventPlace = EventPlace.None;
-            AnomalyTimeSetting(25, 40);
+            CleanAnomaly(25, 40);
         }
     }
 
@@ -171,4 +153,13 @@ public class AnomalySystem : MonoBehaviour
     public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
     public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
+
+    private void CleanAnomaly(int NextEventTime_Min, int NextEventTime_Max)
+    {
+        currentEventAnomaly = null;
+        isAnomaly = false;
+        currentEventType = EventType.None;
+        currentEventPlace = EventPlace.None;
+        AnomalyTimeSetting(NextEventTime_Min, NextEventTime_Max);
+    }
 }

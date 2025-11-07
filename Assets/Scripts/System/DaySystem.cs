@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DaySystem : MonoBehaviour
 {
+    //날짜
     private int maxDay;
     private int nowDay = 1;
 
+    //시간
     private int totalMinute;
     private float minuteUpCountingTime;
 
+    //해당 날 클리어?
     private bool isDayClear;
 
     [Header("임시 시간 관련 텍스트 UI")]

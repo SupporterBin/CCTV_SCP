@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StabilityManager : MonoBehaviour
 {
     private static StabilityManager instance;
     public static StabilityManager Instance => instance;
 
-    //���� �̻����� �ִ�ġ
+    //안정 수치 최대치
     static public float maxStability = 100;
-    //���� �̻����� ��ġ
+
+    //현재 안정수치들
     private float[] currentStability;
     public float[] CurrentStability => currentStability;
+
+    [SerializeField, Header("0 = 1일, 4 = 5일, Day 별 이상현상 발생시 소모량 작성.")]
+    private float[] dayDownStabilityValue;
 
     private void Awake()
     {
@@ -49,5 +55,10 @@ public class StabilityManager : MonoBehaviour
     public void StabilizationUp(float value, int index)
     {
         currentStability[index] = Mathf.Clamp(currentStability[index] += value, 0f, maxStability);
+    }
+    
+    public void Stabilization_AnomalyTime_Update(int roomNum, int dayNum)
+    {
+        currentStability[roomNum] = Mathf.Clamp(currentStability[roomNum] -= dayDownStabilityValue[dayNum] * Time.deltaTime, 0f, maxStability);
     }
 }
