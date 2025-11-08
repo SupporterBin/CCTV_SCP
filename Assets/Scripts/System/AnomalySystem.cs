@@ -66,7 +66,7 @@ public class AnomalySystem : MonoBehaviour
             if(mapValue != 999 && mapValue != 10)
             {
                 //StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, mapValue); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
-                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, GameManager.Instance.daySystem.GetNowDay()); }
+                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay()); }
             }
 
             //일정이상동안 이상현상 해결 못한 경우.
@@ -75,7 +75,7 @@ public class AnomalySystem : MonoBehaviour
                 StabilityManager.Instance?.StabilizationDown(15, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
 
                 //이상현상 실패 처리 및 이상현상 깔려있는거 제거 및 초기화.
-                startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
+                startAnomalyTime = DaySystem.Instance.GetClock(); //발생한 시각 체크.
 
                 Debug.Log("힝 이상현을 충분히 못막았어용..");
 
@@ -87,7 +87,7 @@ public class AnomalySystem : MonoBehaviour
 
 
         //이상현상 발생 시간 세기
-        if (startAnomalyTime < GameManager.Instance.daySystem.GetClock() && !isAnomaly)
+        if (startAnomalyTime < DaySystem.Instance.GetClock() && !isAnomaly)
         {
             EventAnomalyStart();
         }
@@ -100,7 +100,7 @@ public class AnomalySystem : MonoBehaviour
     private void AnomalyTimeSetting(int min, int max)
     {
         if(startAnomalyTime == 0)
-            startAnomalyTime = Random.Range(GameManager.Instance.daySystem.GetClock() + min, GameManager.Instance.daySystem.GetClock() + max);
+            startAnomalyTime = Random.Range(DaySystem.Instance.GetClock() + min, DaySystem.Instance.GetClock() + max);
         else
             startAnomalyTime = Random.Range(startAnomalyTime + min, startAnomalyTime + max);
     }
@@ -112,7 +112,7 @@ public class AnomalySystem : MonoBehaviour
     {
         Debug.Log("EventAnomalyStart 발생, 이상현상 발생");
         isAnomaly = true;
-        startAnomalyTime = GameManager.Instance.daySystem.GetClock(); //발생한 시각 체크.
+        startAnomalyTime = DaySystem.Instance.GetClock(); //발생한 시각 체크.
 
         currentEventAnomaly = eventAnomalys[Random.Range(0, eventAnomalys.Length)];
         currentEventPlace = currentEventAnomaly.eventPlace;

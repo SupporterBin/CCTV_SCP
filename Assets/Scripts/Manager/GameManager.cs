@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("세팅 해야되는 시스템들")]
-    public DaySystem daySystem;
     public AnomalySystem anomalySystem;
 
     [HideInInspector] public bool isGameStop;

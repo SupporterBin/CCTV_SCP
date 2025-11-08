@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DaySystem : MonoBehaviour
 {
+    [HideInInspector]
+    public static DaySystem Instance;
+
     //날짜
     private int maxDay;
     private int nowDay = 1;
@@ -27,6 +30,22 @@ public class DaySystem : MonoBehaviour
 
     private void Awake()
     {
+        // 3. instance가 비어있는지 (최초 실행인지) 확인합니다.
+        if (Instance == null)
+        {
+            // 4. instance가 비어있다면, 자기 자신을 할당합니다.
+            Instance = this;
+            
+            // 5. 씬이 전환되어도 이 게임 오브젝트를 파괴하지 않도록 설정합니다.
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            // 6. 만약 instance에 이미 다른 DaySystem이 할당되어 있다면 (씬 재시작 등)
+            //    새로 생긴 이 오브젝트는 파괴합니다. (중복 방지)
+            Destroy(gameObject);
+        }
+
         //시간 초기화 (씬 초기화할 때 마다)
         TimeReset();
     }
