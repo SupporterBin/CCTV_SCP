@@ -125,7 +125,7 @@ public class AJae : MonoBehaviour
 
         // 스테이지 마다 갯수 증가 및 중복가능한 랜덤 뽑아 리스트에 넣기
 
-        for(int i = 0; i < stageLen + (2 * (GameManager.Instance.daySystem.GetNowDay() - 1)); i++)
+        for(int i = 0; i < stageLen + (2 * (DaySystem.Instance.GetNowDay() - 1)); i++)
         {
             int index = Random.Range(0, Link.Length);
             aJaeSequence.Add(Link[index].key);
@@ -191,7 +191,7 @@ public class AJae : MonoBehaviour
         {
             StabilityManager.Instance.StabilizationUp(10, 2);
             // 성공 함수여기 부분 고쳐야됨 테스트용으로 계속 나오게 만듬.
-            Debug.Log($"{GameManager.Instance.daySystem.GetNowDay()} 일차");
+            Debug.Log($"{DaySystem.Instance.GetNowDay()} 일차");
             EndGame();
         }
     }
