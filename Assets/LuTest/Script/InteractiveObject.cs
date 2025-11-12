@@ -46,6 +46,8 @@ public class InteractiveObject : MonoBehaviour
 
     private float onOutlineScale = 1.05f;
 
+    private bool isOnRay = true;
+
     private void Start()
     {
         outlineBlock = new MaterialPropertyBlock();
@@ -55,6 +57,11 @@ public class InteractiveObject : MonoBehaviour
     void Update()
     {
         InteractionObject();
+
+        if (cctvManager.isOnCCTV || testManager.isOnTablet || !isOnRay)
+        {
+            ShowOutLine(null);
+        }
 
         if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving() && !testManager.IsMoving())
         {
@@ -160,5 +167,14 @@ public class InteractiveObject : MonoBehaviour
             curOutlineScale = newOutLineObject;
         }
 
+    }
+    public void SetRay(bool ray)
+    {
+        isOnRay = ray;
+
+        if (!isOnRay)
+        {
+            ShowOutLine(null);
+        }
     }
 }

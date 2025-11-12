@@ -31,7 +31,8 @@ public class TabletManager : MonoBehaviour
     public bool isMovingTabletCamera = false;
 
     // ������ Test�� ��ġ, ȸ��, FOV, Far��
-    private Vector3 tabletPosition = new Vector3(-2.045f, 2.5f, -0.464f);
+    private Vector3 tabletPosition = new Vector3(-3.12f, 2.5f, -0.3506f);
+    //-2.045   -0.464
     private Quaternion tabletRotation = Quaternion.Euler(90f, 0f, 0f);
     private float tabletFov = 13f;
     private float tabletFar = 1000f;

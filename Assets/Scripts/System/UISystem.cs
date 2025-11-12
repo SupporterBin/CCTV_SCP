@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,12 @@ public class UISystem : MonoBehaviour
 {
     [Header("버티기 게이지")]
     public Slider[] anomalyGageBar;
+
+    [Header("cctv gage slider")]
+    public Slider[] cctvGageBar;
+
+    [Header("cctv gage text")]
+    public TextMeshProUGUI[] cctvGageInfoText;
 
     [Header("버튼 열어")]
     public GameObject[] CCTV_SubButtonSet;
@@ -15,6 +22,10 @@ public class UISystem : MonoBehaviour
         for (int i = 0; i < anomalyGageBar.Length; i++)
         {
             anomalyGageBar[i].value = StabilityManager.Instance.CurrentStability[i] / 100;
+            cctvGageBar[i].value = anomalyGageBar[i].value;
+
+            float cctvgagetext = anomalyGageBar[i].value * 100;
+            cctvGageInfoText[i].text = Mathf.RoundToInt(cctvgagetext).ToString() + "%";
         }
     }
 

@@ -55,12 +55,21 @@ public class CCTVManager : MonoBehaviour
 
     // ������ Test�� ��ġ, ȸ��, FOV, Far��
     // ���� ��� ������ 
-    private Vector3 LeftCCTVPosition = new Vector3(-0.483f, 1.58f, -1.08f);
+
+    private Vector3 LeftCCTVPosition = new Vector3(-2.783f, 1.575f, -1.056f);
     private Quaternion LeftCCTVRotation = Quaternion.Euler(0f, -25.7f, 0f);
-    private Vector3 CenterCCTVPosition = new Vector3(0f, 1.58f, -0.982f);
+    //-0.483f, 1.58f, -1.08f
+
+    private Vector3 CenterCCTVPosition = new Vector3(-2.2897f, 1.575f, -0.9564f);
     private Quaternion CenterCCTVRotation = Quaternion.Euler(0f, 0.25f, 0f);
-    private Vector3 RightCCTVPosition = new Vector3(0.483f, 1.58f, -1.08f);
+    //0f, 1.58f, -0.982f
+
+    private Vector3 RightCCTVPosition = new Vector3(-1.792f, 1.575f, -1.058f);
     private Quaternion RightCCTVRotation = Quaternion.Euler(0f, 25.9f, 0f);
+    //0.483f, 1.58f, -1.08f
+
+
+
     /*private Vector3 LeftCCTVPosition = new Vector3(-0.364f, 1.571f, -1.39f);
     private Quaternion LeftCCTVRotation = Quaternion.Euler(0f, -24.904f, 0f);
     private Vector3 CenterCCTVPosition = new Vector3(0, 1.571f, -1.32f);
