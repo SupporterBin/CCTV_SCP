@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e87d835083d4654985a6dbea469f3a3, type: 3}
   m_Name: Anomaly_Restraint
   m_EditorClassIdentifier: 
-  eventName: "\uBAAC\uC2A4\uD130 \uC11C\uC788\uC74C"
+  eventName: "\uC804\uC120\uB9E8_\uBAAC\uC2A4\uD130 \uC11C\uC788\uC74C"
   eventPlace: 4
   eventType: 2
   baseAnomalyActionSO: []
   chairPrefab: {fileID: 919132149155446097, guid: 424548f73b86451449dad2d704e53cdc, type: 3}
-  monsterPrefab: {fileID: 8719046898202086419, guid: f4f8742b03e823045a4f1336c739e2d4, type: 3}
-  monster_Transform: {x: 0.01, y: 0, z: 0.8}
-  monster_Quaternion: {x: 0, y: 0.40673664, z: 0, w: 0.9135454}
+  monsterPrefab: {fileID: 919132149155446097, guid: cb626a8aa19c5824c92e7cbd45dc32a3, type: 3}
+  monster_Transform: {x: -0.16, y: 0, z: 1.69}
+  monster_Quaternion: {x: 0, y: -0.10018806, z: 0, w: 0.99496853}
+  monster_Scale: {x: 0.6, y: 0.6, z: 0.6}

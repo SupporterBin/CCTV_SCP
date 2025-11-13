@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Anomalies/Event/Anomaly_Restraint")]
+[CreateAssetMenu(menuName = "Anomalies/Event/RightRoom/Anomaly_Restraint")]
 public class Anomaly_Restraint : BasicEventAnomaly
 {
     public GameObject chairPrefab;
@@ -11,6 +11,7 @@ public class Anomaly_Restraint : BasicEventAnomaly
     [Header("서있는 몬스터 모습 생성 위치 및 회전값")]
     public Vector3 monster_Transform;
     public Quaternion monster_Quaternion;
+    public Vector3 monster_Scale;
 
     public override EventType Execute()
     {
@@ -25,8 +26,10 @@ public class Anomaly_Restraint : BasicEventAnomaly
         spawnObj[0] = Instantiate(monsterPrefab, OrginMonster.transform);
         spawnObj[0].transform.localPosition = monster_Transform;
         spawnObj[0].transform.localRotation = monster_Quaternion;
+        spawnObj[0].transform.localScale = monster_Scale;
 
         spawnObj[1] = Instantiate(chairPrefab, OrginMonster.transform);
+        spawnObj[1].transform.localScale = monster_Scale;
 
         return eventType;
     }

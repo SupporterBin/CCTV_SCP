@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6806f3b3ca36d0043acf82402e1c03aa, type: 3}
   m_Name: Anomaly_Short Circuit
   m_EditorClassIdentifier: 
-  eventName: "\uD569\uC120"
+  eventName: "\uC804\uC120\uB9E8_\uD569\uC120"
   eventPlace: 4
   eventType: 1
   baseAnomalyActionSO: []

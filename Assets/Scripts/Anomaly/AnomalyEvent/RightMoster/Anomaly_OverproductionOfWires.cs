@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Anomalies/Event/Anomaly_OverproductionOfWires")]
+[CreateAssetMenu(menuName = "Anomalies/Event/RightRoom/Anomaly_OverproductionOfWires")]
 public class Anomaly_OverproductionOfWires : BasicEventAnomaly
 {    
     public override EventType Execute()

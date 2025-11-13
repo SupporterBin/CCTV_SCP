@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class Anomaly_CryingMask : BasicEventAnomaly
+[CreateAssetMenu(menuName = "Anomalies/Event/LeftRoom/Anomaly_AppetiteUp")]
+public class Anomaly_AppetiteUp : BasicEventAnomaly
 {
     public override void Clear()
     {
-        //아직 순서 [0]몬스터 위치 안정해져서 정해지면 수정.
-        
-
+        throw new System.NotImplementedException();
     }
 
     public override EventType Execute()

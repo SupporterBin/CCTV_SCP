@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        protocolNum = Random.Range(100000, 999999);
+        protocolNum = Random.Range(1000, 9999);
     }
 
     /// <summary>

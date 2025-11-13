@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "Anomalies/Event/Anomaly_ShortCircuit")]
+[CreateAssetMenu(menuName = "Anomalies/Event/RightRoom/Anomaly_ShortCircuit")]
 public class Anomaly_ShortCircuit : BasicEventAnomaly
 {
     [Header("스파클 프리팹 넣기")]
