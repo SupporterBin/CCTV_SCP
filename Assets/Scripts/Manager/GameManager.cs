@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool isGameStop;
     [HideInInspector] public bool isTimeStop;
+    [HideInInspector] public bool isDeadWarring;
+
+    [HideInInspector] public int protocolNum;
 
 
     void Awake()
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        protocolNum = Random.Range(100000, 999999);
     }
 
     /// <summary>

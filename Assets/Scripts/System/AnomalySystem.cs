@@ -33,9 +33,13 @@ public class AnomalySystem : MonoBehaviour
     void Update()
     {
         //만약 게임이 정지 안해있으면
-        if (GameManager.Instance.AllStopCheck())
+        if (GameManager.Instance.AllStopCheck()) return;
+        
+        if(GameManager.Instance.isDeadWarring)
         {
-            return;
+            if (currentEventAnomaly != null) currentEventAnomaly.Fail();
+            CleanAnomaly();
+
         }
 
         //이상현상 발생 중!
@@ -161,5 +165,12 @@ public class AnomalySystem : MonoBehaviour
         currentEventType = EventType.None;
         currentEventPlace = EventPlace.None;
         AnomalyTimeSetting(NextEventTime_Min, NextEventTime_Max);
+    }
+    private void CleanAnomaly()
+    {
+        currentEventAnomaly = null;
+        isAnomaly = false;
+        currentEventType = EventType.None;
+        currentEventPlace = EventPlace.None;
     }
 }

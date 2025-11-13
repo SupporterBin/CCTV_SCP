@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DaySystem : MonoBehaviour
 {
@@ -78,10 +79,18 @@ public class DaySystem : MonoBehaviour
         }
     }
 
-    private void NextDay()
+    public void NextDay()
     {
-        if (nowDay >= maxDay) /*마지막 날 버팀 이벤트 발생*/ return;
-        else nowDay += 1; return; //마지막 날 아님 Day +1
+        if (nowDay >= maxDay)
+        {
+            SceneManager.LoadScene(1); //엔딩 씬 넘어가기.
+        }
+
+        else
+        {
+            nowDay += 1;
+            SceneManager.LoadScene(1); //똑같은 맵 이동. (현재 플레이중인 씬(날짜 업데이트 후 )
+        }
     }
 
     public string GetClockText()
