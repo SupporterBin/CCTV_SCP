@@ -72,7 +72,7 @@ public class AnomalySystem : MonoBehaviour
 
             if(mapValue != 999 && mapValue != 10)
             {
-                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay()); }
+                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay() - 1); }
             }
 
             //일정이상동안 이상현상 해결 못한 경우.

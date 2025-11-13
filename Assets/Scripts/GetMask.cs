@@ -25,7 +25,15 @@ public class GetMask : MonoBehaviour
     {
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("발동");
+            StabilityManager.Instance.currentGetMask += 1;
+
+            if (StabilityManager.Instance.currentGetMask >= StabilityManager.Instance.dayGetMaskValue[DaySystem.Instance.GetNowDay() - 1])
+            {
+                GameManager.Instance.anomalySystem.ClearMission(1);
+                StabilityManager.Instance.currentGetMask = 0;
+            }
+
+            Destroy(gameObject);
         }
     }
 

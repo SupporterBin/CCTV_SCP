@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79416f56045b4f84f8dce43f910f52d5, type: 3}
+  m_Name: Anomaly_Crying Mask
+  m_EditorClassIdentifier: 
+  eventName: "\uC6B0\uB294 \uB9C8\uC2A4\uD06C"
+  eventPlace: 3
+  eventType: 6
+  baseAnomalyActionSO: []
+  sadMaskPreafab: {fileID: 4676177793782149701, guid: 8537874591efe874eaa7f6f8f313b5a7, type: 3}
+  firstTransRange:
+  - {x: -8.3, y: 0.68, z: 5.18}
+  - {x: -8.69, y: 0.68, z: -1}
+  lastTransRange:
+  - {x: 3, y: 0.68, z: -1}
+  - {x: 4.16, y: 0.68, z: -4.8}
