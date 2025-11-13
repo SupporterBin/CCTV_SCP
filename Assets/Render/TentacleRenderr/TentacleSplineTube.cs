@@ -1,17 +1,17 @@
 // TentacleSplineTube.cs
 using UnityEngine;
 
-/// Verlet Æ÷ÀÎÆ®¸¦ ½ºÇÃ¶óÀÎÀ¸·Î ÆòÈ°È­ÇÏ°í, Æ©ºê ¸Þ½Ã·Î ±×·ÁÁÜ
+/// Verlet ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°È­ï¿½Ï°ï¿½, Æ©ï¿½ï¿½ ï¿½Þ½Ã·ï¿½ ï¿½×·ï¿½ï¿½ï¿½
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class TentacleSplineTube : MonoBehaviour
 {
     public IChainPos source;
     [Header("Tube Shape")]
-    [Range(8, 64)] public int radialSegments = 16; // ´Ü¸é ¿ø ¼¼±×¸ÕÆ®
-    [Range(8, 256)] public int samples = 64;       // ±æÀÌ ¹æÇâ »ùÇÃ
+    [Range(8, 64)] public int radialSegments = 16; // ï¿½Ü¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½×¸ï¿½Æ®
+    [Range(8, 256)] public int samples = 64;       // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float radiusRoot = 0.035f;
     public float radiusTip = 0.015f;
-    public float twist = 0f; // UV ²¿ÀÓ ¿¬Ãâ ½Ã »ç¿ë
+    public float twist = 0f; // UV ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 
     Mesh mesh;
     Vector3[] verts;
@@ -48,12 +48,12 @@ public class TentacleSplineTube : MonoBehaviour
         var pts = source.Positions;
         int n = pts.Length;
 
-        // 1) ½ºÇÃ¶óÀÎ »ùÇÃ
+        // 1) ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 prevPoint = Vector3.zero, prevTangent = Vector3.forward;
         for (int i = 0; i < samples; i++)
         {
             float u = (float)i / (samples - 1);
-            float f = Mathf.Lerp(1, n - 2, u); // [1, n-2] ±¸°£
+            float f = Mathf.Lerp(1, n - 2, u); // [1, n-2] ï¿½ï¿½ï¿½ï¿½
             int i1 = Mathf.FloorToInt(f);
             int i0 = Mathf.Clamp(i1 - 1, 0, n - 1);
             int i2 = Mathf.Clamp(i1 + 1, 0, n - 1);
@@ -65,16 +65,16 @@ public class TentacleSplineTube : MonoBehaviour
             Vector3 tangent = (pNext - p).normalized;
             if (i == 0) { prevPoint = p; prevTangent = tangent; }
 
-            // 2) ÇÁ·¹³× ÇÁ·¹ÀÓ ±Ù»ç(°£´ÜÈ÷ ¾÷ º¤ÅÍ¿Í º¸Á¤)
+            // 2) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù»ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½)
             Vector3 up = Vector3.up;
             if (Mathf.Abs(Vector3.Dot(up, tangent)) > 0.95f) up = Vector3.right;
             Vector3 side = Vector3.Cross(tangent, up).normalized;
             up = Vector3.Cross(side, tangent).normalized;
 
-            // ¹ÝÁö¸§ º¸°£
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float r = Mathf.Lerp(radiusRoot, radiusTip, u);
 
-            // 3) ¸µ »ý¼º
+            // 3) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             int ring = radialSegments;
             for (int k = 0; k < ring; k++)
             {
@@ -91,7 +91,7 @@ public class TentacleSplineTube : MonoBehaviour
             prevPoint = p; prevTangent = tangent;
         }
 
-        // 4) ÀÎµ¦½º(½ºÆ®¸³)
+        // 4) ï¿½Îµï¿½ï¿½ï¿½(ï¿½ï¿½Æ®ï¿½ï¿½)
         int tri = 0;
         int ringCount = radialSegments;
         for (int i = 0; i < samples - 1; i++)

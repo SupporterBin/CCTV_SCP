@@ -9,17 +9,17 @@ public class ScreenCursor : MonoBehaviour
 
     private void Update()
     {
-        if (cctvManager.isOnCCTV || testManager.isOnTablet)
+        if (cctvManager.isOnCCTV || testManager.isOnTablet || GameManager.Instance.IsOptionMode)
         {
-            // CCTV³ª ÅÂºí¸´ÀÌ ÄÑÁ³À» ¶§
-            Cursor.lockState = CursorLockMode.None; // Ä¿¼­ Àá±Ý ÇØÁ¦
-            Cursor.visible = true;                  // Ä¿¼­ º¸ÀÌ±â
+            // CCTVï¿½ï¿½ ï¿½Âºï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+            Cursor.lockState = CursorLockMode.None; // Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            Cursor.visible = true;                  // Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
         }
         else
         {
-            // Æò»ó½Ã (ÇÃ·¹ÀÌ Áß)
-            Cursor.lockState = CursorLockMode.Locked; // Ä¿¼­ Áß¾Ó¿¡ Àá±Ý
-            Cursor.visible = false;                 // Ä¿¼­ ¼û±â±â
+            // ï¿½ï¿½ï¿½ï¿½ (ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½)
+            Cursor.lockState = CursorLockMode.Locked; // Ä¿ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½ï¿½
+            Cursor.visible = false;                 // Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

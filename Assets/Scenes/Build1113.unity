@@ -5112,7 +5112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27523,6 +27523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: spawnRadius.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27575,6 +27579,10 @@ PrefabInstance:
     - target: {fileID: 5314564160279085783, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: spawnRadius.y
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7953670932122697339, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
       propertyPath: m_Name

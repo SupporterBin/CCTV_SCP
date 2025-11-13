@@ -14,8 +14,8 @@ public class TentacleSimple : MonoBehaviour
     public float tipRadius = 0;
 
     public bool EnableDirOffset = false;
-    public Axis3D alongAxis = Axis3D.Z;         // »¸´Â ÁÖÃà (¿ÀºêÁ§Æ® ·ÎÄÃ ±âÁØ)
-    public bool reverseAlong = false;           // À½ÀÇ ¹æÇâÀ¸·Î »¸À»Áö
+    public Axis3D alongAxis = Axis3D.Z;         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public bool reverseAlong = false;           // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     public bool applyLen = false;
     public float len = 0.5f;

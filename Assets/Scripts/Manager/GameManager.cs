@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    bool isOptionMode = false;
+    public bool IsOptionMode => isOptionMode;
 
     [Header("세팅 해야되는 시스템들")]
     public AnomalySystem anomalySystem;
@@ -39,4 +42,14 @@ public class GameManager : MonoBehaviour
         if (isGameStop || isTimeStop) { return true; }
         else return false;
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OptionOn()
+    { isOptionMode = true; }
+    public void OptionOff()
+    { isOptionMode = false; }
 }

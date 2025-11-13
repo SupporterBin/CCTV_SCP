@@ -13,7 +13,7 @@ public class TentacleAnomalyController : MonoBehaviour
     private TentacleWallhug tentacle2;
     [SerializeField]
     Material tentacleMat;
-    // -0.3Âë µÇ¸é ´Ù »ç¶óÁü 1ÀÌ¸é ¸ÖÂÄÇÑ »óÅÂ
+    // -0.3ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private float burnValue = 1f;
     private float MinBurnValue = -0.5f;
 

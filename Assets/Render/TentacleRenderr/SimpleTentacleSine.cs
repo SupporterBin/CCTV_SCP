@@ -1,5 +1,5 @@
 // SimpleTentacleSine.cs
-// ´Ü¼ø »çÀÎÆÄ ±â¹Ý À§Ä¡ »ý¼º±â: ¿ÀºêÁ§Æ®(·ÎÄÃ ±âÁØ) ÇÑ ÃàÀ¸·Î »¸¾î ºÐÀýº° À§Ä¡¸¦ °è»êÇØ positions[]¿¡ ÀúÀå
+// ï¿½Ü¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ positions[]ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 using UnityEngine;
 
     public enum Axis3D { X, Y, Z }
@@ -8,36 +8,36 @@ public class SimpleTentacleSine : MonoBehaviour, IChainPos
 {
 
     [Header("Shape")]
-    [Min(2)] public int segments = 32;          // ºÐÀý ¼ö (·çÆ® Æ÷ÇÔ)
-    [Min(0.001f)] public float totalLength = 2f;// ÀüÃ¼ ±æÀÌ
-    public Axis3D alongAxis = Axis3D.Z;         // »¸´Â ÁÖÃà (¿ÀºêÁ§Æ® ·ÎÄÃ ±âÁØ)
-    public bool reverseAlong = false;           // À½ÀÇ ¹æÇâÀ¸·Î »¸À»Áö
+    [Min(2)] public int segments = 32;          // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ (ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½)
+    [Min(0.001f)] public float totalLength = 2f;// ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+    public Axis3D alongAxis = Axis3D.Z;         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public bool reverseAlong = false;           // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     [Header("Wave (sin)")]
-    public Axis3D lateralAxis = Axis3D.X;       // ÆÄµ¿À¸·Î Èçµé¸± Ãà(ÁÖÃà°ú ¼öÁ÷)
-    [Min(0f)] public float amplitude = 0.1f;    // ÁøÆø(ÃÖ´ë º¯À§)
-    [Min(0.001f)] public float wavelength = 1f; // ÆÄÀå(±æÀÌ ±âÁØ, m/»çÀÌÅ¬)
-    public float speed = 1f;                    // ÁøÇà ¼Óµµ(»çÀÌÅ¬/ÃÊ)
-    public float phaseOffset = 0f;              // ÀüÃ¼ À§»ó ¿ÀÇÁ¼Â(¶óµð¾È)
-    [Range(0f, 1f)] public float tipTaper = 0.3f;// ÆÁ ÂÊÀ¸·Î ÁøÆøÀ» ÁÙÀÌ´Â ºñÀ²(0=±ÕÀÏ)
+    public Axis3D lateralAxis = Axis3D.X;       // ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½é¸± ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    [Min(0f)] public float amplitude = 0.1f;    // ï¿½ï¿½ï¿½ï¿½(ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    [Min(0.001f)] public float wavelength = 1f; // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, m/ï¿½ï¿½ï¿½ï¿½Å¬)
+    public float speed = 1f;                    // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½(ï¿½ï¿½ï¿½ï¿½Å¬/ï¿½ï¿½)
+    public float phaseOffset = 0f;              // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+    [Range(0f, 1f)] public float tipTaper = 0.3f;// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½(0=ï¿½ï¿½ï¿½ï¿½)
 
     [Header("Output")]
-    public bool outputWorldSpace = true;        // true¸é ¿ùµå ÁÂÇ¥·Î ÀúÀå, false¸é ·ÎÄÃ ÁÂÇ¥·Î ÀúÀå
-    [Tooltip("°è»êµÈ ºÐÀý À§Ä¡(·çÆ®¡æÆÁ ¼ø)")]
-    public Vector3[] positions;                 // ÃÖÁ¾ À§Ä¡ °á°ú
+    public bool outputWorldSpace = true;        // trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, falseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡(ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)")]
+    public Vector3[] positions;                 // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
 
-    // ÆíÀÇ ÇÁ·ÎÆÛÆ¼
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     public Vector3[] Positions => positions;
 
     void OnEnable()
     {
         EnsureArray();
-        RebuildPositions(0f); // ¿¡µðÅÍ¿¡¼­µµ ÃÊ±â ¸ð½À º¸ÀÌ°Ô
+        RebuildPositions(0f); // ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½
     }
 
     void OnValidate()
     {
-        // ÁÖÃà°ú È¾ÃàÀÌ °°À¸¸é ÀÚµ¿ º¸Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ È¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
         if (lateralAxis == alongAxis)
             lateralAxis = (alongAxis == Axis3D.Z) ? Axis3D.X : Axis3D.Z;
 
@@ -59,37 +59,37 @@ public class SimpleTentacleSine : MonoBehaviour, IChainPos
 
         float segLen = (segments > 1) ? (totalLength / (segments - 1)) : 0f;
 
-        // ·ÎÄÃ ±âÁØ ´ÜÀ§ Ãà º¤ÅÍ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 a = AxisToVector(alongAxis) * (reverseAlong ? -1f : 1f);
-        Vector3 l = AxisToVector(lateralAxis); // ÁÖÃà°ú ¼öÁ÷ÀÎ ÃàÀ¸·Î ¼³Á¤µÇ¾î¾ß ÀÚ¿¬½º·¯¿ò
+        Vector3 l = AxisToVector(lateralAxis); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        // ÁøÇà ÆÄµ¿: 2¥ð * (s/¥ë - f*t) + ¥õ
-        float k = Mathf.PI * 2f / Mathf.Max(0.0001f, wavelength); // ÆÄ¼ö
-        float w = Mathf.PI * 2f * speed;                           // °¢ÁÖÆÄ¼ö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Äµï¿½: 2ï¿½ï¿½ * (s/ï¿½ï¿½ - f*t) + ï¿½ï¿½
+        float k = Mathf.PI * 2f / Mathf.Max(0.0001f, wavelength); // ï¿½Ä¼ï¿½
+        float w = Mathf.PI * 2f * speed;                           // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
         float phi = phaseOffset;
 
-        // ·çÆ®(·ÎÄÃ ¿øÁ¡)¿¡¼­ ½ÃÀÛ
+        // ï¿½ï¿½Æ®(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 rootLocal = Vector3.zero;
 
         for (int i = 0; i < segments; i++)
         {
-            float s = segLen * i; // ·çÆ®ºÎÅÍÀÇ °Å¸®
-            // ±âº»(»¸´Â) À§Ä¡: ·çÆ® + ÁÖÃà * s
+            float s = segLen * i; // ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
+            // ï¿½âº»(ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½Ä¡: ï¿½ï¿½Æ® + ï¿½ï¿½ï¿½ï¿½ * s
             Vector3 baseLocal = rootLocal + a * s;
 
-            // ÁøÆø Å×ÀÌÆÛ(ÆÁÀ¸·Î °¥¼ö·Ï ÁÙ¾îµå´Â ¿É¼Ç)
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½É¼ï¿½)
             float tNorm = (segments <= 1) ? 0f : (i / (float)(segments - 1)); // 0~1
             float amp = Mathf.Lerp(amplitude, amplitude * (1f - tipTaper), tNorm);
 
-            // »çÀÎ º¯À§(È¾Ãà ¹æÇâ)
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(È¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
             float theta = k * s - w * timeSeconds + phi;
             Vector3 offsetLocal = l * (amp * Mathf.Sin(theta));
 
             Vector3 pLocal = baseLocal + offsetLocal;
 
             positions[i] = outputWorldSpace
-                ? transform.TransformPoint(pLocal)  // ¿ùµå·Î º¯È¯ ÀúÀå
-                : pLocal;                           // ·ÎÄÃ·Î ±×´ë·Î ÀúÀå
+                ? transform.TransformPoint(pLocal)  // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½
+                : pLocal;                           // ï¿½ï¿½ï¿½Ã·ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
     }
 

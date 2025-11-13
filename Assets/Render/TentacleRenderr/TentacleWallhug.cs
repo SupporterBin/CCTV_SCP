@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TentacleWallhug : MonoBehaviour
 {
-    public WallHugSine tentaclePrefab;
-    WallHugSine[] createdTentaclePrefab ;
+    public SimpleTentacleSine tentaclePrefab;
+    SimpleTentacleSine[] createdTentaclePrefab ;
     public TentacleSplineTube tubePrefab;
     public Transform blobCenter;
     public int count = 12;
@@ -19,19 +19,19 @@ public class TentacleWallhug : MonoBehaviour
     public float damp = 0;
 
     public bool EnableDirOffset = false;
-    public Axis3D alongAxis = Axis3D.Z;         // »¸´Â ÁÖÃà (¿ÀºêÁ§Æ® ·ÎÄÃ ±âÁØ)
-    public bool reverseAlong = false;           // À½ÀÇ ¹æÇâÀ¸·Î »¸À»Áö
+    public Axis3D alongAxis = Axis3D.Z;         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public bool reverseAlong = false;           // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     void Start()
     {
-        createdTentaclePrefab = new WallHugSine[count];
-        // y 0~4·Î ½ºÆù
+        createdTentaclePrefab = new SimpleTentacleSine[count];
+        // y 0~4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < count; i++)
         {
             var t = Instantiate(tentaclePrefab, transform);
             t.transform.localPosition = new Vector3(
                 Random.Range(-spawnRadius.x, spawnRadius.x),
-                3 * i / (float)count,
+                spawnRadius.y * i / (float)count,
                 Random.Range(-spawnRadius.z, spawnRadius.z)
             );
             createdTentaclePrefab[i] = t;

@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cd75d6c00859b46ba83ced7618557f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tentaclePrefab: {fileID: 3413848004334246405, guid: 4fb3a7d54b7ef7747bcc017371ac09eb, type: 3}
+  tentaclePrefab: {fileID: -4306393655551801700, guid: 9ba4f611d83ebb2468f791ecea33dad3, type: 3}
   tubePrefab: {fileID: 4263175803424392943, guid: 16809354fbf422241b04dc4bad757fe5, type: 3}
   blobCenter: {fileID: 0}
-  count: 30
-  spawnRadius: {x: 0.05, y: 4, z: 0.05}
+  count: 20
+  spawnRadius: {x: 0.05, y: 8, z: 0.05}
   tubeMaterial: {fileID: 2100000, guid: 5945b40832ff7494393cec09c442db35, type: 2}
   rootRadius: 0.2
   tipRadius: 0.05
   damp: 0
   EnableDirOffset: 1
-  alongAxis: 0
-  reverseAlong: 0
+  alongAxis: 2
+  reverseAlong: 1
