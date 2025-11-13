@@ -40,7 +40,10 @@ public class AnomalySystem : MonoBehaviour
             if (currentEventAnomaly != null) currentEventAnomaly.Fail();
             CleanAnomaly();
 
+            return;
         }
+
+        for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(0.005f, roomValue); }
 
         //이상현상 발생 중!
         if (isAnomaly)
@@ -69,7 +72,6 @@ public class AnomalySystem : MonoBehaviour
 
             if(mapValue != 999 && mapValue != 10)
             {
-                //StabilityManager.Instance?.StabilizationDown(2 * Time.deltaTime, mapValue); //이상현상 발생중에 얼마나 안정성 더 떨어뜨리기.
                 for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay()); }
             }
 
