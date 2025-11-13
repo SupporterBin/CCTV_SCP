@@ -48,6 +48,8 @@ public class InteractiveObject : MonoBehaviour
 
     private bool isOnRay = true;
 
+    private Canvas curInteractUI = null;
+
     private void Start()
     {
         outlineBlock = new MaterialPropertyBlock();
@@ -139,11 +141,16 @@ public class InteractiveObject : MonoBehaviour
     private void ShowOutLine(GameObject outlineable)
     {
         MeshRenderer newOutLineObject = null;
+        Canvas newInteractUI = null;
 
         if (outlineable != null)
         {
             newOutLineObject = outlineable.GetComponent<MeshRenderer>();
-
+            Transform parent = outlineable.transform.parent;
+            if (parent != null)
+            {
+                newInteractUI = parent.GetComponentInChildren<Canvas>(true);
+            }
         }
 
         if (newOutLineObject != curOutlineScale)
@@ -155,16 +162,25 @@ public class InteractiveObject : MonoBehaviour
 
                 Debug.Log("²ô±â");
             }
+            if (curInteractUI != null)
+            {
+                curInteractUI.gameObject.SetActive(false);
+            }
 
             if (newOutLineObject != null)
             {
                 outlineBlock.SetFloat(outlineProperty, onOutlineScale);
                 newOutLineObject.SetPropertyBlock(outlineBlock, 1);
 
+                if (newInteractUI != null)
+                {
+                    newInteractUI.gameObject.SetActive(true);
+                }
                 Debug.Log("ÄÑ±â");
             }
 
             curOutlineScale = newOutLineObject;
+            curInteractUI = newInteractUI;
         }
 
     }
