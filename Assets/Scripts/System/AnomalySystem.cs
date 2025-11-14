@@ -4,6 +4,8 @@ public class AnomalySystem : MonoBehaviour
 {
     [Header("현재 맵에 배치되어있는 몬스터 /1번 왼쪽 /2번 가운데 /3번 오른쪽")]
     public GameObject[] monsters;
+    [Header("이상현상 관련 오브젝트")]
+    public GameObject[] specialObjects;
 
     //[Header("실행했던 가지고 있는 이벤트")]
     private BasicEventAnomaly[] anomalyEvents;

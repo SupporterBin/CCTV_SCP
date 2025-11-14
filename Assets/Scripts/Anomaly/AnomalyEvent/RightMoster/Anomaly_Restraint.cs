@@ -13,22 +13,33 @@ public class Anomaly_Restraint : BasicEventAnomaly
     public Quaternion monster_Quaternion;
     public Vector3 monster_Scale;
 
+    private GameObject orginMonster;
+
     public override EventType Execute()
     {
         spawnObj = new GameObject[2];
 
-        GameObject OrginMonster = GameManager.Instance.anomalySystem.monsters[2];
-
         // 기존 몬스터의 보이는 부분을 비활성화
-        OrginMonster.transform.GetChild(0).gameObject.SetActive(false);
+        Transform root = GameManager.Instance.anomalySystem.monsters[2].transform;
+
+        foreach (Transform child in root.GetComponentsInChildren<Transform>(true))
+        {
+            if (child.CompareTag("Target"))
+            {
+                orginMonster = child.gameObject;
+                break;
+            }
+        }
+
+        orginMonster.SetActive(false);
 
         // --- 몬스터 생성 (로컬 좌표 적용) ---
-        spawnObj[0] = Instantiate(monsterPrefab, OrginMonster.transform);
+        spawnObj[0] = Instantiate(monsterPrefab, GameManager.Instance.anomalySystem.monsters[2].transform);
         spawnObj[0].transform.localPosition = monster_Transform;
         spawnObj[0].transform.localRotation = monster_Quaternion;
         spawnObj[0].transform.localScale = monster_Scale;
 
-        spawnObj[1] = Instantiate(chairPrefab, OrginMonster.transform);
+        spawnObj[1] = Instantiate(chairPrefab, GameManager.Instance.anomalySystem.monsters[2].transform);
         spawnObj[1].transform.localScale = monster_Scale;
 
         return eventType;
@@ -41,7 +52,8 @@ public class Anomaly_Restraint : BasicEventAnomaly
             Destroy(spawnObj[0]);
             Destroy(spawnObj[1]);
         }
-        GameManager.Instance.anomalySystem.monsters[2].transform.GetChild(0).gameObject.SetActive(true);
+
+        orginMonster.SetActive(true);
     }
 
     public override void Clear()

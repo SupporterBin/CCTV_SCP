@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7dedd634c10c04886a84b941ed7db9, type: 3}
+  m_Name: Anomaly_Tentacle Overgrowth
+  m_EditorClassIdentifier: 
+  eventName: "\uCD09\uC218\uAD34\uBB3C_\uBA39\uC774\uD1B5\uB9AC\uD544"
+  eventPlace: 2
+  eventType: 5
+  baseAnomalyActionSO: []
