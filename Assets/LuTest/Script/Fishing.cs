@@ -108,7 +108,7 @@ public class Fishing : MonoBehaviour
     private void PressSpaceBar()
     {
         // 대충 키 잘 작동하냐 그리고 스페이스 바 눌렸냐
-        isReeling = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
+        isReeling = Mouse.current != null && Mouse.current.leftButton.isPressed;
 
         // 트루면 플레이어 마커 오른쪽 이동 아니면 왼쪽 이동
         if (isReeling)

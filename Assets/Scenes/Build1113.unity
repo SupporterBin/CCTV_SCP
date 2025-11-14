@@ -19910,12 +19910,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayDownStabilityValue:
-  - 0.1
-  - 0.2
   - 0.3
   - 0.4
+  - 0.45
   - 0.5
-  dayGetMaskValue: []
+  - 0.6
+  dayGetMaskValue:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
   currentGetMask: 0
 --- !u!4 &1535189032 stripped
 Transform:
@@ -26289,6 +26294,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
   - {fileID: 11400000, guid: 382c77bd79d8f9942975f7e01297192b, type: 2}
   - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
+  - {fileID: 11400000, guid: 299f3dbe8199c6f4eb415c61285fa069, type: 2}
+  - {fileID: 11400000, guid: 824e4a1c7f2eb4942b86b631149a9dae, type: 2}
+  - {fileID: 11400000, guid: b68e5f305d9a9e447be9b1d1cd078b54, type: 2}
   currentEventPlace: 0
   currentEventType: 0
 --- !u!1001 &2030756756
