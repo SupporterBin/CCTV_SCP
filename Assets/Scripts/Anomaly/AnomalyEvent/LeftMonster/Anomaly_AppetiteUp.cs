@@ -3,18 +3,24 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Anomalies/Event/LeftRoom/Anomaly_AppetiteUp")]
 public class Anomaly_AppetiteUp : BasicEventAnomaly
 {
-    public override void Clear()
-    {
-        throw new System.NotImplementedException();
-    }
+    private Animator anim;
 
     public override EventType Execute()
     {
-        throw new System.NotImplementedException();
+        anim = GameManager.Instance.anomalySystem.monsters[0].GetComponent<Animator>();
+
+        anim.Play("Skill1");
+        return eventType;
+    }
+
+    public override void Clear()
+    {
+        anim.Play("Idle");
     }
 
     public override void Fail()
     {
-        throw new System.NotImplementedException();
+
+        anim.Play("Idle");
     }
 }

@@ -13,16 +13,25 @@ public class Anomaly_Imitation : BasicEventAnomaly
     public Quaternion monster_Quaternion;
     public Vector3 monster_Scale;
 
+    private GameObject OrginMonster;
+
     public override EventType Execute()
     {
-        //이거 지금 2번으로 되어있는데 나중에 그에 해당 하는 몬스터로 바꾸기
-        GameObject OrginMonster = GameManager.Instance.anomalySystem.monsters[1];
-
         // 기존 몬스터의 보이는 부분을 비활성화
-        OrginMonster.transform.GetChild(0).gameObject.SetActive(false);
+        Transform root = GameManager.Instance.anomalySystem.monsters[1].transform;
+
+        foreach (Transform child in root.GetComponentsInChildren<Transform>(true))
+        {
+            if (child.CompareTag("Target"))
+            {
+                OrginMonster = child.gameObject;
+                break;
+            }
+        }
+        OrginMonster.SetActive(false);
 
         // --- 몬스터 생성 (로컬 좌표 적용) ---
-        spawnObj = Instantiate(transformationPrefab, OrginMonster.transform);
+        spawnObj = Instantiate(transformationPrefab, GameManager.Instance.anomalySystem.monsters[1].transform);
         spawnObj.transform.localPosition = monster_Transform;
         spawnObj.transform.localRotation = monster_Quaternion;
         spawnObj.transform.localScale = monster_Scale;
@@ -36,7 +45,8 @@ public class Anomaly_Imitation : BasicEventAnomaly
         {
             Destroy(spawnObj);
         }
-        GameManager.Instance.anomalySystem.monsters[1].transform.GetChild(0).gameObject.SetActive(true);
+
+        OrginMonster.SetActive(true);
     }
 
     public override void Clear()

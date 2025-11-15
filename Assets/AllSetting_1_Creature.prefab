@@ -2520,7 +2520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dcbe5a4c2d42cb945ba3f8cf3d0a7845, type: 3}
       propertyPath: m_Name
-      value: 1_Creature
+      value: AllSetting_1_Creature
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amplitude: 0.02
-  speed: 7
+  speed: 1
   phaseOffset: 0
 --- !u!4 &5665955114203046651 stripped
 Transform:
