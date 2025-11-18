@@ -121,6 +121,7 @@ public class AJae : MonoBehaviour
         foreach(var images in ShowImages)
         {
             images.gameObject.SetActive(false);
+            images.color = Color.white;
         }
 
         // 스테이지 마다 갯수 증가 및 중복가능한 랜덤 뽑아 리스트에 넣기
@@ -184,7 +185,7 @@ public class AJae : MonoBehaviour
         }
         else if (inputSequence[currentKey] == aJaeSequence[currentKey])
         {
-            ShowImages[currentKey].gameObject.SetActive(false);
+            ShowImages[currentKey].color = Color.gray;
         }
 
         if (inputSequence.Count == aJaeSequence.Count)

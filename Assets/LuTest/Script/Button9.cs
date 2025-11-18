@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Button9 : MonoBehaviour
 {
+    [SerializeField]
+    private TextMeshProUGUI DisplayNum;
+
     // 버튼 9개 
     [SerializeField]
     private Button[] buttons;
@@ -92,6 +96,7 @@ public class Button9 : MonoBehaviour
                 preparatoryList.RemoveAt(random);
             }
         }
+        DisplayInputNumber();
         yield return new WaitForSeconds(1f);
 
         // 랜덤으로 뽑은 리스트 다봐버리기
@@ -121,6 +126,7 @@ public class Button9 : MonoBehaviour
         // 위에 각 버튼에 OnClick 기능 부여했는데 눌렀을 때 누른 버튼의 번호를 리스트에 추가 
         inputSequence.Add(buttonindex);
 
+        DisplayInputNumber();
         // 내가 누른 버튼의 수와 버튼의 리스트와 비교하여 틀릴 경우 바로 캇
         // 예를 들어 버튼의 리스트가 { 0 , 1 , 2 }라 했을 때 
         // 아직 inputSequence의 리스트에는 {} 비어있음 만약 1번째 칸을 누르면 0이 들어감
@@ -151,11 +157,39 @@ public class Button9 : MonoBehaviour
         Debug.Log($"버튼 {buttonindex + 1} 눌림");
     }
 
+    private void DisplayInputNumber()
+    {
+        if(DisplayNum == null)
+        {
+            return;
+        }
+
+        string resultText = "";
+
+        foreach (int i in inputSequence)
+        {
+            resultText += (i + 1).ToString() + " ";
+        }
+
+        int remainText = buttonSequence.Count - inputSequence.Count;
+        for (int i = 0; i < remainText; i++)
+        {
+            resultText += "_ ";
+        }
+
+        DisplayNum.text = resultText;
+    }
+
     // 아직 대충 함
     private void EndGame()
     {
         button9Panel.SetActive(false);
         tabletSceneManager.tabletPanels[0].SetActive(true);
         tabletSceneManager.isPlaying = false;
+
+        if(DisplayNum != null)
+        {
+            DisplayNum.text = " ";
+        }
     }
 }

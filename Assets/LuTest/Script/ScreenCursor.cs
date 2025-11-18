@@ -12,7 +12,7 @@ public class ScreenCursor : MonoBehaviour
         if (cctvManager.isOnCCTV || testManager.isOnTablet || GameManager.Instance.IsOptionMode)
         {
             // CCTV�� �º���� ������ ��
-            Cursor.lockState = CursorLockMode.None; // Ŀ�� ��� ����
+            Cursor.lockState = CursorLockMode.Confined; // Ŀ�� ��� ����
             Cursor.visible = true;                  // Ŀ�� ���̱�
         }
         else
