@@ -48,6 +48,15 @@ public class AJae : MonoBehaviour
 
     [SerializeField]
     TabletSceneManager tabletSceneManager;
+
+    [SerializeField]
+    private Button exitButton;
+
+    private void Awake()
+    {
+        exitButton.onClick.AddListener(() => ClickExitButton());
+    }
+
     private void Start()
     {
         aJaePanel.SetActive(false);
@@ -55,8 +64,16 @@ public class AJae : MonoBehaviour
 
     private void Update()
     {
+        if(aJaePanel.activeSelf)
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                EndGame();
+            }
+        }
+
         // 시간 관리 및 텍스트로 내보내기
-        if(isAjaePlaying)
+        if (isAjaePlaying)
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F1");
@@ -196,6 +213,15 @@ public class AJae : MonoBehaviour
             EndGame();
         }
     }
+
+    private void ClickExitButton()
+    {
+        if (aJaePanel.activeSelf)
+        {
+            EndGame();
+        }
+    }
+
 
     // 아직 구체적인 기능 미완
     private void EndGame()

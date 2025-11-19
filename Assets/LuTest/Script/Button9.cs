@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Button9 : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class Button9 : MonoBehaviour
 
     [SerializeField]
     TabletSceneManager tabletSceneManager;
+
+    [SerializeField]
+    private Button exitButton;
+
     private void Awake()
     {
        // 각각의 버튼 배열에 OnClick 기능을 넣어줌
@@ -44,6 +49,8 @@ public class Button9 : MonoBehaviour
                 buttons[index].onClick.AddListener(() => OnClickButton(index));
             }
         }
+
+        exitButton.onClick.AddListener(() => ClickExitButton());
     }
     // 시작시 패널 꺼
     private void Start()
@@ -51,6 +58,18 @@ public class Button9 : MonoBehaviour
         button9Panel.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(button9Panel.activeSelf)
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                EndGame();
+            }
+        }
+    }
+
+  
     // 태블릿에서 스타트 버튼을 눌렀을 때 실행되는 함수이며, 패널 켜기,
     // 스테이지 초기화, 버튼 순서 초기화, 스테이지 시작이 있음.
     public void StartButton9()
@@ -178,6 +197,14 @@ public class Button9 : MonoBehaviour
         }
 
         DisplayNum.text = resultText;
+    }
+
+    private void ClickExitButton()
+    {
+        if(button9Panel.activeSelf)
+        {
+            EndGame();
+        }
     }
 
     // 아직 대충 함

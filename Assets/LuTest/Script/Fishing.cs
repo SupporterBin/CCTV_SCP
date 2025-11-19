@@ -42,6 +42,14 @@ public class Fishing : MonoBehaviour
     [SerializeField]
     TabletSceneManager tabletSceneManager;
 
+    [SerializeField]
+    private Button exitButton;
+
+    private void Awake()
+    {
+        exitButton.onClick.AddListener(() => ClickExitButton());
+    }
+
     public void StartFishing()
     {
         if(tabletSceneManager.isPlaying)
@@ -71,6 +79,14 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
+        if(fishingPanel.activeSelf)
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                EndGame();
+            }
+        }
+
         if (!isFishingPlaying) return;
 
         // 매번 부르는 함수 - 시간 확인, 키 눌림, 성공 범위 시간 확인
@@ -82,10 +98,17 @@ public class Fishing : MonoBehaviour
     // 랜덤된 곳에 성공 범위 배치 함수
     private void SuccessZonePlacement()
     {
+        float zoneHalfWidth = successZoneRect.width / 2;
         // 아까 받아온 게이지 바 크기의 x의 최소값 최대값 선언 그다음 랜덤으로 값 부르기
-        float minX = gaugeBarRect.xMin + 0.15f;
-        float maxX = gaugeBarRect.xMax - 0.15f;
+        float minX = gaugeBarRect.xMin + zoneHalfWidth;
+        float maxX = gaugeBarRect.xMax - zoneHalfWidth;
         float randomX = Random.Range(minX, maxX);
+
+        if(minX > maxX)
+        {
+            minX = 0f;
+            maxX = 0f;
+        }
 
         // 성공 범위의 Pos X의 값을 랜덤x 로 배치
         successZoneTransform.anchoredPosition = new Vector2(randomX, successZoneTransform.anchoredPosition.y);
@@ -97,11 +120,11 @@ public class Fishing : MonoBehaviour
     {
         // 시간 업데이트 함수고 대충 시간 지나면 끝
         curTime -= Time.deltaTime;
-        Timer.text = curTime.ToString("F2");
+        Timer.text = curTime.ToString("F2") + "s";
 
         if (curTime <= 0)
         {
-            EndGame(false);
+            EndGame();
         }
     }
 
@@ -138,17 +161,18 @@ public class Fishing : MonoBehaviour
         {
             // 성공 범위 내부에 있는 시간 표시 되면 성공 나가면 0으로 초기화
             progressTime += Time.deltaTime;
-            Progress.text = progressTime.ToString("F2");
+            Progress.text = ((progressTime / 0.3) * 10).ToString("F1") + "%";
 
             if (progressTime >= successTime)
             {
-                EndGame(true);
+                StabilityManager.Instance.StabilizationUp(10, 1);
+                EndGame();
             }
         }
         else
         {
             progressTime = 0f;
-            Progress.text = progressTime.ToString("F2");
+            Progress.text = progressTime.ToString("F1") + "%";
         }
     }
 
@@ -165,22 +189,20 @@ public class Fishing : MonoBehaviour
         return makerX >= successMin && makerX <= successMax;
     }
 
-    public void EndGame(bool success)
+    private void ClickExitButton()
+    {
+        if(fishingPanel.activeSelf)
+        {
+            EndGame();
+        }
+    }
+
+    public void EndGame()
     {
         // 이건 걍 미니 게임 끝났을 때 하는 거
         isFishingPlaying = false;
         fishingPanel.SetActive(false);
         tabletSceneManager.tabletPanels[1].SetActive(true);
         tabletSceneManager.isPlaying = false;
-
-        if (success)
-        {
-            StabilityManager.Instance.StabilizationUp(10, 1);
-            Debug.Log("게임 성공!");
-        }
-        else
-        {
-            Debug.Log("게임 실패!");
-        }
     }
 }
