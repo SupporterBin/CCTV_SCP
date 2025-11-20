@@ -5,6 +5,7 @@ public class AnomalySystem : MonoBehaviour
     [Header("현재 맵에 배치되어있는 몬스터 /1번 왼쪽 /2번 가운데 /3번 오른쪽")]
     public GameObject[] monsters;
     [Header("이상현상 관련 오브젝트")]
+    [Header("1번 먹이통, 2번 빨간 사이렌, 3번 시작문, 4번 프로토콜 문")]
     public GameObject[] specialObjects;
 
     //[Header("실행했던 가지고 있는 이벤트")]
@@ -26,13 +27,15 @@ public class AnomalySystem : MonoBehaviour
     public EventPlace currentEventPlace;
     public EventType currentEventType;
 
+    private int mapValue = 999;
+
     private void Start()
     {
         AnomalyTimeSetting(30, 40);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //만약 게임이 정지 안해있으면
         if (GameManager.Instance.AllStopCheck()) return;
@@ -45,14 +48,11 @@ public class AnomalySystem : MonoBehaviour
             return;
         }
 
-        for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(0.005f, roomValue); }
-
         //이상현상 발생 중!
         if (isAnomaly)
         {
             currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
 
-            int mapValue = 0;
             switch(currentEventPlace)
             {
                 case EventPlace.LeftRoom:
@@ -72,7 +72,12 @@ public class AnomalySystem : MonoBehaviour
                     break;
             }
 
-            if(mapValue != 999 && mapValue != 10)
+            if (!GameManager.Instance.isGameStop)
+            {
+                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(0.005f, roomValue); }
+            }
+
+            if (mapValue != 999 && mapValue != 10)
             {
                 for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay() - 1); }
             }

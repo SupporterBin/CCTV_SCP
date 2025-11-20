@@ -23,6 +23,8 @@ public class DaySystem : MonoBehaviour
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI clockText;
 
+    [Header("ClearText ")]
+
     //몇 초 지나면 분이 오름
     [Header("몇 초 지나면 분이 오름? (초)"), SerializeField]
     private float MINUTEUP_TIME = 0.1f;
@@ -81,7 +83,12 @@ public class DaySystem : MonoBehaviour
         }
     }
 
-    public void NextDay()
+    public void NextDayEvent()
+    {
+
+    }
+
+    public void NextDayButton()
     {
         if (nowDay >= maxDay)
         {
