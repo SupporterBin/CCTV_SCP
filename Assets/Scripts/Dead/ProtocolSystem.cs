@@ -38,9 +38,8 @@ public class ProtocolSystem : MonoBehaviour
 
             for (int i = 0; i < 3; i++)
             {
-                //질문, 만약 이미 상태가 0인 상태인 게이지는 어떻게 처리?
-
-                StabilityManager.Instance.StabilizationUp(StabilityManager.Instance.CurrentStability[i] - StabilityManager.Instance.CurrentStability[i] + 15f, i);
+                StabilityManager.Instance.StabilizationUp(
+                    (StabilityManager.Instance.CurrentStability[i] - StabilityManager.Instance.CurrentStability[i]) + 15f, i);
             }
 
             protocol_Click = false;
@@ -66,7 +65,7 @@ public class ProtocolSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// 버튼 누르는데 성공. (버튼)
+    /// 프로토콜 키패드 문 열고 버튼 누르는데 성공할 경우. (버튼)
     /// </summary>
     public void Protocal_StartButton()
     {
@@ -81,7 +80,18 @@ public class ProtocolSystem : MonoBehaviour
         protocol_Click = true;
         delayUpdateTime = Random.Range(1, 3);
     }
+    
+    /// <summary>
+    /// 플레이어가 다시 자기 방으로 돌아왔을 때 실행시키는 코드
+    /// </summary>
+    public void Protocol_ComeBack()
+    {
+        GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Close");
+    }
 
+    /// <summary>
+    /// 타임오버해서 게임 종료일 경우
+    /// </summary>
     private void Protocal_GameOver()
     {
         Debug.Log("게임 오버");
