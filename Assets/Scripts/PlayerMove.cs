@@ -10,6 +10,9 @@ public class PlayerMove : MonoBehaviour
     [Header("캐릭터 스피드")]
     public float speed = 3;
 
+    //플레이어 정지
+    public bool isStop;
+
     Vector2 lookDelta;
     Vector2 moveInput;
 
@@ -29,6 +32,8 @@ public class PlayerMove : MonoBehaviour
     // Update는 카메라 회전처럼 물리와 관련 없는 로직만 처리합니다.
     void Update()
     {
+        if (isStop) return;
+
         //카메라 회전
         float mouseX = lookDelta.x * sensitivity * Time.deltaTime;
         float mouseY = lookDelta.y * sensitivity * Time.deltaTime;
@@ -42,16 +47,23 @@ public class PlayerMove : MonoBehaviour
     // 물리 관련 코드는 FixedUpdate에서 처리합니다.
     void FixedUpdate()
     {
+        if (isStop) return;
+
         //움직임
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         Vector3 newPosition = rb.position + move * speed * Time.fixedDeltaTime;
         rb.MovePosition(newPosition); // MovePosition 사용
     }
 
-    void OnLook(InputValue value) => lookDelta = value.Get<Vector2>();
+    void OnLook(InputValue value)
+    {
+        if (isStop) return;
+        lookDelta = value.Get<Vector2>();
+    }
 
     void OnMove(InputValue value)
     {
+        if (isStop) return;
         moveInput = value.Get<Vector2>();
     }
 }

@@ -23,6 +23,8 @@ public class DaySystem : MonoBehaviour
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI clockText;
 
+    [Header("ClearText ")]
+
     //몇 초 지나면 분이 오름
     [Header("몇 초 지나면 분이 오름? (초)"), SerializeField]
     private float MINUTEUP_TIME = 0.1f;
@@ -58,7 +60,10 @@ public class DaySystem : MonoBehaviour
         //만약 일정 시간(24시간)을 지나면. (Day 클리어)
         if (totalMinute >= 1440 && !isDayClear) {
             isDayClear = true;
+
+            NextDayEvent();
             Debug.Log("게임 클리어");
+            GameManager.Instance.isGameStop = true;
         }
         else
             TimeUpdate();
@@ -81,11 +86,22 @@ public class DaySystem : MonoBehaviour
         }
     }
 
-    public void NextDay()
+    public void NextDayEvent()
+    {
+        //GameClear 실행
+        
+        ExecutionTimeLineManager.instance.PlayDayTimeline(1);
+    }
+
+    public void NextDayButton()
+    {
+        ExecutionTimeLineManager.instance.PlayDayTimeline(2);
+    }
+    public void NextDayEnd()
     {
         if (nowDay >= maxDay)
         {
-            SceneManager.LoadScene(1); //엔딩 씬 넘어가기.
+            SceneManager.LoadScene(2); //엔딩 씬 넘어가기.
         }
 
         else
@@ -94,7 +110,6 @@ public class DaySystem : MonoBehaviour
             SceneManager.LoadScene(1); //똑같은 맵 이동. (현재 플레이중인 씬(날짜 업데이트 후 )
         }
     }
-
     public string GetClockText()
     {
         int hour = totalMinute / 60;

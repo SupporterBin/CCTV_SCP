@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd6b469a1606ce4fa4eb058e63396d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
   radialSegments: 16
-  samples: 64
+  samples: 60
   radiusRoot: 0.035
   radiusTip: 0.015
   twist: 0

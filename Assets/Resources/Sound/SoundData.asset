@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f7d00a68abd0745ac87bc21f96bcfb, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  systemUiStartButtonClick: {fileID: 0}
+  systemUiTitleButtonClick: {fileID: 0}
+  systemUiNextDayButtonClick: {fileID: 0}
+  systemUiRetryButtonClick: {fileID: 0}
+  systemUiDayEndEnterAlarmClock: {fileID: 0}
+  systemUiBgmTitle: {fileID: 0}
+  systemUiBgmGameOver: {fileID: 0}
+  systemUiBgmEnding: {fileID: 0}
+  ingamePlayerWalkConcrete: {fileID: 0}
+  ingameCctvZoomIn: {fileID: 0}
+  ingameTabletZoomIn: {fileID: 0}
+  ingameCctvBurnButtonClick: {fileID: 0}
+  ingameCctvShockButtonClick: {fileID: 0}
+  ingameCctvResonanceButtonClick: {fileID: 0}
+  ingameCctvSystemCheckButtonClick: {fileID: 0}
+  ingameCctvFeedButtonClick: {fileID: 0}
+  ingameManualPageChangeButtonClick: {fileID: 0}
+  ingameDoorOpenHydraulic: {fileID: 0}
+  ingameDoorCloseHydraulic: {fileID: 0}
+  ingameElevatorArriveDing: {fileID: 0}
+  abnormalWireOvergrowthRubber: {fileID: 0}
+  abnormalWireShortCircuitSpark: {fileID: 0}
+  abnormalMaskHumanTransform: {fileID: 0}
+  abnormalMaskCreationWeepingMan: {fileID: 0}
+  abnormalMaskBreakCeramic: {fileID: 0}
+  abnormalTentacleAggressiveWindowHit: {fileID: 0}
+  abnormalTentacleOvergrowthSquirm: {fileID: 0}
+  minigameChangeGameButtonClick: {fileID: 0}
+  minigameStartButtonClick: {fileID: 0}
+  minigameSuccess: {fileID: 0}
+  minigameFail: {fileID: 0}
+  minigameKeypadLeadSignal: {fileID: 0}
+  minigameKeypadButtonPress: {fileID: 0}
+  minigameFishingSuccessZoneLoop: {fileID: 0}
+  minigameRhythmKeyInput: {fileID: 0}
+  deathCommonStabilityZeroGeneratorExplode: {fileID: 0}
+  deathCommonSirenLoopBeforeDeath: {fileID: 0}
+  deathCommonWindowBreak: {fileID: 0}
+  deathWireWhipSwing: {fileID: 0}
+  deathWireTighten: {fileID: 0}
+  deathWireStrangle: {fileID: 0}
+  deathMaskCrowdLaugh: {fileID: 0}
+  deathMaskManLowLaugh: {fileID: 0}
+  deathTentaclePatternA: {fileID: 0}
+  deathTentaclePatternB: {fileID: 0}
+  deathTentaclePatternC: {fileID: 0}
+  protocolKeypadButtonClick: {fileID: 0}
+  protocolLoadingLoop: {fileID: 0}
+  protocolSuccess: {fileID: 0}
+  protocolFail: {fileID: 0}

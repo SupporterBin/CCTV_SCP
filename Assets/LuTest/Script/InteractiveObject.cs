@@ -7,11 +7,11 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField]
     private Camera playerCamera;
 
-    [Header("»óÈ£ÀÛ¿ë °Å¸®")]
+    [Header("ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½Å¸ï¿½")]
     [SerializeField]
     private float InteractionDistance = 5f;
 
-    [Header("»óÈ£ÀÛ¿ë ¿ÀºêÁ§Æ®")]
+    [Header("ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject LeftMonitor;
 
@@ -88,10 +88,10 @@ public class InteractiveObject : MonoBehaviour
 
     void InteractionObject()
     {
-        // ray´Â ½ºÅ©¸° °¡·Î ¼¼·ÎÀÇ Áß¾ÓÀÇ °ª Á¤Áß¾Ó
+        // rayï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ß¾ï¿½
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         Debug.DrawRay(ray.origin, ray.direction);
-        RaycastHit hit; // Hit ´çÇÑ ¿ÀºêÁ§Æ®¸¦ hit¿¡ ÀúÀå
+        RaycastHit hit; // Hit ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ hitï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         GameObject outLineObject = null;
 
@@ -120,18 +120,18 @@ public class InteractiveObject : MonoBehaviour
     void InteractLeftMonitor()
     {
         cctvManager.CCTV_Pos_Rot(CCTVLocation.Left);
-        Debug.Log("¿Þ");
+        Debug.Log("ï¿½ï¿½");
     }
     void InteractCenterMonitor()
     {
         cctvManager.CCTV_Pos_Rot(CCTVLocation.Center);
-        Debug.Log("°¡");
+        Debug.Log("ï¿½ï¿½");
     }
 
     void InteractRightMonitor()
     {
         cctvManager.CCTV_Pos_Rot(CCTVLocation.Right);
-        Debug.Log("¿À");
+        Debug.Log("ï¿½ï¿½");
     }
     void InteractTablet()
     {
@@ -160,7 +160,7 @@ public class InteractiveObject : MonoBehaviour
                 outlineBlock.SetFloat(outlineProperty, offOutlineScale);
                 curOutlineScale.SetPropertyBlock(outlineBlock, 1);
 
-                Debug.Log("²ô±â");
+                Debug.Log("ï¿½ï¿½ï¿½");
             }
             if (curInteractUI != null)
             {
@@ -176,7 +176,7 @@ public class InteractiveObject : MonoBehaviour
                 {
                     newInteractUI.gameObject.SetActive(true);
                 }
-                Debug.Log("ÄÑ±â");
+                Debug.Log("ï¿½Ñ±ï¿½");
             }
 
             curOutlineScale = newOutLineObject;

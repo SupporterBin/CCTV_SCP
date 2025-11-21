@@ -21,15 +21,20 @@ public class Anomaly_Restraint : BasicEventAnomaly
 
         // 기존 몬스터의 보이는 부분을 비활성화
         Transform root = GameManager.Instance.anomalySystem.monsters[2].transform;
-
-        foreach (Transform child in root.GetComponentsInChildren<Transform>(true))
+        
+        for(int i = 0; i < root.childCount; i++)
         {
+            Transform child = root.GetChild(i);
             if (child.CompareTag("Target"))
             {
                 orginMonster = child.gameObject;
                 break;
             }
         }
+        //foreach (Transform child in root.GetComponentsInChildren<Transform>(true))
+        //{
+        //    Debug.Log("CHILD TEST" +child.name);
+        //}
 
         orginMonster.SetActive(false);
 

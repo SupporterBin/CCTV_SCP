@@ -8,6 +8,7 @@ public class ExecutionTimeLineManager : MonoBehaviour
     private PlayableDirector playableDirector;
     public static ExecutionTimeLineManager instance {get; private set;}
     public TimelineAsset[] executionTimelineAssets = new TimelineAsset[1];
+    public TimelineAsset[] dayTimelineAssets = new TimelineAsset[1];
 
     private void Awake()
     {
@@ -23,5 +24,11 @@ public class ExecutionTimeLineManager : MonoBehaviour
     {
         if(executionTimelineAssets.Length > index)
             playableDirector.Play(executionTimelineAssets[index]);
+    }
+
+    public void PlayDayTimeline(int index)
+    {
+        if (dayTimelineAssets.Length > index)
+            playableDirector.Play(dayTimelineAssets[index]);
     }
 }
