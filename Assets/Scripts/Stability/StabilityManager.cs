@@ -15,8 +15,12 @@ public class StabilityManager : MonoBehaviour
     private float[] currentStability;
     public float[] CurrentStability => currentStability;
 
+    [Header("평상 시에 떨어지는 안정수치 소모량")]
+    public float normalDownStabilityValue = 0.05f;
+
     [Header("0 = 1일, 4 = 5일, Day 별 이상현상 발생시 소모량 작성.")]
     public float[] dayDownStabilityValue;
+
     [SerializeField, Header("가면 주워야하는 개수 Day별")]
     public float[] dayGetMaskValue;
     public float currentGetMask = 0;

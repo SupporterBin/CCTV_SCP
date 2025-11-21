@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("세팅 해야되는 시스템들")]
     public AnomalySystem anomalySystem;
 
-    [HideInInspector] public bool isGameStop;
+    public bool isGameStop;
     [HideInInspector] public bool isTimeStop;
     [HideInInspector] public bool isDeadWarring;
 
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         protocolNum = Random.Range(1000, 9999);
+        ExecutionTimeLineManager.instance.PlayDayTimeline(0);
     }
 
     /// <summary>

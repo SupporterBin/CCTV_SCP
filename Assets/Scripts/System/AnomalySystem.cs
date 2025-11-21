@@ -48,6 +48,9 @@ public class AnomalySystem : MonoBehaviour
             return;
         }
 
+        // 평상 시, 줄어드는 안정화 수치.
+        for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(StabilityManager.Instance.normalDownStabilityValue, roomValue); }
+
         //이상현상 발생 중!
         if (isAnomaly)
         {
@@ -72,18 +75,13 @@ public class AnomalySystem : MonoBehaviour
                     break;
             }
 
-            if (!GameManager.Instance.isGameStop)
-            {
-                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(0.005f, roomValue); }
-            }
-
             if (mapValue != 999 && mapValue != 10)
             {
                 for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay() - 1); }
             }
 
             //일정이상동안 이상현상 해결 못한 경우.
-            if (currentAnomalyClearTime >= 30) 
+            if (currentAnomalyClearTime >= 30)
             {
                 StabilityManager.Instance?.StabilizationDown(15, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
 
