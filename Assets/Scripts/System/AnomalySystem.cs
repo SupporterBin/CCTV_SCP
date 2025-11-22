@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class AnomalySystem : MonoBehaviour
 {
+    [SerializeField, Header("이상현상 최소 / 최대 랜덤시간 (분)")]
+    private int anomaly_MinMinute;
+    [SerializeField]
+    private int anomaly_MaxMinute;
+
     [Header("현재 맵에 배치되어있는 몬스터 /1번 왼쪽 /2번 가운데 /3번 오른쪽")]
     public GameObject[] monsters;
     [Header("이상현상 관련 오브젝트")]
@@ -31,7 +36,7 @@ public class AnomalySystem : MonoBehaviour
 
     private void Start()
     {
-        AnomalyTimeSetting(30, 40);
+        AnomalyTimeSetting(anomaly_MinMinute, anomaly_MaxMinute);
     }
 
     // Update is called once per frame
@@ -92,7 +97,7 @@ public class AnomalySystem : MonoBehaviour
 
                 currentEventAnomaly.Fail();
                 currentAnomalyClearTime = 0;
-                CleanAnomaly(25, 45);
+                CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
             }
         }
 
@@ -146,14 +151,14 @@ public class AnomalySystem : MonoBehaviour
             Debug.Log("야호 이상현을 충분히 막아냈어요");
 
             currentEventAnomaly.Clear();
-            CleanAnomaly(25, 40);
+            CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
         }
         else
         {
             StabilityManager.Instance?.StabilizationDown(10, index);
             Debug.Log("이런 이상현을 충분히 실패했어요");
             currentEventAnomaly.Fail();
-            CleanAnomaly(25, 40);
+            CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
         }
     }
 

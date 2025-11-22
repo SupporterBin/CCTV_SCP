@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -8,8 +10,19 @@ public class KeyPad : MonoBehaviour
     private int currentKeyCode = 0;
     [SerializeField, Header("글자를 표시할 텍스트")]
     private TextMeshProUGUI currentKeyCodeText;
+
     [SerializeField, Header("상태를 표시할 이미지")]
-    private Image lodingPad;
+    private Image lodingPad_Image;
+
+    [SerializeField]
+    private GameObject loding_Obj;
+    [SerializeField]
+    private GameObject successTextObj;
+    [SerializeField]
+    private GameObject failTextObj;
+
+    private bool isEnter = false;
+    private bool isSuccess = false;
 
     private void Update()
     {
@@ -19,7 +32,7 @@ public class KeyPad : MonoBehaviour
         //    (currentKeyCode가 0이면 빈 문자열로 처리)
         string codeString = (currentKeyCode == 0) ? "" : currentKeyCode.ToString();
 
-        // 2. 문자열의 오른쪽에 "_" 문자를 채워 총 길이를 4로 만듭니다.
+        // 2. 문자열   의 오른쪽에 "_" 문자를 채워 총 길이를 4로 만듭니다.
         //    예: "12" -> "12__"
         string paddedCode = codeString.PadRight(4, '_');
 
@@ -34,6 +47,13 @@ public class KeyPad : MonoBehaviour
         // 4. 맨 마지막의 불필요한 공백을 제거하고 텍스트에 적용합니다.
         //    예: "1 2 _ _ " -> "1 2 _ _"
         currentKeyCodeText.text = displayText.ToString().TrimEnd();
+
+
+
+        if(lodingPad_Image)
+        {
+            lodingPad_Image.GetComponent<RectTransform>().Rotate(0, 0, -60 * Time.deltaTime, Space.Self);
+        }
     }
 
     /// <summary>
@@ -64,9 +84,22 @@ public class KeyPad : MonoBehaviour
         currentKeyCode = 0;
     }
 
-    public void Enter()
+    public IEnumerator Enter()
     {
-        if(GameManager.Instance.protocolNum == currentKeyCode)
+        if (isEnter) yield break;
+
+        isEnter = true;
+
+        successTextObj.SetActive(false);
+        failTextObj.SetActive(false);
+
+        loding_Obj.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(2.0f);
+
+        loding_Obj.SetActive(false);
+
+        if (GameManager.Instance.protocolNum == currentKeyCode)
         {
             TrueEnter();
         }
@@ -78,12 +111,29 @@ public class KeyPad : MonoBehaviour
 
     private void TrueEnter()
     {
+        GameManager.Instance.anomalySystem.specialObjects[1].GetComponent<Animator>().Play("Off");
+
+        for (int i = 0; i < 3; i++)
+        {
+            StabilityManager.Instance.StabilizationUp(-StabilityManager.Instance.CurrentStability[i] + 15f, i);
+        }
+
+        isSuccess = true;
+        GameManager.Instance.isDeadWarring = false;
+        successTextObj.SetActive(true);
         Debug.Log("맞음");
     }
 
     private void FalseEnter()
     {
-
+        ClearKey();
+        failTextObj.SetActive(true);
+        isEnter = false;
         Debug.Log("틀림");
+    }
+
+    public bool GetSucess()
+    {
+        return isSuccess;
     }
 }

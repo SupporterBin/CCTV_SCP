@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isTimeStop;
     [HideInInspector] public bool isDeadWarring;
 
-    [HideInInspector] public int protocolNum;
+    public int protocolNum;
 
 
     void Awake()

@@ -54,6 +54,7 @@ public class KeyWord : MonoBehaviour
                 keyPad.ClearKey();
                 break;
             case KeyOption.Call:
+                StartCoroutine(keyPad.Enter());
                 break;
         }
     }

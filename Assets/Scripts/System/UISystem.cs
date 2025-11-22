@@ -16,6 +16,16 @@ public class UISystem : MonoBehaviour
     [Header("버튼 열어")]
     public GameObject[] CCTV_SubButtonSet;
 
+    [Header("FadeIn Day 텍스트s 업데이트")]
+    public TextMeshProUGUI startDayText;
+    public TextMeshProUGUI clearDayText;
+
+    private void Start()
+    {
+        startDayText.text = "Day " + DaySystem.Instance.GetNowDay();
+        clearDayText.text = "Day " + DaySystem.Instance.GetNowDay() + " Clear";
+    }
+
     private void Update()
     {
         //나머지는 나중에 추가 1,2는
