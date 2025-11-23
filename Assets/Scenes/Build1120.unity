@@ -2939,7 +2939,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3289650
+    rgba: 4281479730
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -13158,7 +13158,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -15597,6 +15597,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae14ee57f5098d74f96f0c121f15b927, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae14ee57f5098d74f96f0c121f15b927, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24618,11 +24622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalDownStabilityValue: 0.01
   dayDownStabilityValue:
+  - 0.05
   - 0.1
   - 0.2
   - 0.3
   - 0.4
-  - 0.5
   dayGetMaskValue:
   - 1
   - 2
@@ -26967,8 +26971,8 @@ MonoBehaviour:
   - {fileID: 490252996}
   - {fileID: 1099049742}
   - {fileID: 1858377149}
-  startDayText: {fileID: 0}
-  clearDayText: {fileID: 0}
+  startDayText: {fileID: 496286054}
+  clearDayText: {fileID: 812409611}
 --- !u!4 &1717059792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1621371926564690232, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}
@@ -31418,6 +31422,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5665955114203046651, guid: e633edbafe12fe842b6a134ffc2d928f, type: 3}
   m_PrefabInstance: {fileID: 8522028394448510081}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1838119703
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181871582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aebc0d44f8e70b54bb8252b3e7a7fdfd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1846981183
 GameObject:
   m_ObjectHideFlags: 0
@@ -33901,6 +33927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8343f797b5523184a8e5991fae321c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anomaly_MinMinute: 10
+  anomaly_MaxMinute: 20
+  special_MinMinute: 30
+  special_MaxMinute: 60
+  anomaly_Threshold: 40
   monsters:
   - {fileID: 181871582}
   - {fileID: 509775711}
@@ -33909,15 +33940,23 @@ MonoBehaviour:
   - {fileID: 1977291420}
   - {fileID: 783826257}
   - {fileID: 719556110}
-  currentAnomalyClearTime: 0
-  startAnomalyTime: 0
-  isAnomaly: 0
-  eventAnomalys:
-  - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
+  standardEventPool:
+  - {fileID: 11400000, guid: 1c26ae56aed73fb4698f768bec15dcac, type: 2}
+  - {fileID: 11400000, guid: 299f3dbe8199c6f4eb415c61285fa069, type: 2}
+  - {fileID: 11400000, guid: 824e4a1c7f2eb4942b86b631149a9dae, type: 2}
+  - {fileID: 11400000, guid: b68e5f305d9a9e447be9b1d1cd078b54, type: 2}
   - {fileID: 11400000, guid: 382c77bd79d8f9942975f7e01297192b, type: 2}
   - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
-  currentEventPlace: 0
-  currentEventType: 0
+  - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
+  - {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
+  specialEventPool: []
+  activeStandardAnomalies: []
+  activeSpecialAnomaly:
+    eventScript: {fileID: 0}
+    place: 0
+    type: 0
+    currentTimer: 0
+    mapValue: 0
 --- !u!1001 &2030756756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35449,7 +35488,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5665955114203046651, guid: e633edbafe12fe842b6a134ffc2d928f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1888352204}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5037932062264342593, guid: e633edbafe12fe842b6a134ffc2d928f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1838119703}
   m_SourcePrefab: {fileID: 100100000, guid: e633edbafe12fe842b6a134ffc2d928f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

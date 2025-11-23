@@ -1,188 +1,351 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnomalySystem : MonoBehaviour
 {
-    [SerializeField, Header("이상현상 최소 / 최대 랜덤시간 (분)")]
-    private int anomaly_MinMinute;
+    [Header("--- 타이머 설정 ---")]
+    [SerializeField, Header("기본 이상현상 발생 주기 (분)")]
+    private int anomaly_MinMinute = 24;
     [SerializeField]
-    private int anomaly_MaxMinute;
+    private int anomaly_MaxMinute = 45;
 
-    [Header("현재 맵에 배치되어있는 몬스터 /1번 왼쪽 /2번 가운데 /3번 오른쪽")]
-    public GameObject[] monsters;
-    [Header("이상현상 관련 오브젝트")]
-    [Header("1번 먹이통, 2번 빨간 사이렌, 3번 시작문, 4번 프로토콜 문")]
-    public GameObject[] specialObjects;
+    [SerializeField, Header("특수(약물) 이상현상 발생 주기 (분)")]
+    private int special_MinMinute = 30;
+    [SerializeField]
+    private int special_MaxMinute = 60;
 
-    //[Header("실행했던 가지고 있는 이벤트")]
-    private BasicEventAnomaly[] anomalyEvents;
+    [SerializeField, Header("클리어 제한 시간 (리얼타임 초)")]
+    private float anomaly_Threshold = 40;
 
-    //이상현상 남은 클리어 시간
-    [HideInInspector] public float currentAnomalyClearTime;
+    [Header("--- 참조 객체 ---")]
+    public GameObject[] monsters; // 1:왼쪽, 2:가운데, 3:오른쪽
+    public GameObject[] specialObjects; // 1:먹이통, 2:사이렌, 3:시작문, 4:프로토콜
 
-    //가장 최근에 작동한 이상 현상.
-    [HideInInspector] public int startAnomalyTime;
+    [Header("--- 이벤트 데이터 풀 ---")]
+    public BasicEventAnomaly[] standardEventPool; // 일반 이상현상들 (불 끄기, 문 닫기 등)
+    public BasicEventAnomaly[] specialEventPool;  // 특수 이상현상들 (약물 먹기 등)
 
-    [Header("이상현상이 발생했나요?")]
-    public bool isAnomaly;
+    [Header("--- 현재 진행 중인 현황 (디버깅용) ---")]
+    // 일반 이상현상 리스트 (최대 2개)
+    public List<ActiveAnomaly> activeStandardAnomalies = new List<ActiveAnomaly>();
+    // 특수 이상현상 (최대 1개, null이면 없는 상태)
+    public ActiveAnomaly activeSpecialAnomaly = null;
 
-    [Header("이벤트 모음")]
-    public BasicEventAnomaly[] eventAnomalys;
-
-    BasicEventAnomaly currentEventAnomaly;
-    public EventPlace currentEventPlace;
-    public EventType currentEventType;
-
-    private int mapValue = 999;
+    // 다음 발생 시간 (분 단위)
+    private int nextStandardTime;
+    private int nextSpecialTime;
 
     private void Start()
     {
-        AnomalyTimeSetting(anomaly_MinMinute, anomaly_MaxMinute);
+        // 게임 시작 시 첫 발생 시간 설정
+        SetNextStandardTime();
+        SetNextSpecialTime();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        //만약 게임이 정지 안해있으면
+        // 1. 게임 정지 체크
         if (GameManager.Instance.AllStopCheck()) return;
-        
-        if(GameManager.Instance.isDeadWarring)
-        {
-            if (currentEventAnomaly != null) currentEventAnomaly.Fail();
-            CleanAnomaly();
 
+        int currentClock = DaySystem.Instance.GetClock();
+
+        // 2. 일반 이상현상 스폰 체크
+        // 시간이 됐고 + 현재 2개 미만이며 + 빈 방이 있을 때
+        if (currentClock > nextStandardTime)
+        {
+            if (activeStandardAnomalies.Count < 2 && GetAvailableRoomCount() > 0)
+            {
+                SpawnStandardAnomaly();
+            }
+            SetNextStandardTime(); // 발생 여부와 상관없이 다음 타이머 갱신 (쿨타임)
+        }
+
+        // 3. 특수 이상현상 스폰 체크
+        // 시간이 됐고 + 현재 특수 현상이 없을 때
+        if (currentClock > nextSpecialTime)
+        {
+            if (activeSpecialAnomaly == null)
+            {
+                SpawnSpecialAnomaly();
+            }
+            SetNextSpecialTime(); // 다음 타이머 갱신
+        }
+
+        // 4. 타이머 업데이트 및 타임오버 체크
+        UpdateAnomaliesTimer();
+    }
+
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.AllStopCheck()) return;
+
+        // 게임 오버 상태면 모든 이상현상 강제 종료
+        if (GameManager.Instance.isDeadWarring)
+        {
+            FailAllAnomalies();
             return;
         }
 
-        // 평상 시, 줄어드는 안정화 수치.
-        for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.StabilizationDown(StabilityManager.Instance.normalDownStabilityValue, roomValue); }
-
-        //이상현상 발생 중!
-        if (isAnomaly)
+        // [기본] 평상시 안정도 자연 감소
+        for (int i = 0; i < 3; i++)
         {
-            currentAnomalyClearTime += Time.deltaTime; //이상현상 발생하면 이상현상 몇초동안 발생중인지 초 세기.
+            StabilityManager.Instance.StabilizationDown(StabilityManager.Instance.normalDownStabilityValue, i);
+        }
 
-            switch(currentEventPlace)
+        // [추가] 일반 이상현상 발생 중일 때 안정도 추가 감소
+        // ★ 특수 이상현상(activeSpecialAnomaly)은 이 루프에 포함되지 않으므로 안정도를 깎지 않음!
+        foreach (var anomaly in activeStandardAnomalies)
+        {
+            if (anomaly.mapValue != 999 && anomaly.mapValue != 10)
             {
-                case EventPlace.LeftRoom:
-                    mapValue = 0;
-                    break;
-                case EventPlace.CenterRoom:
-                    mapValue = 1;
-                    break;
-                case EventPlace.RightRoom:
-                    mapValue = 2;
-                    break;
-                case EventPlace.All:
-                    mapValue = 10;
-                    break;
-                case EventPlace.None:
-                    mapValue = 999;
-                    break;
+                // DaySystem.Instance.GetNowDay() - 1 : 배열 인덱스 맞추기
+                for (int i = 0; i < 3; i++)
+                {
+                    StabilityManager.Instance.Stabilization_AnomalyTime_Update(anomaly.mapValue, DaySystem.Instance.GetNowDay() - 1);
+                }
             }
+        }
+    }
 
-            if (mapValue != 999 && mapValue != 10)
+    // --- 핵심 로직: 타이머 갱신 및 실패 처리 ---
+    private void UpdateAnomaliesTimer()
+    {
+        float dt = Time.deltaTime;
+
+        // 1. 일반 이상현상 (기존 유지: 40초 지나면 실패)
+        for (int i = activeStandardAnomalies.Count - 1; i >= 0; i--)
+        {
+            var anomaly = activeStandardAnomalies[i];
+            anomaly.currentTimer += dt;
+
+            if (anomaly.currentTimer >= anomaly_Threshold)
             {
-                for (int roomValue = 0; roomValue < 3; roomValue++) { StabilityManager.Instance.Stabilization_AnomalyTime_Update(mapValue, DaySystem.Instance.GetNowDay() - 1); }
-            }
-
-            //일정이상동안 이상현상 해결 못한 경우.
-            if (currentAnomalyClearTime >= 30)
-            {
-                StabilityManager.Instance?.StabilizationDown(15, 0); //안전성 수치 한번 크게 떨어뜨리기 (몇 번방, 얼마나 떨어뜨릴지는 추가 코드 및 기획 필요)
-
-                //이상현상 실패 처리 및 이상현상 깔려있는거 제거 및 초기화.
-                startAnomalyTime = DaySystem.Instance.GetClock(); //발생한 시각 체크.
-
-                Debug.Log("힝 이상현을 충분히 못막았어용..");
-
-                currentEventAnomaly.Fail();
-                currentAnomalyClearTime = 0;
-                CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
+                ProcessFail(anomaly, true);
             }
         }
 
-
-        //이상현상 발생 시간 세기
-        if (startAnomalyTime < DaySystem.Instance.GetClock() && !isAnomaly)
+        // 2. [수정됨] 특수 이상현상
+        if (activeSpecialAnomaly != null)
         {
-            EventAnomalyStart();
+            activeSpecialAnomaly.currentTimer += dt;
+
+            // ★ 수정된 부분: 타임오버 체크 로직을 제거했습니다.
+            // 이제 시간이 아무리 흘러도 ProcessFail(실패)이 호출되지 않습니다.
+            // 플레이어가 버튼을 눌러서 해결할 때까지 영원히 남아있습니다.
+
+            /* (삭제된 코드)
+            if (activeSpecialAnomaly.currentTimer >= anomaly_Threshold)
+            {
+                ProcessFail(activeSpecialAnomaly, false);
+            }
+            */
         }
-        
     }
 
-    /// <summary>
-    /// 다음 이상현상 초 세팅
-    /// </summary>
-    private void AnomalyTimeSetting(int min, int max)
-    {
-        if(startAnomalyTime == 0)
-            startAnomalyTime = Random.Range(DaySystem.Instance.GetClock() + min, DaySystem.Instance.GetClock() + max);
-        else
-            startAnomalyTime = Random.Range(startAnomalyTime + min, startAnomalyTime + max);
-    }
+    // --- 스폰(발생) 로직 ---
 
-    /// <summary>
-    /// 이상현상 이벤트 시작하기
-    /// </summary>
-    public void EventAnomalyStart()
+    private void SpawnStandardAnomaly()
     {
-        Debug.Log("EventAnomalyStart 발생, 이상현상 발생");
-        isAnomaly = true;
-        startAnomalyTime = DaySystem.Instance.GetClock(); //발생한 시각 체크.
-
-        currentEventAnomaly = eventAnomalys[Random.Range(0, eventAnomalys.Length)];
-        currentEventPlace = currentEventAnomaly.eventPlace;
-        currentEventType = currentEventAnomaly.Execute();
-    }
-
-    private void ProcessEventClear(EventType Type, int index)
-    {
-        if (!isAnomaly)
+        // 1. 현재 사용 중인 방 목록 만들기 (이 방에는 생성 불가)
+        List<EventPlace> busyPlaces = new List<EventPlace>();
+        foreach (var active in activeStandardAnomalies)
         {
-            StabilityManager.Instance?.StabilizationDown(15, index);
-            Debug.Log("이상현상이 아닌데 눌렀어요 -15");
+            busyPlaces.Add(active.place);
+        }
+
+        // 2. 발생 가능한 이벤트 후보 추리기
+        List<BasicEventAnomaly> validCandidates = new List<BasicEventAnomaly>();
+
+        foreach (var candidateSO in standardEventPool)
+        {
+            // 조건 A: 이미 활성화된 이벤트(중복 몬스터)는 제외
+            bool isAlreadyActive = activeStandardAnomalies.Exists(x => x.eventScript == candidateSO);
+            if (isAlreadyActive) continue;
+
+            // 조건 B: SO에 설정된 장소(candidateSO.eventPlace)가 이미 사용 중(busy)이면 제외
+            // (즉, 오른쪽 방에 이미 몬스터가 있는데, 오른쪽 방 전용 이벤트를 또 실행하면 안 됨)
+            if (busyPlaces.Contains(candidateSO.eventPlace)) continue;
+
+            // 위 조건을 모두 통과한 녀석만 후보 리스트에 등록
+            validCandidates.Add(candidateSO);
+        }
+
+        // 3. 발생 가능한 후보가 하나도 없으면 중단 (꽉 찼거나, 조건 맞는 게 없음)
+        if (validCandidates.Count == 0)
+        {
+            Debug.Log("조건에 맞는 이상현상 후보가 없습니다. (방이 꽉 찼거나 중복)");
             return;
         }
 
-        if (Type == currentEventType && index == (int)currentEventPlace - 2)
-        {
-            //클리어
-            isAnomaly = false;
-            Debug.Log("야호 이상현을 충분히 막아냈어요");
+        // 4. 후보 중에서 랜덤 하나 뽑기
+        BasicEventAnomaly finalSelection = validCandidates[Random.Range(0, validCandidates.Count)];
 
-            currentEventAnomaly.Clear();
-            CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
+        // 5. 실행! 
+        // ★ 중요: 이제 script.eventPlace = place; 로 강제 할당하지 않습니다.
+        // SO에 적혀있는 그 장소 그대로 실행됩니다.
+        EventType type = finalSelection.Execute();
+
+        // 6. 관리 리스트에 등록
+        // 장소(Place)도 SO에 있는 것(finalSelection.eventPlace)을 그대로 가져옵니다.
+        ActiveAnomaly newAnomaly = new ActiveAnomaly(finalSelection, finalSelection.eventPlace, type);
+        activeStandardAnomalies.Add(newAnomaly);
+
+        Debug.Log($"[일반] 이상현상 발생! SO: {finalSelection.name}, 위치: {finalSelection.eventPlace}");
+    }
+
+    private void SpawnSpecialAnomaly()
+    {
+        if (specialEventPool.Length == 0) return;
+
+        // 특수 이벤트 선택
+        BasicEventAnomaly script = specialEventPool[Random.Range(0, specialEventPool.Length)];
+
+        // 실행 (특수는 장소를 스크립트 내부에서 정하거나, UI일 수 있음)
+        EventType type = script.Execute();
+        EventPlace place = script.eventPlace;
+
+        // 특수 슬롯에 할당
+        activeSpecialAnomaly = new ActiveAnomaly(script, place, type);
+        Debug.Log($"[특수] 약물 이상현상 발생! 종류: {type}");
+    }
+
+    // --- 클리어(상호작용) 로직 ---
+    // 버튼 클릭 시 호출되는 함수
+    private void ProcessEventClear(EventType type, int index)
+    {
+        // 버튼 인덱스를 EventPlace enum 값으로 변환 (기존 로직 역산: index + 2)
+        // 0->Left(2), 1->Center(3), 2->Right(4)
+        int targetPlaceInt = index + 2;
+
+        // 1. 일반 이상현상 리스트에서 일치하는 것 찾기
+        ActiveAnomaly target = activeStandardAnomalies.Find(a => a.type == type && (int)a.place == targetPlaceInt);
+
+        if (target != null)
+        {
+            Debug.Log("[성공] 일반 이상현상 해결!");
+            target.eventScript.Clear();
+            activeStandardAnomalies.Remove(target);
+            return;
+        }
+
+        // 2. 특수 이상현상인지 확인
+        // (특수는 장소와 상관없이 타입만 맞으면 되는지, 장소도 맞아야 하는지 기획에 따라 수정 가능)
+        // 여기서는 타입과 장소 모두 맞아야 한다고 가정
+        if (activeSpecialAnomaly != null && activeSpecialAnomaly.type == type)
+        {
+            // 특수가 UI형태라 장소 개념이 모호하다면 (int)activeSpecialAnomaly.place 체크는 제거하세요.
+            if ((int)activeSpecialAnomaly.place == targetPlaceInt || activeSpecialAnomaly.place == EventPlace.All)
+            {
+                Debug.Log("[성공] 특수 이상현상 해결!");
+                activeSpecialAnomaly.eventScript.Clear();
+                activeSpecialAnomaly = null;
+                return;
+            }
+        }
+
+        // 3. 아무것도 해당 안 됨 -> 오답 패널티
+        Debug.Log("[오답] 이상현상이 아닌데 눌렀음 (-15)");
+        StabilityManager.Instance?.StabilizationDown(15, index);
+    }
+
+    // --- 실패 처리 로직 ---
+    private void ProcessFail(ActiveAnomaly anomaly, bool isStandard)
+    {
+        Debug.Log($"이상현상 방어 실패 (타임오버): {anomaly.place}...");
+
+        // [수정] 무조건 0번이 아니라, 해당 이상현상의 방 번호(mapValue)를 깎음
+        // mapValue는 생성자에서 이미 계산됨 (0:Left, 1:Center, 2:Right)
+        if (anomaly.mapValue >= 0 && anomaly.mapValue <= 2)
+        {
+            StabilityManager.Instance?.StabilizationDown(15, anomaly.mapValue);
+        }
+        else if (anomaly.mapValue == 10)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                StabilityManager.Instance?.StabilizationDown(15, i);
+            }
+            Debug.Log("타임오버 패널티: 모든 방 안정도 감소 (-15)");
+        }
+        // 3. 예외 상황 (None 등)
+        else
+        {
+            Debug.Log("None 상황 실패");
+        }
+
+        // --- 아래는 기존 안전장치 코드 유지 ---
+        if (anomaly.eventScript != null)
+        {
+            try
+            {
+                anomaly.eventScript.Fail();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[System] 실패 연출 에러 방지: {e.Message}");
+            }
+        }
+
+        if (isStandard)
+        {
+            if (activeStandardAnomalies.Contains(anomaly))
+                activeStandardAnomalies.Remove(anomaly);
         }
         else
         {
-            StabilityManager.Instance?.StabilizationDown(10, index);
-            Debug.Log("이런 이상현을 충분히 실패했어요");
-            currentEventAnomaly.Fail();
-            CleanAnomaly(anomaly_MinMinute, anomaly_MaxMinute);
+            activeSpecialAnomaly = null;
         }
     }
 
-    // 유니티 버튼 OnClick()에 연결할 함수들
+    private void FailAllAnomalies()
+    {
+        foreach (var a in activeStandardAnomalies) a.eventScript.Fail();
+        activeStandardAnomalies.Clear();
+
+        if (activeSpecialAnomaly != null) activeSpecialAnomaly.eventScript.Fail();
+        activeSpecialAnomaly = null;
+    }
+
+    // --- 유틸리티 함수 ---
+
+    private void SetNextStandardTime()
+    {
+        int current = DaySystem.Instance.GetClock();
+        nextStandardTime = Random.Range(current + anomaly_MinMinute, current + anomaly_MaxMinute);
+    }
+
+    private void SetNextSpecialTime()
+    {
+        int current = DaySystem.Instance.GetClock();
+        nextSpecialTime = Random.Range(current + special_MinMinute, current + special_MaxMinute);
+    }
+
+    // 빈 방 찾기 (중복 방지)
+    private EventPlace GetRandomAvailablePlace()
+    {
+        List<EventPlace> available = new List<EventPlace> { EventPlace.LeftRoom, EventPlace.CenterRoom, EventPlace.RightRoom };
+
+        // 현재 진행 중인 일반 이상현상들의 위치를 리스트에서 뺌
+        foreach (var anomaly in activeStandardAnomalies)
+        {
+            available.Remove(anomaly.place);
+        }
+
+        if (available.Count == 0) return EventPlace.None;
+
+        return available[Random.Range(0, available.Count)];
+    }
+
+    private int GetAvailableRoomCount()
+    {
+        return 3 - activeStandardAnomalies.Count;
+    }
+
+    // --- 유니티 버튼 연결부 (변경 없음) ---
     public void ClearCCTVSystemCheck(int index) { ProcessEventClear(EventType.CCTV_SystemCheck, index); }
     public void ClearCCTVResonance(int index) { ProcessEventClear(EventType.CCTV_Resonance, index); }
     public void ClearCCTVIncinerate(int index) { ProcessEventClear(EventType.CCTV_Incinerate, index); }
     public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
     public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
-
-    private void CleanAnomaly(int NextEventTime_Min, int NextEventTime_Max)
-    {
-        currentEventAnomaly = null;
-        isAnomaly = false;
-        currentEventType = EventType.None;
-        currentEventPlace = EventPlace.None;
-        AnomalyTimeSetting(NextEventTime_Min, NextEventTime_Max);
-    }
-    private void CleanAnomaly()
-    {
-        currentEventAnomaly = null;
-        isAnomaly = false;
-        currentEventType = EventType.None;
-        currentEventPlace = EventPlace.None;
-    }
 }

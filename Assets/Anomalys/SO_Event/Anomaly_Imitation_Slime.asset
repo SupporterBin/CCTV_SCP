@@ -16,7 +16,6 @@ MonoBehaviour:
     \uBCC0\uC2E0"
   eventPlace: 3
   eventType: 3
-  baseAnomalyActionSO: []
   transformationPrefab: {fileID: 5037932062264342593, guid: e633edbafe12fe842b6a134ffc2d928f, type: 3}
   monster_Transform: {x: 0, y: 0, z: 0}
   monster_Quaternion: {x: 0, y: 0, z: 0, w: 0}

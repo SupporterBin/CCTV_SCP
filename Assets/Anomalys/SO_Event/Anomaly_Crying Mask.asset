@@ -15,7 +15,6 @@ MonoBehaviour:
   eventName: "\uD5C8\uC218\uC544\uBE44_\uC6B0\uB294 \uB9C8\uC2A4\uD06C"
   eventPlace: 3
   eventType: 6
-  baseAnomalyActionSO: []
   sadMaskPreafab: {fileID: 4676177793782149701, guid: 8537874591efe874eaa7f6f8f313b5a7, type: 3}
   firstTransRange:
   - {x: -8.3, y: 0.68, z: 5.18}

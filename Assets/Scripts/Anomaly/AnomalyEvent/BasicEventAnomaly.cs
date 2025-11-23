@@ -31,8 +31,6 @@ public abstract class BasicEventAnomaly : ScriptableObject
 
     // 어떤 방식으로 문제를 해결할 거임?
     public EventType eventType;
-    // 실행시킬 이벤트 모음
-    public BaseAnomalyActionSO[] baseAnomalyActionSO;
 
 
     //어떻게 실행시킬건지, 시간으로 특정 이벤트를 몇초 뒤 실행시키거나 할 때 사용.

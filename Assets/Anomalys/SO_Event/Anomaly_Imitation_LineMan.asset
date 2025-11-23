@@ -15,7 +15,6 @@ MonoBehaviour:
   eventName: "\uD5C8\uC218\uC544\uBE44_\uC804\uC120\uB9E8\uC73C\uB85C \uBCC0\uC2E0"
   eventPlace: 3
   eventType: 4
-  baseAnomalyActionSO: []
   transformationPrefab: {fileID: 919132149155446097, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}
   monster_Transform: {x: 0, y: 0, z: 0}
   monster_Quaternion: {x: 0, y: 0, z: 0, w: 0}

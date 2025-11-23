@@ -26,12 +26,10 @@ public class Anomaly_TentacleOvergrowth : BasicEventAnomaly
     public override void Clear()
     {
         food.SetActive(true);
-        throw new System.NotImplementedException();
     }
 
     public override void Fail()
     {
         food.SetActive(true);
-        throw new System.NotImplementedException();
     }
 }
