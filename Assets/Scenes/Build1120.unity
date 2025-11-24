@@ -3654,6 +3654,7 @@ GameObject:
   - component: {fileID: 216343720}
   - component: {fileID: 216343721}
   - component: {fileID: 216343722}
+  - component: {fileID: 216343723}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3854,6 +3855,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &216343723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216343714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 0c0846219da7e5949bfa817d5471ed68, type: 2}
+    - {fileID: 11400000, guid: 68c596b0ff7adb048828df7295c5e391, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 216343721}
+          m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+          m_MethodName: SetMoveEnable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 216343721}
+          m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+          m_MethodName: SetMoveEnable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!4 &216410958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3564499132533000442, guid: 988d04d4c29b17142bc385e828c1a29a, type: 3}
@@ -7817,7 +7863,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 469762047
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -10291,7 +10337,7 @@ PlayableDirector:
   m_GameObject: {fileID: 580823133}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 75d60a6ca3edf22458cebe959d206bd6, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: bc57e18833c41934daaf09c4b69fd86a, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -10357,10 +10403,10 @@ PlayableDirector:
     value: {fileID: 216343722}
   - key: {fileID: 4340522355983180202, guid: 75d60a6ca3edf22458cebe959d206bd6, type: 2}
     value: {fileID: 216343722}
-  - key: {fileID: -951083071058302691, guid: bc57e18833c41934daaf09c4b69fd86a, type: 2}
-    value: {fileID: 216343722}
   - key: {fileID: 5043405026041386521, guid: 384ad67bb5779244da14a1ac2fdd5a51, type: 2}
     value: {fileID: 745785030}
+  - key: {fileID: -9074106812289928521, guid: bc57e18833c41934daaf09c4b69fd86a, type: 2}
+    value: {fileID: 216343723}
   m_ExposedReferences:
     m_References:
     - 121e79e708a020d47821e757c617b255: {fileID: 173336514}

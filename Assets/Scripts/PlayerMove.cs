@@ -28,7 +28,10 @@ public class PlayerMove : MonoBehaviour
         // Rigidbody 컴포넌트를 시작할 때 가져옵니다.
         rb = GetComponent<Rigidbody>();
     }
-
+    public void SetMoveEnable(bool enable)
+    {
+        isStop = !enable;
+    }
     // Update는 카메라 회전처럼 물리와 관련 없는 로직만 처리합니다.
     void Update()
     {
