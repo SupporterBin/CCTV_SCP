@@ -38,6 +38,8 @@ public class Button9 : MonoBehaviour
     [SerializeField]
     private Button exitButton;
 
+    private int difficultyLevel = 0;
+
     private void Awake()
     {
        // 각각의 버튼 배열에 OnClick 기능을 넣어줌
@@ -69,7 +71,10 @@ public class Button9 : MonoBehaviour
         }
     }
 
-  
+    private int GetDay()
+    {
+        return DaySystem.Instance.GetNowDay();
+    }
     // 태블릿에서 스타트 버튼을 눌렀을 때 실행되는 함수이며, 패널 켜기,
     // 스테이지 초기화, 버튼 순서 초기화, 스테이지 시작이 있음.
     public void StartButton9()
@@ -79,6 +84,7 @@ public class Button9 : MonoBehaviour
             button9Panel.SetActive(true);
             buttonSequence.Clear();
             StartCoroutine(StageStart());
+            GetDay();
         }
     }
     
@@ -91,6 +97,27 @@ public class Button9 : MonoBehaviour
         buttonSequence.Clear();
         inputSequence.Clear();
 
+        if (GetDay() == 1)
+        {
+            difficultyLevel = 1;
+            lightDuration = 0.5f;
+        }
+        else if (GetDay() == 2)
+        {
+            difficultyLevel = 2;
+            lightDuration = 0.5f;
+        }
+        else if (GetDay() == 3)
+        {
+            difficultyLevel = 3;
+            lightDuration = 0.5f;
+        }
+        else if (GetDay() == 4 || GetDay() == 5)
+        {
+            difficultyLevel = 3;
+            lightDuration = 0.4f;
+        }
+
         // 버튼 중복 켜짐을 방지하기위한 예비용 리스트 추가 및 리스트에 버튼 수만큼 배열에 넣기
         List<int> preparatoryList = new List<int>();
         for(int i = 0; i < buttons.Length; i++)
@@ -99,7 +126,7 @@ public class Button9 : MonoBehaviour
         }
 
         // 스테이지 별 활성화 버튼 수 및 순서 정하기
-        for(int i = 0; i < 4 + DaySystem.Instance.GetNowDay(); i++)
+        for(int i = 0; i < 4 + difficultyLevel; i++)
         {
             // 예비용 리스트에 2개 이상 있을 때 이걸 왜쓰냐 순서를 Random.Range로 뽑을건데
             // Random.Range는 (최소, 최대)이고 (0, 1) 이라했을때 최대의 -1 까지 뽑는거라 0밖에 안뽑임 확정

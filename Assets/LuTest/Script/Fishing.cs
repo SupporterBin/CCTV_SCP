@@ -63,11 +63,44 @@ public class Fishing : MonoBehaviour
             progressTime = 0f;
             playerVelocity = 0f;
 
+            GetDay();
+            SetDifficultyLevel();
+
             // 성공 범위 배치 함수
             SuccessZonePlacement();
         }
     }
 
+    private int GetDay()
+    {
+        return DaySystem.Instance.GetNowDay();
+    }
+    private void SetDifficultyLevel()
+    {
+        int day = GetDay();
+
+        float zoneRange = 30f;
+        float makerVelocity = 5f;
+        float gravityVelocity = 5f;
+
+        if (day == 1) { zoneRange = 30f; makerVelocity = 5f; gravityVelocity = 5f; }
+        else if (day == 2) { zoneRange = 25f; }//makerVelocity = 5f; //gravityVelocity = 5f; }
+        else if (day == 3) { zoneRange = 20f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
+        else if (day == 4) { zoneRange = 15f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
+        else if (day >= 5) { zoneRange = 10f; }//makerVelocity = 9f; //gravityVelocity = 10f; }
+
+            makerspeed = makerVelocity * 0.1f;
+            gravity = gravityVelocity * 0.1f;
+
+            float totalWidth = gaugeBarRect.width > 0 ? gaugeBarRect.width : 500f;
+
+            float newWidth = totalWidth * (zoneRange / 100f);
+
+            successZoneTransform.sizeDelta = new Vector2(newWidth, successZoneTransform.sizeDelta.y);
+
+            successZoneRect = successZoneTransform.rect;
+
+    }
     private void Start()
     {
         // 게임 시작 시 패널 비활성화 및 미니게임에 쓰인 오브젝트의 값 가져오기

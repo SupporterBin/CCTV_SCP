@@ -52,6 +52,8 @@ public class AJae : MonoBehaviour
     [SerializeField]
     private Button exitButton;
 
+    private int difficultyLevel = 1;
+
     private void Awake()
     {
         exitButton.onClick.AddListener(() => ClickExitButton());
@@ -60,6 +62,10 @@ public class AJae : MonoBehaviour
     private void Start()
     {
         aJaePanel.SetActive(false);
+    }
+    private int GetDay()
+    {
+        return DaySystem.Instance.GetNowDay();
     }
 
     private void Update()
@@ -135,7 +141,12 @@ public class AJae : MonoBehaviour
         inputSequence.Clear();
         timerText.text = limitTimer.ToString("F1");
 
-        foreach(var images in ShowImages)
+        int day = GetDay();
+        if (day == 1) { difficultyLevel = 1; }
+        else if (day == 2) { difficultyLevel = 2; }
+        else if (day == 3 || day == 4 || day == 5) { difficultyLevel = 3; }
+
+        foreach (var images in ShowImages)
         {
             images.gameObject.SetActive(false);
             images.color = Color.white;
@@ -143,7 +154,7 @@ public class AJae : MonoBehaviour
 
         // 스테이지 마다 갯수 증가 및 중복가능한 랜덤 뽑아 리스트에 넣기
 
-        for(int i = 0; i < stageLen + (2 * (DaySystem.Instance.GetNowDay() - 1)); i++)
+        for(int i = 0; i < stageLen + (2 * (difficultyLevel - 1)); i++)
         {
             int index = Random.Range(0, Link.Length);
             aJaeSequence.Add(Link[index].key);
