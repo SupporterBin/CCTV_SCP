@@ -24,6 +24,9 @@ public class InteractiveObject : MonoBehaviour
     [SerializeField]
     private GameObject Tablet;
 
+    [SerializeField]
+    private GameObject ManualObject;
+
     private GameObject rayCollisionObject;
 
     [SerializeField]
@@ -31,6 +34,9 @@ public class InteractiveObject : MonoBehaviour
 
     [SerializeField]
     private TabletManager testManager;
+
+    [SerializeField]
+    private ManualManager manualManager;
 
     [SerializeField]
     private LayerMask outlineLayerMask;
@@ -60,12 +66,12 @@ public class InteractiveObject : MonoBehaviour
     {
         InteractionObject();
 
-        if (cctvManager.isOnCCTV || testManager.isOnTablet || !isOnRay)
+        if (cctvManager.isOnCCTV || testManager.isOnTablet || !isOnRay || manualManager.isOnManual)
         {
             ShowOutLine(null);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving() && !testManager.IsMoving())
+        if (Input.GetKeyDown(KeyCode.F) && rayCollisionObject != null && !cctvManager.IsMoving() && !testManager.IsMoving() && !manualManager.IsMoving())
         {
             if (rayCollisionObject == LeftMonitor)
             {
@@ -83,6 +89,10 @@ public class InteractiveObject : MonoBehaviour
             {
                 InteractTablet();
             }
+            else if (rayCollisionObject == ManualObject)
+            {
+                InteractManual();
+            }
         }
     }
 
@@ -99,7 +109,7 @@ public class InteractiveObject : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject == LeftMonitor || hitObject == CenterMonitor ||
-                hitObject == RightMonitor || hitObject == Tablet)
+                hitObject == RightMonitor || hitObject == Tablet || hitObject == ManualObject)
             {
                 rayCollisionObject = hitObject;
                 outLineObject = hitObject;
@@ -136,6 +146,10 @@ public class InteractiveObject : MonoBehaviour
     void InteractTablet()
     {
         testManager.MovingTabletView();
+    }
+    private void InteractManual()
+    {
+        manualManager.MovingManualView();
     }
 
     private void ShowOutLine(GameObject outlineable)

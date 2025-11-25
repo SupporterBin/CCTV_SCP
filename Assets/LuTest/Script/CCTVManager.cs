@@ -225,6 +225,8 @@ public class CCTVManager : MonoBehaviour
             timer += Time.deltaTime;
             float t = timer / moveDuration;
 
+            t = Mathf.SmoothStep(0f, 1f, t);
+
             playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
             playerCamera.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
             //playerCamSetting.fieldOfView = Mathf.Lerp(startFov, endFov, t);

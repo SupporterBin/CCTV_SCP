@@ -1,0 +1,209 @@
+using Unity.Cinemachine;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ManualManager : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject ManualPanel;
+    
+    [SerializeField]
+    private GameObject ScrollViewPanel;
+
+    [SerializeField]
+    private GameObject[] DetailPanels;
+
+    [SerializeField]
+    private Button BackButton;
+
+    [SerializeField]
+    private Transform playerCamera;
+
+    [SerializeField]
+    private PlayerMove move;
+
+    [SerializeField]
+    private Canvas crossHairCanvas;
+
+    private Vector3 startCameraPosition;
+    private Quaternion startCameraRotation;
+
+    private float startFov;
+    private float startFar;
+
+    private float moveDuration = 0.5f;
+    private float timer = 0f;
+
+    public bool isOnManual = false;
+    public bool isMovingManualCamera = false;
+
+    private Vector3 manualPosition = new Vector3(-1.54f, 1.745f, -0.3f);
+    private Quaternion manualRotation = Quaternion.Euler(90f, 0f, 0f);
+    private float manualFov = 30f;
+    private float manualFar = 1000f;
+
+    private CinemachineCamera playerCamSetting;
+
+
+    private void Awake()
+    {
+        if(BackButton != null)
+        {
+            // 버튼 클릭이면 메뉴얼 패널 ,, esc키면 매뉴얼 닫는 
+            BackButton.onClick.AddListener(() => BackToManualPanel());
+        }
+    }
+
+    private void Start()
+    {
+        if (playerCamera != null)
+        {
+            playerCamSetting = playerCamera.GetComponent<CinemachineCamera>();
+            if (playerCamSetting != null)
+            {
+                startFov = playerCamSetting.Lens.FieldOfView;
+                startFar = playerCamSetting.Lens.FarClipPlane;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (crossHairCanvas != null)
+        {
+            crossHairCanvas.enabled = !isOnManual;
+        }
+      
+        if (isOnManual && !isMovingManualCamera && Input.GetKeyDown(KeyCode.F))
+        {
+            ExitManualView();
+        }
+    }
+
+    private IEnumerator MovingManualCamera(bool ismoving)
+    {
+        isMovingManualCamera = true;
+        timer = 0f;
+
+        if (ismoving)
+        {
+            if (move != null && move.enabled) move.enabled = false;
+        }
+
+        Vector3 startPos;
+        Quaternion startRot;
+        float currentStartFov;
+        float currentStartFar;
+
+        if (ismoving) // 들어갈 때
+        {
+            // 현재 플레이어 위치 저장
+            startPos = playerCamera.transform.position;
+            startRot = playerCamera.transform.rotation;
+            currentStartFov = playerCamSetting.Lens.FieldOfView;
+            currentStartFar = playerCamSetting.Lens.FarClipPlane;
+
+            // 나중에 돌아올 위치로 저장
+            startCameraPosition = startPos;
+            startCameraRotation = startRot;
+        }
+        else // 나올 때
+        {
+            // 매뉴얼 위치에서 시작
+            startPos = manualPosition;
+            startRot = manualRotation;
+            currentStartFov = manualFov;
+            currentStartFar = manualFar;
+        }
+
+        Vector3 endPos = ismoving ? manualPosition : startCameraPosition;
+        Quaternion endRot = ismoving ? manualRotation : startCameraRotation;
+        float endFov = ismoving ? manualFov : this.startFov;
+        float endFar = ismoving ? manualFar : this.startFar;
+
+        while (timer < moveDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / moveDuration;
+
+            // Smooth하게 이동
+            t = t * t * (3f - 2f * t); // SmoothStep
+
+            playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
+            playerCamera.transform.rotation = Quaternion.Slerp(startRot, endRot, t);
+            playerCamSetting.Lens.FieldOfView = Mathf.Lerp(currentStartFov, endFov, t);
+            playerCamSetting.Lens.FarClipPlane = Mathf.Lerp(currentStartFar, endFar, t);
+
+            yield return null;
+        }
+
+        // 나올 때 움직임 다시 활성화
+        if (!ismoving)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (move != null) move.enabled = true;
+        }
+
+        isMovingManualCamera = false;
+    }
+    public bool IsMoving()
+    {
+        return isMovingManualCamera;
+    }
+
+    public void MovingManualView()
+    {
+        if (isMovingManualCamera || isOnManual) return;
+
+        isOnManual = true;
+        StartCoroutine(MovingManualCamera(true));
+
+        // UI 켜기 (리스트 패널)
+        if (ManualPanel != null) ManualPanel.SetActive(true);
+        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
+
+        CloseAllDetailPanels();
+    }
+    public void MoveToDetailPanel(int buttonindex)
+    {
+        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(false);
+
+        // 다른 상세 페이지 다 끄고
+        CloseAllDetailPanels();
+        // 선택한 페이지만 켜기
+        if (buttonindex >= 0 && buttonindex < DetailPanels.Length)
+        {
+            DetailPanels[buttonindex].SetActive(true);
+        }
+    }
+
+    private void ExitManualView()
+    {
+        if (isMovingManualCamera || !isOnManual) return;
+
+        isOnManual = false;
+        StartCoroutine(MovingManualCamera(false));
+
+        // 모든 패널 끄기
+        if (ManualPanel != null) ManualPanel.SetActive(false);
+        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(false);
+        CloseAllDetailPanels();
+    }
+
+    private void BackToManualPanel()
+    {
+        CloseAllDetailPanels();
+
+        // 리스트(스크롤뷰) 다시 켜기
+        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
+    }
+
+    private void CloseAllDetailPanels()
+    {
+        for(int i = 0; i < DetailPanels.Length; i++)
+        {
+            DetailPanels[i].SetActive(false);
+        }
+    }
+}
