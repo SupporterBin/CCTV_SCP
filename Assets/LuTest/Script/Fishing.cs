@@ -83,10 +83,10 @@ public class Fishing : MonoBehaviour
         float makerVelocity = 5f;
         float gravityVelocity = 5f;
 
-        if (day == 1) { zoneRange = 30f; makerVelocity = 5f; gravityVelocity = 5f; }
-        else if (day == 2) { zoneRange = 25f; }//makerVelocity = 5f; //gravityVelocity = 5f; }
-        else if (day == 3) { zoneRange = 20f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
-        else if (day == 4) { zoneRange = 15f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
+        if (day == 1) { zoneRange = 15f; makerVelocity = 3.5f; gravityVelocity = 7f; }
+        else if (day == 2) { zoneRange = 15f; }//makerVelocity = 5f; //gravityVelocity = 5f; }
+        else if (day == 3) { zoneRange = 12f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
+        else if (day == 4) { zoneRange = 12f; }//makerVelocity = 8f; //gravityVelocity = 7f; }
         else if (day >= 5) { zoneRange = 10f; }//makerVelocity = 9f; //gravityVelocity = 10f; }
 
             makerspeed = makerVelocity * 0.1f;

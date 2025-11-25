@@ -100,22 +100,22 @@ public class Button9 : MonoBehaviour
         if (GetDay() == 1)
         {
             difficultyLevel = 1;
-            lightDuration = 0.5f;
+            lightDuration = 0.4f;
         }
         else if (GetDay() == 2)
         {
             difficultyLevel = 2;
-            lightDuration = 0.5f;
+            lightDuration = 0.4f;
         }
         else if (GetDay() == 3)
         {
-            difficultyLevel = 3;
-            lightDuration = 0.5f;
+            difficultyLevel = 2;
+            lightDuration = 0.3f;
         }
         else if (GetDay() == 4 || GetDay() == 5)
         {
             difficultyLevel = 3;
-            lightDuration = 0.4f;
+            lightDuration = 0.3f;
         }
 
         // 버튼 중복 켜짐을 방지하기위한 예비용 리스트 추가 및 리스트에 버튼 수만큼 배열에 넣기
