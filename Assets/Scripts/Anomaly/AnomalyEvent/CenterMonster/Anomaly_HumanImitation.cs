@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Anomalies/Event/CenterRoom/Anomaly_HumanImitation")]
 public class Anomaly_HumanImitation : BasicEventAnomaly
 {
     [Header("변신 대상 여성")]

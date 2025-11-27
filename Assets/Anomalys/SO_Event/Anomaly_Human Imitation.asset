@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d203ead0ce1e32459a16eed290c626f, type: 3}
+  m_Name: Anomaly_Human Imitation
+  m_EditorClassIdentifier: 
+  eventName: "\uD5C8\uC218\uC544\uBE44_\uC5EC\uC131\uC73C\uB85C \uBCC0\uC2E0"
+  eventPlace: 3
+  eventType: 0
+  transformationPrefab: {fileID: 2376849698671963996, guid: 5ff7b21a5b5540c49b2e49e77da6c66f, type: 3}
+  monster_Transform: {x: 2.8, y: 3.2, z: 7.66}
+  monster_Quaternion: {x: 0.07379165, y: -0.9305502, z: -0.09079611, w: -0.34696847}
+  monster_Scale: {x: 1, y: 1, z: 1}
