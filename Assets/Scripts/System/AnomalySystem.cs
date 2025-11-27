@@ -29,7 +29,7 @@ public class AnomalySystem : MonoBehaviour
     // 일반 이상현상 리스트 (최대 2개)
     public List<ActiveAnomaly> activeStandardAnomalies = new List<ActiveAnomaly>();
     // 특수 이상현상 (최대 1개, null이면 없는 상태)
-    public ActiveAnomaly activeSpecialAnomaly = null;
+    private ActiveAnomaly activeSpecialAnomaly = null;
 
     // 다음 발생 시간 (분 단위)
     private int nextStandardTime;
@@ -348,4 +348,5 @@ public class AnomalySystem : MonoBehaviour
     public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
     public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
+    public void ClearSpecial() { ProcessEventClear(EventType.Special, 0); }
 }

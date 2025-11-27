@@ -546,7 +546,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -736,7 +754,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 15.833333
+        time: 15.883333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -748,7 +766,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Text (TMP)
+    path: GameOverText (TMP)
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -770,7 +788,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 271242783
+      path: 1634382767
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -784,7 +802,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 15.833333
+    m_StopTime: 15.883333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -844,7 +862,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 15.833333
+        time: 15.883333
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -856,14 +874,21 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Text (TMP)
+    path: GameOverText (TMP)
     classID: 1
     script: {fileID: 0}
     flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
 --- !u!114 &2642724286605103435
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,7 +19,8 @@ public enum EventType
     CCTV_Incinerate,
     CCTV_Electricity,
     CCTV_FoodRefeel,
-    Mission
+    Mission,
+    Special
 }
 
 public abstract class BasicEventAnomaly : ScriptableObject

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8810157728700345745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826fac9ee356145438e71ea65210a6c9, type: 3}
+  m_Name: CorruptedVramRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    shader: {fileID: 4800000, guid: 899322ee3ece14867ae30422e6f5da7e, type: 3}
+    passEvent: 550
 --- !u!114 &-6588776414029318411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +64,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
   - {fileID: -6588776414029318411}
-  m_RendererFeatureMap: ad6b866f10d7b46cf5764fa1c2f68fa4
+  - {fileID: -8810157728700345745}
+  m_RendererFeatureMap: ad6b866f10d7b46cf5764fa1c2f68fa46f52a7553908bc85
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -74,6 +91,20 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
+--- !u!114 &2670278405138288581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f99a5d407fc8ee45bc988f125647d3e, type: 3}
+  m_Name: CorruptedVramFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings: {effectTarget: {fileID: 0}, passEvent: 500}
 --- !u!114 &7833122117494664109
 MonoBehaviour:
   m_ObjectHideFlags: 0
