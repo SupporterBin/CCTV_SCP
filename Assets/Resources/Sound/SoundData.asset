@@ -12,53 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f7d00a68abd0745ac87bc21f96bcfb, type: 3}
   m_Name: SoundData
   m_EditorClassIdentifier: 
-  systemUiStartButtonClick: {fileID: 0}
-  systemUiTitleButtonClick: {fileID: 0}
-  systemUiNextDayButtonClick: {fileID: 0}
-  systemUiRetryButtonClick: {fileID: 0}
-  systemUiDayEndEnterAlarmClock: {fileID: 0}
+  systemUiStartButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  systemUiTitleButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  systemUiNextDayButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  systemUiRetryButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  systemUiDayEndEnterAlarmClock: {fileID: 8300000, guid: 388403f393046e442921d61c5a16e2da, type: 3}
   systemUiBgmTitle: {fileID: 0}
   systemUiBgmGameOver: {fileID: 0}
   systemUiBgmEnding: {fileID: 0}
-  ingamePlayerWalkConcrete: {fileID: 0}
-  ingameCctvZoomIn: {fileID: 0}
-  ingameTabletZoomIn: {fileID: 0}
-  ingameCctvBurnButtonClick: {fileID: 0}
-  ingameCctvShockButtonClick: {fileID: 0}
-  ingameCctvResonanceButtonClick: {fileID: 0}
-  ingameCctvSystemCheckButtonClick: {fileID: 0}
+  ingamePlayerWalkConcrete: {fileID: 8300000, guid: 4c19ed33faa212448a8966be94dde021, type: 3}
+  ingameCctvZoomIn: {fileID: 8300000, guid: 2826be2fa1694ab4c86690a34c465d09, type: 3}
+  ingameTabletZoomIn: {fileID: 8300000, guid: 2826be2fa1694ab4c86690a34c465d09, type: 3}
+  ingameCctvBurnButtonClick: {fileID: 8300000, guid: 38d107c5d46799940b91d4eb7b1cf1be, type: 3}
+  ingameCctvShockButtonClick: {fileID: 8300000, guid: 7704e3b28f1fd2d429058f9a6109f76a, type: 3}
+  ingameCctvResonanceButtonClick: {fileID: 8300000, guid: a942fbe4dcb078b4cbb919cc5ef958f2, type: 3}
+  ingameCctvSystemCheckButtonClick: {fileID: 8300000, guid: bd2c93cb3aa372042ba05bf001542c06, type: 3}
   ingameCctvFeedButtonClick: {fileID: 0}
-  ingameManualPageChangeButtonClick: {fileID: 0}
-  ingameDoorOpenHydraulic: {fileID: 0}
-  ingameDoorCloseHydraulic: {fileID: 0}
+  ingameManualPageChangeButtonClick: {fileID: 8300000, guid: 6a0267dd8a04b0640871e3c8225f0b2e, type: 3}
+  ingameDoorOpenHydraulic: {fileID: 8300000, guid: 4a6c00a51779705489f4aa1a7d5ecebd, type: 3}
+  ingameDoorCloseHydraulic: {fileID: 8300000, guid: 4a6c00a51779705489f4aa1a7d5ecebd, type: 3}
   ingameElevatorArriveDing: {fileID: 0}
-  abnormalWireOvergrowthRubber: {fileID: 0}
-  abnormalWireShortCircuitSpark: {fileID: 0}
+  abnormalWireOvergrowthRubber: {fileID: 8300000, guid: 8ae5c38f5830e3b4b9fa570a5665777f, type: 3}
+  abnormalWireShortCircuitSpark: {fileID: 8300000, guid: 6e18961e23e21754b97f3ccb0176da94, type: 3}
   abnormalMaskHumanTransform: {fileID: 0}
   abnormalMaskCreationWeepingMan: {fileID: 0}
-  abnormalMaskBreakCeramic: {fileID: 0}
-  abnormalTentacleAggressiveWindowHit: {fileID: 0}
-  abnormalTentacleOvergrowthSquirm: {fileID: 0}
-  minigameChangeGameButtonClick: {fileID: 0}
-  minigameStartButtonClick: {fileID: 0}
-  minigameSuccess: {fileID: 0}
-  minigameFail: {fileID: 0}
-  minigameKeypadLeadSignal: {fileID: 0}
-  minigameKeypadButtonPress: {fileID: 0}
-  minigameFishingSuccessZoneLoop: {fileID: 0}
-  minigameRhythmKeyInput: {fileID: 0}
-  deathCommonStabilityZeroGeneratorExplode: {fileID: 0}
-  deathCommonSirenLoopBeforeDeath: {fileID: 0}
-  deathCommonWindowBreak: {fileID: 0}
+  abnormalMaskBreakCeramic: {fileID: 8300000, guid: f22403584e2f167479d8b90e0ea5fa49, type: 3}
+  abnormalTentacleAggressiveWindowHit: {fileID: 8300000, guid: afce0787820ed434bb085ad48caa986b, type: 3}
+  abnormalTentacleOvergrowthSquirm: {fileID: 8300000, guid: 35904b91cd1953c4283664f1dbe998ce, type: 3}
+  minigameChangeGameButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  minigameStartButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
+  minigameSuccess: {fileID: 8300000, guid: 175141b3c8810d94b9f5a96fb497cc1c, type: 3}
+  minigameFail: {fileID: 8300000, guid: 9f9cf22de0f3c0645b60bc7c0e112656, type: 3}
+  minigameKeypadLeadSignal: {fileID: 8300000, guid: 36efbbd72e89c0948b4426fd295de4ed, type: 3}
+  minigameKeypadButtonPress: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
+  minigameFishingSuccessZoneLoop: {fileID: 8300000, guid: 873752e8fde33d94cacbdecf3d2ccab9, type: 3}
+  minigameRhythmKeyInput: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
+  deathCommonStabilityZeroGeneratorExplode: {fileID: 8300000, guid: 37dbf2ddaaf67e44a9080d00d4e28b87, type: 3}
+  deathCommonSirenLoopBeforeDeath: {fileID: 8300000, guid: 2bc51c29644fa3f46b5f455deaa31fab, type: 3}
+  deathCommonWindowBreak: {fileID: 8300000, guid: e8957b7972e110f4eb138f3a828b3219, type: 3}
   deathWireWhipSwing: {fileID: 0}
-  deathWireTighten: {fileID: 0}
-  deathWireStrangle: {fileID: 0}
+  deathWireTighten: {fileID: 8300000, guid: 35041d6bee074fb4582f44015ad95163, type: 3}
+  deathWireStrangle: {fileID: 8300000, guid: 0bc3fe35fd47f2646950773aba814ae7, type: 3}
   deathMaskCrowdLaugh: {fileID: 0}
   deathMaskManLowLaugh: {fileID: 0}
   deathTentaclePatternA: {fileID: 0}
   deathTentaclePatternB: {fileID: 0}
   deathTentaclePatternC: {fileID: 0}
-  protocolKeypadButtonClick: {fileID: 0}
+  protocolKeypadButtonClick: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
   protocolLoadingLoop: {fileID: 0}
-  protocolSuccess: {fileID: 0}
-  protocolFail: {fileID: 0}
+  protocolSuccess: {fileID: 8300000, guid: 7e23e34d74c4e61409cc6f4a943374d6, type: 3}
+  protocolFail: {fileID: 8300000, guid: 0cac0bea409cab845b9e286dd7777bbd, type: 3}
