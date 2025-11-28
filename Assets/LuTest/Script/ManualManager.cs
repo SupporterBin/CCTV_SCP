@@ -186,8 +186,8 @@ public class ManualManager : MonoBehaviour
         StartCoroutine(MovingManualCamera(false));
 
         // 모든 패널 끄기
-        if (ManualPanel != null) ManualPanel.SetActive(false);
-        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(false);
+        if (ManualPanel != null) ManualPanel.SetActive(true);
+        if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
         CloseAllDetailPanels();
     }
 
