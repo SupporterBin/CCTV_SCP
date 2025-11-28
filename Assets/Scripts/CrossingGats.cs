@@ -7,6 +7,12 @@ public class CrossingGats : MonoBehaviour
     private GameObject guide;
     private bool isClick = false;
 
+    [SerializeField] LightOutAnomaly lightOutAnomaly;
+
+    private void Awake()
+    {
+        lightOutAnomaly.SetCrossingGats(gameObject);
+    }
 
     private void OnMouseOver()
     {
@@ -33,7 +39,9 @@ public class CrossingGats : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1.0f);
 
-        GameManager.Instance.anomalySystem.ClearMission(-2);
+        gameObject.GetComponent<Animator>().SetBool("isShotDown", true);
+        GameManager.Instance.anomalySystem.ClearMission(2);
+        
         yield return new WaitForSecondsRealtime(1.0f);
 
         gameObject.GetComponent<Animator>().SetBool("isAction", false);

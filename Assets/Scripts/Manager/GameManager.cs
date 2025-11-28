@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isTimeStop;
     [HideInInspector] public bool isDeadWarring;
 
+    [Header("미상개체 방 빛 모음집")]
+    public Light[] lights; 
+    
     public int protocolNum;
 
 

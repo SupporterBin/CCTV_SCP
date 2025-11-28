@@ -43,17 +43,17 @@ public class StabilityManager : MonoBehaviour
         if (currentStability[2] <= 0 && dam)
         {
             dam = false;
-            ExecutionTimeLineManager.instance.PlayExecutionTimeline(0);
+            ProtocolSystem.instance.StartProtocol(0);
         }
         else if (currentStability[1] <= 1 && dam)
         {
             dam = false;
-            ExecutionTimeLineManager.instance.PlayExecutionTimeline(1);
+            ProtocolSystem.instance.StartProtocol(1);
         }
         else if (currentStability[0] <= 1 && dam)
         {
             dam = false;
-            ExecutionTimeLineManager.instance.PlayExecutionTimeline(2);
+            ProtocolSystem.instance.StartProtocol(2);
         }
     }
 

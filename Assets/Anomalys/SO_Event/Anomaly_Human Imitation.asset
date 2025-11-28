@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: "\uD5C8\uC218\uC544\uBE44_\uC5EC\uC131\uC73C\uB85C \uBCC0\uC2E0"
   eventPlace: 3
-  eventType: 0
+  eventType: 3
   transformationPrefab: {fileID: 2376849698671963996, guid: 5ff7b21a5b5540c49b2e49e77da6c66f, type: 3}
-  monster_Transform: {x: 2.8, y: 3.2, z: 7.66}
-  monster_Quaternion: {x: 0.07379165, y: -0.9305502, z: -0.09079611, w: -0.34696847}
-  monster_Scale: {x: 1, y: 1, z: 1}
+  monster_Transform: {x: -1.7, y: 1.06, z: 1.16}
+  monster_Quaternion: {x: -0.09079611, y: -0.3469684, z: -0.07379164, w: 0.9305503}
+  monster_Scale: {x: 0.33, y: 0.33, z: 0.33}

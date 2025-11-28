@@ -244,6 +244,7 @@ public class AnomalySystem : MonoBehaviour
         }
 
         // 3. 아무것도 해당 안 됨 -> 오답 패널티
+        if (index == -1) return;
         Debug.Log("[오답] 이상현상이 아닌데 눌렀음 (-15)");
         StabilityManager.Instance?.StabilizationDown(15, index);
     }
@@ -348,5 +349,5 @@ public class AnomalySystem : MonoBehaviour
     public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
     public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
-    public void ClearSpecial() { ProcessEventClear(EventType.Special, 0); }
+    public void ClearSpecial() { ProcessEventClear(EventType.Special, -1); }
 }

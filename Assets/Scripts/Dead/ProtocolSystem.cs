@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class ProtocolSystem : MonoBehaviour
 {
+    public static ProtocolSystem instance;
+
     [SerializeField, Header("게임오버 카운터 다운 시간(초)")]
     private float protocol_CountTime = 10;
-    public bool protocol_Activated = false; // 프로토콜을 작동 시킨적이 있나요?
+    public bool protocol_Activated = false; //프로토콜 작동!
+    public bool protocol_FinalChased = false; //한번 찬스가 발동했나요?
 
     //한번 실행했는지 검사하는 거.
     private bool isWarringStartEventCheck = false;
@@ -14,7 +17,29 @@ public class ProtocolSystem : MonoBehaviour
     private BoxCollider checkCollider;
 
     [SerializeField, Header("키패드")]
-    private KeyPad protocolKeyPad; 
+    private KeyPad protocolKeyPad;
+
+    bool isTriggerWd = false;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    int cachedIndex = 0;
+    public void  StartProtocol(int index)
+    {
+        cachedIndex = index;
+
+        if (protocol_FinalChased) Protocal_GameOver();
+
+        protocol_FinalChased = true;
+        protocol_Activated = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -69,14 +94,18 @@ public class ProtocolSystem : MonoBehaviour
     {
         Debug.Log("게임 오버");
         isDeadEventCheck = true;
+        ExecutionTimeLineManager.instance.PlayExecutionTimeline(cachedIndex);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isTriggerWd) return;
+
         if (!protocolKeyPad.GetSucess()) return;
 
         if (other.gameObject.tag != "Player") return;
 
         Protocol_ComeBack();
+        isTriggerWd = true;
     }
 }
