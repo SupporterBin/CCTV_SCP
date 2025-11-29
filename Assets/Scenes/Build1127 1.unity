@@ -15984,7 +15984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999817
+      value: 44.999393
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -16276,7 +16276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592805013236307667, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.007
+      value: 1.012
       objectReference: {fileID: 0}
     - target: {fileID: 7592805013236307667, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16545,6 +16545,7 @@ MonoBehaviour:
   playerCamera: {fileID: 330585546}
   move: {fileID: 216343721}
   crossHairCanvas: {fileID: 61108341}
+  protocolNumber: {fileID: 0}
   isOnManual: 0
   isMovingManualCamera: 0
 --- !u!4 &891335780
@@ -21058,7 +21059,7 @@ PrefabInstance:
     - target: {fileID: 4491220803988335512, guid: 39b70c72e4a9c8b4091d5fceabbf2e43, type: 3}
       propertyPath: ManualObject
       value: 
-      objectReference: {fileID: 695033391}
+      objectReference: {fileID: 1459755870}
     - target: {fileID: 4491220803988335512, guid: 39b70c72e4a9c8b4091d5fceabbf2e43, type: 3}
       propertyPath: RightMonitor
       value: 
@@ -26764,8 +26765,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f211744a5285c884a9cd4cf21f2c874a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1459755871}
   m_SourcePrefab: {fileID: 100100000, guid: f211744a5285c884a9cd4cf21f2c874a, type: 3}
+--- !u!1 &1459755870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f211744a5285c884a9cd4cf21f2c874a, type: 3}
+  m_PrefabInstance: {fileID: 1459755869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1459755871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459755870}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1461703720
 GameObject:
   m_ObjectHideFlags: 0
