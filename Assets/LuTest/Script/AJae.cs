@@ -218,7 +218,7 @@ public class AJae : MonoBehaviour
 
         if (inputSequence.Count == aJaeSequence.Count)
         {
-            StabilityManager.Instance.StabilizationUp(10, 2);
+            StabilityManager.Instance.StabilizationUp(10, 0);
             // 성공 함수여기 부분 고쳐야됨 테스트용으로 계속 나오게 만듬.
             Debug.Log($"{DaySystem.Instance.GetNowDay()} 일차");
             EndGame();
@@ -239,7 +239,7 @@ public class AJae : MonoBehaviour
     {
         isAjaePlaying = false;
         aJaePanel.SetActive(false);
-        tabletSceneManager.tabletPanels[2].SetActive(true);
+        tabletSceneManager.tabletPanels[0].SetActive(true);
         tabletSceneManager.isPlaying = false;
     }
 }

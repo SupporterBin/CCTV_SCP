@@ -62,6 +62,7 @@ public class TabletSceneManager : MonoBehaviour
         GameStart(panelBtIndex);
     }
 
+    //ÁÂ ¾ÆÀç , Áß ¹öÆ° , ¿ì ÇÇ½Ì
     private void GameStart(int panelBtIndex)
     {
         isPlaying = true;
@@ -69,19 +70,22 @@ public class TabletSceneManager : MonoBehaviour
         if (panelBtIndex == 0)
         {
             isPlaying = true;
-            button9.StartButton9();
+            //button9.StartButton9();
+            aJae.StartAJae();
             tabletPanels[0].SetActive(false);
         }
         else if (panelBtIndex == 1)
         {
             isPlaying = true;
-            fishing.StartFishing();
+            //fishing.StartFishing();
+            button9.StartButton9();
             tabletPanels[1].SetActive(false);
         }
         else if (panelBtIndex == 2)
         {
             isPlaying = true;
-            aJae.StartAJae();
+            //aJae.StartAJae();
+            fishing.StartFishing();
             tabletPanels[2].SetActive(false);
         }
 

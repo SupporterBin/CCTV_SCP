@@ -198,7 +198,7 @@ public class Fishing : MonoBehaviour
 
             if (progressTime >= successTime)
             {
-                StabilityManager.Instance.StabilizationUp(10, 1);
+                StabilityManager.Instance.StabilizationUp(10, 2);
                 EndGame();
             }
         }
@@ -235,7 +235,7 @@ public class Fishing : MonoBehaviour
         // 이건 걍 미니 게임 끝났을 때 하는 거
         isFishingPlaying = false;
         fishingPanel.SetActive(false);
-        tabletSceneManager.tabletPanels[1].SetActive(true);
+        tabletSceneManager.tabletPanels[2].SetActive(true);
         tabletSceneManager.isPlaying = false;
     }
 }

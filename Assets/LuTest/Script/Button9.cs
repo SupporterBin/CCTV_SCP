@@ -196,7 +196,7 @@ public class Button9 : MonoBehaviour
             else
             {
                 Debug.Log($"{DaySystem.Instance.GetNowDay()} 일차 클리어");
-                StabilityManager.Instance.StabilizationUp(10, 0);
+                StabilityManager.Instance.StabilizationUp(10, 1);
                 EndGame();
             }
         }
@@ -238,7 +238,7 @@ public class Button9 : MonoBehaviour
     private void EndGame()
     {
         button9Panel.SetActive(false);
-        tabletSceneManager.tabletPanels[0].SetActive(true);
+        tabletSceneManager.tabletPanels[1].SetActive(true);
         tabletSceneManager.isPlaying = false;
 
         if(DisplayNum != null)

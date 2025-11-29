@@ -2,6 +2,7 @@ using Unity.Cinemachine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ManualManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class ManualManager : MonoBehaviour
 
     [SerializeField]
     private Canvas crossHairCanvas;
+
+    [SerializeField]
+    private TextMeshProUGUI protocolNumber;
 
     private Vector3 startCameraPosition;
     private Quaternion startCameraRotation;
@@ -79,6 +83,13 @@ public class ManualManager : MonoBehaviour
         {
             ExitManualView();
         }
+
+        UpdateProtocolNumber();
+    }
+
+    private void UpdateProtocolNumber()
+    {
+        protocolNumber.text = GameManager.Instance.protocolNum.ToString();
     }
 
     private IEnumerator MovingManualCamera(bool ismoving)
