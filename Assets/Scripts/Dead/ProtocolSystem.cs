@@ -5,7 +5,7 @@ public class ProtocolSystem : MonoBehaviour
     public static ProtocolSystem instance;
 
     [SerializeField, Header("게임오버 카운터 다운 시간(초)")]
-    private float protocol_CountTime = 10;
+    private float protocol_CountTime = 20;
     public bool protocol_Activated = false; //프로토콜 작동!
     public bool protocol_FinalChased = false; //한번 찬스가 발동했나요?
 
