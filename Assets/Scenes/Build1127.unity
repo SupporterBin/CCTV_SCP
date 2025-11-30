@@ -15476,7 +15476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999493
+      value: 44.999985
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -37771,7 +37771,7 @@ GameObject:
   - component: {fileID: 2051374350}
   - component: {fileID: 2051374349}
   m_Layer: 5
-  m_Name: Button
+  m_Name: NextDayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37841,9 +37841,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1429709052}
         m_TargetAssemblyTypeName: DaySystem, Assembly-CSharp
-        m_MethodName: NextDayButton
+        m_MethodName: NextDayEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37866,7 +37866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

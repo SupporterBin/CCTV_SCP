@@ -9,8 +9,8 @@ public class DaySystem : MonoBehaviour
     public static DaySystem Instance;
 
     //날짜
-    private int maxDay;
-    private int nowDay = 1;
+    private int maxDay = 5;
+    private static int nowDay = 1;
 
     //시간
     private int totalMinute;
