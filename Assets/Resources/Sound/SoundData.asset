@@ -31,11 +31,11 @@ MonoBehaviour:
   ingameManualPageChangeButtonClick: {fileID: 8300000, guid: 6a0267dd8a04b0640871e3c8225f0b2e, type: 3}
   ingameDoorOpenHydraulic: {fileID: 8300000, guid: 4a6c00a51779705489f4aa1a7d5ecebd, type: 3}
   ingameDoorCloseHydraulic: {fileID: 8300000, guid: 4a6c00a51779705489f4aa1a7d5ecebd, type: 3}
-  ingameElevatorArriveDing: {fileID: 0}
+  ingameElevatorArriveDing: {fileID: 8300000, guid: d0a8dd3c671887b4e9240e5f93ff3079, type: 3}
   abnormalWireOvergrowthRubber: {fileID: 8300000, guid: 8ae5c38f5830e3b4b9fa570a5665777f, type: 3}
   abnormalWireShortCircuitSpark: {fileID: 8300000, guid: 6e18961e23e21754b97f3ccb0176da94, type: 3}
-  abnormalMaskHumanTransform: {fileID: 0}
-  abnormalMaskCreationWeepingMan: {fileID: 0}
+  abnormalMaskHumanTransform: {fileID: 8300000, guid: 47be6721c1a2133409c780063086b9c6, type: 3}
+  abnormalMaskCreationWeepingMan: {fileID: 8300000, guid: d1bba25279ef5774ebba7f84e1c243b2, type: 3}
   abnormalMaskBreakCeramic: {fileID: 8300000, guid: f22403584e2f167479d8b90e0ea5fa49, type: 3}
   abnormalTentacleAggressiveWindowHit: {fileID: 8300000, guid: afce0787820ed434bb085ad48caa986b, type: 3}
   abnormalTentacleOvergrowthSquirm: {fileID: 8300000, guid: 35904b91cd1953c4283664f1dbe998ce, type: 3}
@@ -50,15 +50,15 @@ MonoBehaviour:
   deathCommonStabilityZeroGeneratorExplode: {fileID: 8300000, guid: 37dbf2ddaaf67e44a9080d00d4e28b87, type: 3}
   deathCommonSirenLoopBeforeDeath: {fileID: 8300000, guid: 2bc51c29644fa3f46b5f455deaa31fab, type: 3}
   deathCommonWindowBreak: {fileID: 8300000, guid: e8957b7972e110f4eb138f3a828b3219, type: 3}
-  deathWireWhipSwing: {fileID: 0}
+  deathWireWhipSwing: {fileID: 8300000, guid: 6fa714981be4b9d46939324a823f2ac2, type: 3}
   deathWireTighten: {fileID: 8300000, guid: 35041d6bee074fb4582f44015ad95163, type: 3}
   deathWireStrangle: {fileID: 8300000, guid: 0bc3fe35fd47f2646950773aba814ae7, type: 3}
-  deathMaskCrowdLaugh: {fileID: 0}
-  deathMaskManLowLaugh: {fileID: 0}
+  deathMaskCrowdLaugh: {fileID: 8300000, guid: 46aaccca0d2259c4080670ebbe8d5ed7, type: 3}
+  deathMaskManLowLaugh: {fileID: 8300000, guid: 4607603614b024a42810dfc71a259265, type: 3}
   deathTentaclePatternA: {fileID: 0}
   deathTentaclePatternB: {fileID: 0}
   deathTentaclePatternC: {fileID: 0}
   protocolKeypadButtonClick: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
-  protocolLoadingLoop: {fileID: 0}
+  protocolLoadingLoop: {fileID: 8300000, guid: e23e94a7d1c322942a26c3176fd155f7, type: 3}
   protocolSuccess: {fileID: 8300000, guid: 7e23e34d74c4e61409cc6f4a943374d6, type: 3}
   protocolFail: {fileID: 8300000, guid: 0cac0bea409cab845b9e286dd7777bbd, type: 3}
