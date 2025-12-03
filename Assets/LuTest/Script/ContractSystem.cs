@@ -1,0 +1,141 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
+using Unity.VisualScripting;
+
+public class ContractSystem : MonoBehaviour
+{
+    [Header("Main Panel Setting")]
+    public GameObject backGroundPanel; // RealBackGroundPanel
+    public RectTransform contractPanel; // BackGroundPanel
+    public Image fadeOutImage;
+    public GameObject startButton;
+    public GameObject gameLogo;
+
+    [Header("Interact Objects")]
+    public Image checkMarkLeft;
+    public Image checkMarkRight;
+
+    [Header("Base Setting")]
+    public float slideDuration = 0.8f;
+    public Vector2 targetPostion = Vector2.zero;
+
+    [Header("UI Buttons")]
+    public Button gameStartButton;
+    public Button yesButton;
+    public Button noButton;
+
+    private Vector2 InitPosition;
+
+    void Start()
+    {
+        if(fadeOutImage != null)
+        {
+            fadeOutImage.color = new Color(0,0,0,0); // cho gi hwa  hok si mol la seo
+            fadeOutImage.raycastTarget = false;
+        }
+
+        if (contractPanel != null)
+        {
+            InitPosition = contractPanel.anchoredPosition;
+        }
+
+        if (checkMarkLeft != null)
+        {
+            checkMarkLeft.gameObject.SetActive(true);
+            checkMarkLeft.fillAmount = 0f;
+            checkMarkLeft.raycastTarget = false;
+        }
+
+        if (checkMarkRight != null)
+        {
+            checkMarkRight.gameObject.SetActive(true);
+            checkMarkRight.fillAmount = 0f;
+            checkMarkRight.raycastTarget = false;
+        }
+
+        if (gameStartButton != null)
+        {
+            gameStartButton.onClick.AddListener(() => OnClickTitleStartButton());
+        }
+
+        if(yesButton != null)
+        {
+            yesButton.onClick.AddListener(() => OnClickYesButton());
+        }
+
+        if (noButton != null)
+        {
+            noButton.onClick.AddListener(() => OnClickNoButton());
+        }
+
+    }
+
+    public void OnClickTitleStartButton()
+    {
+        if(startButton != null)
+        {
+            startButton.SetActive(false);
+            gameLogo.SetActive(false);
+        }
+        backGroundPanel.SetActive(true);
+        //contractPanel.DOAnchorPos(targetPostion, duration).SetEase(Ease.OutBack);
+
+        contractPanel.rotation = Quaternion.Euler(0, 0, -40f);
+
+        // [비법 2] 속도를 0.5초로 줄여서 더 스피디하게 (기존 0.8초 -> 0.5초)
+        float duration = 3f;
+
+        // 1. 위치 이동 (위에서 아래로)
+        contractPanel.DOAnchorPos(targetPostion, duration).SetEase(Ease.OutBack);
+
+        // 2. 회전 복구 (삐딱한 각도 -> 0도)
+        // 내려오면서 각도가 딱 맞춰지면 쾌감이 듭니다.
+        contractPanel.DORotate(Vector3.zero, duration).SetEase(Ease.OutBack);
+
+    }
+
+    public void OnClickYesButton()
+    {
+        if (checkMarkLeft != null)
+        {
+            checkMarkLeft.DOFillAmount(1f, 0.5f).SetEase(Ease.Linear);
+        }
+
+        DOVirtual.DelayedCall(1.0f, () =>
+        {
+            FadeOut();
+        });
+    }
+
+    public void OnClickNoButton()
+    {
+        if (checkMarkRight != null)
+        {
+            checkMarkRight.DOFillAmount(1f, 0.5f).SetEase(Ease.Linear);
+        }
+
+        DOVirtual.DelayedCall(1.0f, () =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        });
+
+    }
+
+    private void FadeOut()
+    {
+        if(fadeOutImage != null)
+        {
+            fadeOutImage.raycastTarget = true;
+            fadeOutImage.DOFade(1f, 2f).OnComplete(() =>
+            {
+                SceneManager.LoadScene(1);
+            });
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+}

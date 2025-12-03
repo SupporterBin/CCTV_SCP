@@ -1,8 +1,9 @@
-using Unity.Cinemachine;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ManualManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class ManualManager : MonoBehaviour
 
     [SerializeField]
     private Button BackButton;
+
+    [SerializeField]
+    private Button ExitButton;
 
     [SerializeField]
     private Transform playerCamera;
@@ -57,6 +61,15 @@ public class ManualManager : MonoBehaviour
             // 버튼 클릭이면 메뉴얼 패널 ,, esc키면 매뉴얼 닫는 
             BackButton.onClick.AddListener(() => BackToManualPanel());
         }
+        if (ExitButton != null)
+        {
+            ExitButton.onClick.AddListener(() => ExitToManual());
+        }
+    }
+
+    private void ExitToManual()
+    {
+        ExitManualView();
     }
 
     private void Start()
@@ -78,10 +91,21 @@ public class ManualManager : MonoBehaviour
         {
             crossHairCanvas.enabled = !isOnManual;
         }
-      
-        if (isOnManual && !isMovingManualCamera && Input.GetKeyDown(KeyCode.F))
+
+        if (isOnManual && !isMovingManualCamera && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             ExitManualView();
+        }
+
+        if (isOnManual && ScrollViewPanel.activeSelf)
+        {
+            BackButton.gameObject.SetActive(false);
+            ExitButton.gameObject.SetActive(true);
+        }
+        else if (ScrollViewPanel.activeSelf == false)
+        {
+            ExitButton.gameObject.SetActive(false);
+            BackButton.gameObject.SetActive(true);
         }
 
         UpdateProtocolNumber();
@@ -200,6 +224,9 @@ public class ManualManager : MonoBehaviour
         if (ManualPanel != null) ManualPanel.SetActive(true);
         if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
         CloseAllDetailPanels();
+
+        BackButton.gameObject.SetActive(false);
+        ExitButton.gameObject.SetActive(true);
     }
 
     private void BackToManualPanel()
