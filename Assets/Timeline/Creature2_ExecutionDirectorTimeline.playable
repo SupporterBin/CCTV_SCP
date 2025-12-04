@@ -2383,11 +2383,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 37dbf2ddaaf67e44a9080d00d4e28b87, type: 3}
+  m_Clip: {fileID: 8300000, guid: 735404a28b1299c429699d28e75738ee, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 1
+    volume: 0.113
 --- !u!74 &-5028702633530782412
 AnimationClip:
   m_ObjectHideFlags: 0
