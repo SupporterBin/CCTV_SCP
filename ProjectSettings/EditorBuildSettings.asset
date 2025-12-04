@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/RealGameFileScenes/Title.unity
     guid: 66f3991d2257c9748805afbd8460debd
   - enabled: 1
-    path: Assets/Scenes/Build1127.unity
-    guid: e8d8bf783afbb74488f3ef1f6a3d765f
+    path: Assets/Scenes/Build1205.unity
+    guid: 5f527f1e820ebe74caabc75aa7ad7bbd
   - enabled: 1
     path: Assets/Scenes/RealGameFileScenes/GameClear.unity
     guid: 25efc3da144040048ac377e6a7abcb68
