@@ -106,6 +106,7 @@ public class KeyPad : MonoBehaviour
         if (GameManager.Instance.protocolNum == currentKeyCode)
         {
             TrueEnter();
+            ProtocolSystem.instance.StopProtocol();
         }
         else
         {
@@ -120,13 +121,14 @@ public class KeyPad : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            StabilityManager.Instance.StabilizationUp(-StabilityManager.Instance.CurrentStability[i] + 15f, i);
+            StabilityManager.Instance.StabilizationUp(StabilityManager.Instance.CurrentStability[i] + 15f, i);
         }
+            StabilityManager.Instance.ProtocolSuccess();
 
-        if(StabilityManager.Instance.saveSound != null)
-        {
-            SoundManager.Instance.StopSFX(StabilityManager.Instance.saveSound);
-        }
+        //if(StabilityManager.Instance.saveSound != null)
+        //{
+        //    SoundManager.Instance.StopSFX(StabilityManager.Instance.saveSound);
+        //}
 
         isSuccess = true;
         GameManager.Instance.isDeadWarring = false;

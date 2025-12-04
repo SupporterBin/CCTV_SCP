@@ -318,6 +318,17 @@ public class AnomalySystem : MonoBehaviour
         nextSpecialTime = Random.Range(current + special_MinMinute, current + special_MaxMinute);
     }
 
+    public void ClearProtocol()
+    {
+        foreach(ActiveAnomaly anomaly in activeStandardAnomalies)
+        {
+            anomaly.eventScript.Clear();
+        }
+        activeStandardAnomalies.Clear();
+        activeSpecialAnomaly.eventScript.Clear();
+        activeSpecialAnomaly = null;
+    }
+
     // 빈 방 찾기 (중복 방지)
     private EventPlace GetRandomAvailablePlace()
     {

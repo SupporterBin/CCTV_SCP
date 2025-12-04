@@ -10,7 +10,7 @@ public class Anomaly_AppetiteUp : BasicEventAnomaly
     {
         anim = GameManager.Instance.anomalySystem.monsters[0].GetComponent<Animator>();
 
-        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalMaskHumanTransform,
+        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalTentacleAggressiveWindowHit,
             GameManager.Instance.anomalySystem.monsters[1].transform.position, 20, false);
 
         anim.Play("Skill1");

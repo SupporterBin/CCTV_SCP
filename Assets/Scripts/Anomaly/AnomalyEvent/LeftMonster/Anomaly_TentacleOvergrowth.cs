@@ -12,7 +12,7 @@ public class Anomaly_TentacleOvergrowth : BasicEventAnomaly
     {
         Transform root = GameManager.Instance.anomalySystem.specialObjects[0].transform;
 
-        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalTentacleAggressiveWindowHit,
+        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalTentacleOvergrowthSquirm,
            GameManager.Instance.anomalySystem.monsters[1].transform.position, 20, false);
 
         foreach (Transform child in root.GetComponentsInChildren<Transform>(true))

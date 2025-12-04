@@ -21,6 +21,7 @@ public class ProtocolSystem : MonoBehaviour
 
     bool isTriggerWd = false;
 
+    AudioSource saveSound;
 
     private void Awake()
     {
@@ -34,11 +35,16 @@ public class ProtocolSystem : MonoBehaviour
     public void  StartProtocol(int index)
     {
         cachedIndex = index;
+        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
 
         if (protocol_FinalChased) Protocal_GameOver();
 
         protocol_FinalChased = true;
         protocol_Activated = true;
+    }
+    public void StopProtocol() { 
+        if(saveSound != null)
+            Destroy(saveSound);
     }
 
     // Update is called once per frame

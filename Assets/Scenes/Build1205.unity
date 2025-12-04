@@ -11776,7 +11776,7 @@ PlayableDirector:
   m_GameObject: {fileID: 580823133}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 384ad67bb5779244da14a1ac2fdd5a51, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 075c5ff61d32c3d479a8866fecfcaed5, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -11861,7 +11861,7 @@ PlayableDirector:
     - a0262a380613afd439bdba25d257e4c6: {fileID: 1190363909}
     - 0c4b3c7e39d884c45a4c4b3ab5027afd: {fileID: 571818321}
     - e53702796e4dcb544a7ca5e56015150c: {fileID: 330585548}
-    - 86e10e8c12668e341953870c4c0de34d: {fileID: 960385770}
+    - 86e10e8c12668e341953870c4c0de34d: {fileID: 1782581445}
 --- !u!4 &580823137
 Transform:
   m_ObjectHideFlags: 0
@@ -17108,7 +17108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.99999
+      value: 44.999954
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -18945,7 +18945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guide: {fileID: 501455623}
-  anomaly: {fileID: 0}
+  anomaly: {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
 --- !u!4 &972700261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3107598063948010452, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}

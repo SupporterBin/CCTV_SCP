@@ -29,8 +29,6 @@ public class StabilityManager : MonoBehaviour
     [HideInInspector]
     public float currentGetMask = 0;
 
-    [HideInInspector] //사이렌 사운드 끄기 위한 용도
-    public AudioSource saveSound;
 
     private void Awake()
     {
@@ -50,19 +48,16 @@ public class StabilityManager : MonoBehaviour
         if (currentStability[2] <= 0 && dam)
         {
             dam = false;
-            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(2);
         }
         else if (currentStability[1] <= 1 && dam)
         {
             dam = false;
-            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(1);
         }
         else if (currentStability[0] <= 1 && dam)
         {
             dam = false;
-            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(0);
         }
 
@@ -75,7 +70,6 @@ public class StabilityManager : MonoBehaviour
                 if(!uDead)
                 {
                     GameManager.Instance.anomalySystem.specialObjects[1].GetComponent<Animator>().Play("On");
-                    saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
                     uDead = true;
                 }
             }
@@ -85,12 +79,12 @@ public class StabilityManager : MonoBehaviour
     // 단발성 감소 (대처 실패, 오답 등)
     public void StabilizationDown(float value, int index)
     {
-        currentStability[index] = Mathf.Clamp(currentStability[index] -= value, 0f, maxStability);
+        currentStability[index] = Mathf.Clamp(currentStability[index] - value, 0f, maxStability);
     }
 
     public void StabilizationUp(float value, int index)
     {
-        currentStability[index] = Mathf.Clamp(currentStability[index] += value, 0f, maxStability);
+        currentStability[index] = Mathf.Clamp(currentStability[index] + value, 0f, maxStability);
     }
 
     // =========================================================
@@ -119,5 +113,10 @@ public class StabilityManager : MonoBehaviour
 
         // 3. 최종 적용 (FixedUpdate에서 호출되므로 Time.fixedDeltaTime 곱함)
         currentStability[roomIndex] = Mathf.Clamp(currentStability[roomIndex] -= currentDrainRate * Time.fixedDeltaTime, 0f, maxStability);
+    }
+
+    public void ProtocolSuccess()
+    {
+        dam = true;
     }
 }
