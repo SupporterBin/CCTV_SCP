@@ -17108,7 +17108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999374
+      value: 44.99978
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -41342,8 +41342,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
   - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
   - {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
+  - {fileID: 11400000, guid: 76806f2fa1b62fa438efe216a25ff09b, type: 2}
   specialEventPool:
   - {fileID: 11400000, guid: c391712167fcd4c44826990189ed17a4, type: 2}
   activeStandardAnomalies: []

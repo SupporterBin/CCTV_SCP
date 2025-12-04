@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Anomaly_LightOut
-  m_EditorClassIdentifier: Assembly-CSharp::LightOutAnomaly
+  m_Script: {fileID: 11500000, guid: 2c082736b6b390a41b4a2256461d2781, type: 3}
+  m_Name: New Light Out Anomaly
+  m_EditorClassIdentifier: 
   eventName: "\uC804\uC120\uB9E8_\uC815\uC804"
   eventPlace: 4
   eventType: 6
