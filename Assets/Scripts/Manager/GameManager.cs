@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
     bool isOptionMode = false;
     public bool IsOptionMode => isOptionMode;
 
+    //게임 시작했나요?
+    [HideInInspector]
+    public bool isGameStart = false;
+
+
     [Header("세팅 해야되는 시스템들")]
     public AnomalySystem anomalySystem;
 

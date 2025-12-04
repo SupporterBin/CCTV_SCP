@@ -118,9 +118,13 @@ public class DaySystem : MonoBehaviour
         if (minute / 10 == 0) { return hour + ":0" + minute; }
         else return hour + ":" + minute;
     }
-
+    
     public string GetDayText() { return "Day " + nowDay; }
 
+    /// <summary>
+    /// Day 시스템의 Day는 1일 -> 1 값.
+    /// </summary>
+    /// <returns></returns>
     public int GetNowDay() { return nowDay; }
 
     /// <summary>

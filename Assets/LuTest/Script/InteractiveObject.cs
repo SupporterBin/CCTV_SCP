@@ -182,7 +182,17 @@ public class InteractiveObject : MonoBehaviour
     }
     private void InteractManual()
     {
-        // Here Is Manual Interaction Timing
+        if(DaySystem.Instance.GetNowDay() == 1)
+        {
+            if (GameManager.Instance.isGameStart) return;
+
+            GameManager.Instance.isGameStop = false;
+            GameManager.Instance.isGameStart = true;
+
+            GameManager.Instance.anomalySystem.specialObjects[3].GetComponent<Animator>().Play("Close");
+            GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Close");
+        }
+
         manualManager.MovingManualView();
     }
     private void InteractBarrel()

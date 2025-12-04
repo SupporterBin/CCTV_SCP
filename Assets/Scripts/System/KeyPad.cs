@@ -95,9 +95,11 @@ public class KeyPad : MonoBehaviour
 
         loding_Obj.SetActive(true);
 
-        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.protocolLoadingLoop);
+        AudioSource SaveSound = SoundManager.Instance.PlayStoppable2DSFX(SoundManager.Instance.Data.protocolLoadingLoop);
 
         yield return new WaitForSecondsRealtime(2.0f);
+
+        SoundManager.Instance.StopSFX(SaveSound);
 
         loding_Obj.SetActive(false);
 

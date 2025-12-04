@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class StartSystem : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isGameStart;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,12 +24,13 @@ public class StartSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isGameStart) return;
+        if (DaySystem.Instance.GetNowDay() == 1) return;
+        if (GameManager.Instance.isGameStart) return;
 
         GameManager.Instance.anomalySystem.specialObjects[3].GetComponent<Animator>().Play("Close");
         GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Close");
 
         GameManager.Instance.isGameStop = false;
-        isGameStart = true;
+        GameManager.Instance.isGameStart = true;
     }
 }
