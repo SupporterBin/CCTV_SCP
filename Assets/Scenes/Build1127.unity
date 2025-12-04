@@ -17072,7 +17072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999016
+      value: 44.999714
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -42101,10 +42101,10 @@ MonoBehaviour:
   centerCameraObject: {fileID: 1298697854}
   centerMonitorScreen: {fileID: 1563699028}
   centerButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1295110724}
+  - {fileID: 1535525887}
+  - {fileID: 161875390}
+  - {fileID: 1025196033}
   rightCameraObject: {fileID: 93470961}
   rightMonitorScreen: {fileID: 100807782}
   rightButtons:
