@@ -5,26 +5,19 @@ public class FeedCetner : MonoBehaviour
 {
     [SerializeField, Header("텍스트 가이드")]
     private GameObject guide;
+    [SerializeField]
+    Anomaly_TentacleOvergrowth anomaly;
+    public bool isCrossingGateShutDown => anomaly.isAnomalyStart;
     private bool isClick = false;
 
 
-    private void OnMouseOver()
+    public void TryActionEvent()
     {
-        guide.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (isClick) return;
-            StartCoroutine(ActionEvent());
-        }
+        if (GameManager.Instance.isGameStop == true)
+            return;
+        if (isClick == true) return;
+        StartCoroutine(ActionEvent());
     }
-
-    private void OnMouseExit()
-    {
-        guide.SetActive(false);
-    }
-
-
     private IEnumerator ActionEvent()
     {
         isClick = true;

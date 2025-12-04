@@ -18,7 +18,7 @@ public class Anomaly_Illusion : BasicEventAnomaly
 
     public override void Fail()
     {
-        if(ShaderEffect_CorruptedVram.Instance != null)
-            ShaderEffect_CorruptedVram.Instance.shift = 0;
+        //if(ShaderEffect_CorruptedVram.Instance != null)
+        //    ShaderEffect_CorruptedVram.Instance.shift = 0;
     }
 }

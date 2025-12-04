@@ -128,10 +128,18 @@ public class InteractiveObject : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject == LeftMonitor || hitObject == CenterMonitor ||
-                hitObject == RightMonitor || hitObject == Tablet || hitObject == ManualObject || hitObject == BarrelObject)
+                hitObject == RightMonitor || hitObject == Tablet || hitObject == ManualObject)
             {
                 rayCollisionObject = hitObject;
                 outLineObject = hitObject;
+            }
+            else if(hitObject == BarrelObject)
+            {
+                if(ShaderEffect_CorruptedVram.Instance.shift == 1)
+                {
+                    rayCollisionObject = hitObject;
+                    outLineObject = hitObject;
+                }
             }
             // This Is SetOutline Conditional
             else if (hitObject == CrossingGatObject)
@@ -144,8 +152,11 @@ public class InteractiveObject : MonoBehaviour
             }
             else if (hitObject == FeedBarObject)
             {
-                rayCollisionObject = hitObject;
-                outLineObject = hitObject;
+                if (FeedBarObject.transform.parent.GetComponent<FeedCetner>().isCrossingGateShutDown)
+                {
+                    rayCollisionObject = hitObject;
+                    outLineObject = hitObject;
+                }
             }
             else
             {
@@ -194,11 +205,12 @@ public class InteractiveObject : MonoBehaviour
         CrossingGats gatComp = CrossingGatObject.transform.parent.GetComponent<CrossingGats>();
         if (gatComp)
             gatComp.TryActionEvent();
-        GameManager.Instance.anomalySystem.ClearSpecial();
     }
     private void InteractFeedBar()
     {
-        GameManager.Instance.anomalySystem.ClearSpecial();
+        FeedCetner gatComp = FeedBarObject.transform.parent.GetComponent<FeedCetner>();
+        if (gatComp)
+            gatComp.TryActionEvent();
     }
 
     private void ShowOutLine(GameObject outlineable)

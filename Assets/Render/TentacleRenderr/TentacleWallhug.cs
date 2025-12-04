@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
@@ -12,6 +14,8 @@ public class TentacleWallhug : MonoBehaviour
 
 
     public Material tubeMaterial;
+    
+    public List<Material> tubeMaterials;
     [Header("TubeRad A-B")]
     public float rootRadius = 0;
     public float tipRadius = 0;
@@ -47,7 +51,22 @@ public class TentacleWallhug : MonoBehaviour
             tube.Init(rootRadius, tipRadius);
             tube.transform.localPosition = Vector3.zero;
             tube.source = t;
-            if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
+            //if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
+            if(tubeMaterials.Count > 0)
+            {
+                int randomValue = Random.Range(0, 101);
+                Material mat;
+                if(randomValue > 30)
+                    mat = tubeMaterials[0];
+                else if(randomValue > 15)
+                    mat = tubeMaterials[1];
+                else
+                    mat = tubeMaterials[2];
+
+                tube.GetComponent<MeshRenderer>().sharedMaterial = mat;
+            }
+            else if(tubeMaterial)
+                tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
         }
         foreach(var g in createdTentaclePrefab)
         {
