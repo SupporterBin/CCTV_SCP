@@ -193,6 +193,7 @@ public class InteractiveObject : MonoBehaviour
     }
     private void InteractManual()
     {
+        manualManager.MovingManualView();
         if(DaySystem.Instance.GetNowDay() == 1)
         {
             if (GameManager.Instance.isGameStart) return;
@@ -207,7 +208,6 @@ public class InteractiveObject : MonoBehaviour
             SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorCloseHydraulic, GameManager.Instance.anomalySystem.specialObjects[2].transform.position, 20, false);
         }
 
-        manualManager.MovingManualView();
     }
     private void InteractBarrel()
     {

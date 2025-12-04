@@ -51,7 +51,7 @@ public class StabilityManager : MonoBehaviour
         {
             dam = false;
             saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
-            ProtocolSystem.instance.StartProtocol(0);
+            ProtocolSystem.instance.StartProtocol(2);
         }
         else if (currentStability[1] <= 1 && dam)
         {
@@ -63,15 +63,14 @@ public class StabilityManager : MonoBehaviour
         {
             dam = false;
             saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
-            ProtocolSystem.instance.StartProtocol(2);
+            ProtocolSystem.instance.StartProtocol(0);
         }
 
-        if (dam) return;
+        if (dam || uDead) return;
         for(int i = 0; i<3; i++)
         {
             if (currentStability[i] <= 1)
             {
-                ExecutionTimeLineManager.instance.PlayExecutionTimeline(i);
 
                 if(!uDead)
                 {
