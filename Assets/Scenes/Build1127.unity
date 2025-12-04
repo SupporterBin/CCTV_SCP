@@ -15094,6 +15094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameStart: 0
   anomalySystem: {fileID: 2030100009}
+  player: {fileID: 216343714}
   isGameStop: 0
   isTimeStop: 0
   isDeadWarring: 0
@@ -17071,7 +17072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999958
+      value: 44.99999
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
