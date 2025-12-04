@@ -6,7 +6,7 @@ public class CrossingGats : MonoBehaviour
     [SerializeField, Header("텍스트 가이드")]
     private GameObject guide;
     private bool isClick = false;
-
+    public bool isCrossingGateShutDown => gameObject.GetComponent<Animator>().GetBool("isShotDown");
     [SerializeField] LightOutAnomaly lightOutAnomaly;
 
     private void Awake()
@@ -14,20 +14,12 @@ public class CrossingGats : MonoBehaviour
         lightOutAnomaly.SetCrossingGats(gameObject);
     }
 
-    private void OnMouseOver()
+   public void TryActionEvent()
     {
-        guide.SetActive(true);
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (isClick) return;
-            StartCoroutine(ActionEvent());
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        guide.SetActive(false);
+        if (GameManager.Instance.isGameStop == true)
+            return;
+        if (isClick == true) return;
+        StartCoroutine(ActionEvent());
     }
 
 
@@ -41,10 +33,11 @@ public class CrossingGats : MonoBehaviour
 
         gameObject.GetComponent<Animator>().SetBool("isShotDown", true);
         GameManager.Instance.anomalySystem.ClearMission(2);
-        
+
         yield return new WaitForSecondsRealtime(1.0f);
 
         gameObject.GetComponent<Animator>().SetBool("isAction", false);
+        gameObject.GetComponent<Animator>().SetBool("isShotDown", false);
 
         yield return new WaitForSecondsRealtime(1.0f);
 
