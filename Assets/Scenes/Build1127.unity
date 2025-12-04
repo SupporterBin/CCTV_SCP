@@ -11776,7 +11776,7 @@ PlayableDirector:
   m_GameObject: {fileID: 580823133}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 384ad67bb5779244da14a1ac2fdd5a51, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -11850,6 +11850,10 @@ PlayableDirector:
     value: {fileID: 891120095}
   - key: {fileID: -8611529287125987889, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
     value: {fileID: 1927052164}
+  - key: {fileID: -8533993958780453022, guid: 384ad67bb5779244da14a1ac2fdd5a51, type: 2}
+    value: {fileID: 891120095}
+  - key: {fileID: -5128874376343465337, guid: 384ad67bb5779244da14a1ac2fdd5a51, type: 2}
+    value: {fileID: 2051374352}
   m_ExposedReferences:
     m_References:
     - 121e79e708a020d47821e757c617b255: {fileID: 173336514}
@@ -14019,7 +14023,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &718665453
 Animator:
@@ -17072,7 +17076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999714
+      value: 44.999973
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -24328,7 +24332,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -41611,6 +41615,7 @@ GameObject:
   - component: {fileID: 2051374351}
   - component: {fileID: 2051374350}
   - component: {fileID: 2051374349}
+  - component: {fileID: 2051374352}
   m_Layer: 5
   m_Name: NextDayButton
   m_TagString: Untagged
@@ -41732,6 +41737,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051374347}
   m_CullTransparentMesh: 1
+--- !u!95 &2051374352
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051374347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2064710134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3123145740676350813, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}
