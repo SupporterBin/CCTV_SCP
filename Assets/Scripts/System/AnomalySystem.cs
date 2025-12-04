@@ -19,7 +19,7 @@ public class AnomalySystem : MonoBehaviour
 
     [Header("--- 참조 객체 ---")]
     public GameObject[] monsters; // 1:왼쪽, 2:가운데, 3:오른쪽
-    public GameObject[] specialObjects; // 1:먹이통, 2:사이렌, 3:시작문, 4:프로토콜
+    public GameObject[] specialObjects; // 0:먹이통, 1:사이렌, 2:시작문, 3:엘리베이터문
 
     [Header("--- 이벤트 데이터 풀 ---")]
     public BasicEventAnomaly[] standardEventPool; // 일반 이상현상들 (불 끄기, 문 닫기 등)

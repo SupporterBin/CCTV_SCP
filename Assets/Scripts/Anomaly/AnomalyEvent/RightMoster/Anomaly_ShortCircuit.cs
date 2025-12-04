@@ -11,6 +11,8 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
     public Quaternion SpawnObjQuaternion;
     //크기 혹은 여러개가 된다면 그에 맞게 표현 ㄱ
 
+    private AudioSource saveSound;
+
     private GameObject spawnObject; 
 
     public override EventType Execute()
@@ -19,8 +21,11 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
         if (sparklePrefab == null)
             Debug.Log("이상현상_스파클_SO 배치 안됨.");
         else
+        {
             spawnObject = Instantiate(sparklePrefab, spawnObjVector, SpawnObjQuaternion);
-
+            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalWireShortCircuitSpark,
+            GameManager.Instance.anomalySystem.monsters[2].transform.position, 20, false);
+        }
         return eventType;
     }
 
@@ -34,6 +39,7 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
             Destroy(spawnObject);
         
         spawnObject = null;
+        SoundManager.Instance.StopSFX(saveSound);
     }
 
     public override void Fail()
@@ -46,5 +52,6 @@ public class Anomaly_ShortCircuit : BasicEventAnomaly
             Destroy(spawnObject);
 
         spawnObject = null;
+        SoundManager.Instance.StopSFX(saveSound);
     }
 }

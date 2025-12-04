@@ -14,9 +14,13 @@ public class Anomaly_HumanImitation : BasicEventAnomaly
     public Vector3 monster_Scale;
 
     private GameObject OrginMonster;
+    private AudioSource saveSound;
 
     public override EventType Execute()
     {
+        saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalMaskHumanTransform,
+            GameManager.Instance.anomalySystem.monsters[1].transform.position, 20, false);
+
         // 기존 몬스터의 보이는 부분을 비활성화
         Transform root = GameManager.Instance.anomalySystem.monsters[1].transform;
 
@@ -46,6 +50,8 @@ public class Anomaly_HumanImitation : BasicEventAnomaly
             Destroy(spawnObj);
         }
         OrginMonster.SetActive(true);
+
+        SoundManager.Instance.StopSFX(saveSound);
     }
 
     public override void Clear()
