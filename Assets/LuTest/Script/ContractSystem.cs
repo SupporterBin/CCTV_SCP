@@ -85,7 +85,7 @@ public class ContractSystem : MonoBehaviour
         contractPanel.rotation = Quaternion.Euler(0, 0, -40f);
 
         // [비법 2] 속도를 0.5초로 줄여서 더 스피디하게 (기존 0.8초 -> 0.5초)
-        float duration = 3f;
+        float duration = 1.2f;
 
         // 1. 위치 이동 (위에서 아래로)
         contractPanel.DOAnchorPos(targetPostion, duration).SetEase(Ease.OutBack);
