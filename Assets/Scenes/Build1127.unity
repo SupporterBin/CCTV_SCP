@@ -10953,7 +10953,7 @@ PlayableDirector:
   m_GameObject: {fileID: 580823133}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 075c5ff61d32c3d479a8866fecfcaed5, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -11022,6 +11022,8 @@ PlayableDirector:
   - key: {fileID: 6879168801823930034, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
     value: {fileID: 891120095}
   - key: {fileID: -5306905207625095775, guid: 075c5ff61d32c3d479a8866fecfcaed5, type: 2}
+    value: {fileID: 891120095}
+  - key: {fileID: 1620074624203098887, guid: 7c22b8aacec6a7f4ea588dc7703eed4d, type: 2}
     value: {fileID: 891120095}
   m_ExposedReferences:
     m_References:
@@ -15778,7 +15780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999966
+      value: 44.999985
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -22606,7 +22608,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
