@@ -14026,6 +14026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdd2ce3140e862488ab5b29ce2775d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameStart: 0
   anomalySystem: {fileID: 2030100009}
   isGameStop: 0
   isTimeStop: 0
@@ -15151,7 +15152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9:30
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5ac6e9fdc6dc7642a31ac77df0b46f6, type: 2}
   m_sharedMaterial: {fileID: -4495788140706517921, guid: e5ac6e9fdc6dc7642a31ac77df0b46f6, type: 2}
@@ -15773,7 +15774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999996
+      value: 44.9998
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -17405,7 +17406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guide: {fileID: 501455623}
-  anomaly: {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
+  anomaly: {fileID: 0}
 --- !u!4 &972700261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3107598063948010452, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}
@@ -37298,7 +37299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e22235e839272549ae3bc0061249ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameStart: 0
 --- !u!65 &1986233143
 BoxCollider:
   m_ObjectHideFlags: 0
