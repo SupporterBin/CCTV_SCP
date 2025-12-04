@@ -24,7 +24,7 @@ MonoBehaviour:
   ingameCctvZoomIn: {fileID: 8300000, guid: 2826be2fa1694ab4c86690a34c465d09, type: 3}
   ingameTabletZoomIn: {fileID: 8300000, guid: 2826be2fa1694ab4c86690a34c465d09, type: 3}
   ingameCctvBurnButtonClick: {fileID: 8300000, guid: 38d107c5d46799940b91d4eb7b1cf1be, type: 3}
-  ingameCctvShockButtonClick: {fileID: 8300000, guid: 7704e3b28f1fd2d429058f9a6109f76a, type: 3}
+  ingameCctvShockButtonClick: {fileID: 8300000, guid: 441940d3bb4466e4c98b562d9fd9c3d9, type: 3}
   ingameCctvResonanceButtonClick: {fileID: 8300000, guid: a942fbe4dcb078b4cbb919cc5ef958f2, type: 3}
   ingameCctvSystemCheckButtonClick: {fileID: 8300000, guid: bd2c93cb3aa372042ba05bf001542c06, type: 3}
   ingameCctvFeedButtonClick: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   minigameKeypadButtonPress: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
   minigameFishingSuccessZoneLoop: {fileID: 8300000, guid: 873752e8fde33d94cacbdecf3d2ccab9, type: 3}
   minigameRhythmKeyInput: {fileID: 8300000, guid: 5c31c922a98e7264b9700c3104fe9fa4, type: 3}
-  deathCommonStabilityZeroGeneratorExplode: {fileID: 8300000, guid: 37dbf2ddaaf67e44a9080d00d4e28b87, type: 3}
+  deathCommonStabilityZeroGeneratorExplode: {fileID: 8300000, guid: 735404a28b1299c429699d28e75738ee, type: 3}
   deathCommonSirenLoopBeforeDeath: {fileID: 8300000, guid: 2bc51c29644fa3f46b5f455deaa31fab, type: 3}
   deathCommonWindowBreak: {fileID: 8300000, guid: e8957b7972e110f4eb138f3a828b3219, type: 3}
   deathWireWhipSwing: {fileID: 8300000, guid: 6fa714981be4b9d46939324a823f2ac2, type: 3}
