@@ -86,24 +86,25 @@ public class AnomalySystem : MonoBehaviour
             return;
         }
 
-        // [기본] 평상시 안정도 자연 감소
+        // ====================================================================
+        // [수정됨] 안정도 감소 통합 로직
+        // 방 3개(0, 1, 2)를 돌면서 각 방의 상태에 따라 감소 속도를 적용합니다.
+        // ====================================================================
+
+        int currentDayIndex = DaySystem.Instance.GetNowDay() - 1; // 0부터 시작하게 보정
+
         for (int i = 0; i < 3; i++)
         {
-            StabilityManager.Instance.StabilizationDown(StabilityManager.Instance.normalDownStabilityValue, i);
-        }
+            // 1. 현재 이 방(i)에 활성화된 '일반 이상현상'이 있는지 확인
+            // mapValue는 (0:왼쪽, 1:중앙, 2:오른쪽)을 의미한다고 가정
+            bool isStandardAnomalyActive = activeStandardAnomalies.Exists(anomaly => anomaly.mapValue == i);
 
-        // [추가] 일반 이상현상 발생 중일 때 안정도 추가 감소
-        // ★ 특수 이상현상(activeSpecialAnomaly)은 이 루프에 포함되지 않으므로 안정도를 깎지 않음!
-        foreach (var anomaly in activeStandardAnomalies)
-        {
-            if (anomaly.mapValue != 999 && anomaly.mapValue != 10)
-            {
-                // DaySystem.Instance.GetNowDay() - 1 : 배열 인덱스 맞추기
-                for (int i = 0; i < 3; i++)
-                {
-                    StabilityManager.Instance.Stabilization_AnomalyTime_Update(anomaly.mapValue, DaySystem.Instance.GetNowDay() - 1);
-                }
-            }
+            // 2. 이 방에 활성화된 '특수 이상현상'이 있는지 확인 (특수도 방 개념이 있다면)
+            // 특수 이상현상은 mapValue가 999거나 10일 수 있으니 로직에 따라 포함/제외 결정
+            // 여기서는 '일반 이상현상'만 안정도 가속에 영향을 준다고 가정했습니다.
+
+            // 3. StabilityManager에게 계산 위임
+            StabilityManager.Instance.UpdateStabilityDrain(i, currentDayIndex, isStandardAnomalyActive);
         }
     }
 

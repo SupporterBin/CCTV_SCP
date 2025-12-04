@@ -63,6 +63,8 @@ public class KeyWord : MonoBehaviour
     {
         isClicking = true;
 
+        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.protocolKeypadButtonClick);
+
         if (isKeyType) KeyOptionGet();
         else keyPad.InputKey(keyValue);
 
