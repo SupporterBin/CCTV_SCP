@@ -58,7 +58,7 @@ public class ManualManager : MonoBehaviour
     {
         if(BackButton != null)
         {
-            // ¹öÆ° Å¬¸¯ÀÌ¸é ¸Þ´º¾ó ÆÐ³Î ,, escÅ°¸é ¸Å´º¾ó ´Ý´Â 
+            // ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ ,, escÅ°ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Ý´ï¿½ 
             BackButton.onClick.AddListener(() => BackToManualPanel());
         }
         if (ExitButton != null)
@@ -131,21 +131,21 @@ public class ManualManager : MonoBehaviour
         float currentStartFov;
         float currentStartFar;
 
-        if (ismoving) // µé¾î°¥ ¶§
+        if (ismoving) // ï¿½ï¿½î°¥ ï¿½ï¿½
         {
-            // ÇöÀç ÇÃ·¹ÀÌ¾î À§Ä¡ ÀúÀå
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
             startPos = playerCamera.transform.position;
             startRot = playerCamera.transform.rotation;
             currentStartFov = playerCamSetting.Lens.FieldOfView;
             currentStartFar = playerCamSetting.Lens.FarClipPlane;
 
-            // ³ªÁß¿¡ µ¹¾Æ¿Ã À§Ä¡·Î ÀúÀå
+            // ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             startCameraPosition = startPos;
             startCameraRotation = startRot;
         }
-        else // ³ª¿Ã ¶§
+        else // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         {
-            // ¸Å´º¾ó À§Ä¡¿¡¼­ ½ÃÀÛ
+            // ï¿½Å´ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             startPos = manualPosition;
             startRot = manualRotation;
             currentStartFov = manualFov;
@@ -162,7 +162,7 @@ public class ManualManager : MonoBehaviour
             timer += Time.deltaTime;
             float t = timer / moveDuration;
 
-            // SmoothÇÏ°Ô ÀÌµ¿
+            // Smoothï¿½Ï°ï¿½ ï¿½Ìµï¿½
             t = t * t * (3f - 2f * t); // SmoothStep
 
             playerCamera.transform.position = Vector3.Lerp(startPos, endPos, t);
@@ -173,7 +173,7 @@ public class ManualManager : MonoBehaviour
             yield return null;
         }
 
-        // ³ª¿Ã ¶§ ¿òÁ÷ÀÓ ´Ù½Ã È°¼ºÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ È°ï¿½ï¿½È­
         if (!ismoving)
         {
             yield return new WaitForSeconds(0.1f);
@@ -194,7 +194,7 @@ public class ManualManager : MonoBehaviour
         isOnManual = true;
         StartCoroutine(MovingManualCamera(true));
 
-        // UI ÄÑ±â (¸®½ºÆ® ÆÐ³Î)
+        // UI ï¿½Ñ±ï¿½ (ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ð³ï¿½)
         if (ManualPanel != null) ManualPanel.SetActive(true);
         if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
 
@@ -204,9 +204,9 @@ public class ManualManager : MonoBehaviour
     {
         if (ScrollViewPanel != null) ScrollViewPanel.SetActive(false);
 
-        // ´Ù¸¥ »ó¼¼ ÆäÀÌÁö ´Ù ²ô°í
+        // ï¿½Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
         CloseAllDetailPanels();
-        // ¼±ÅÃÇÑ ÆäÀÌÁö¸¸ ÄÑ±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
         if (buttonindex >= 0 && buttonindex < DetailPanels.Length)
         {
             DetailPanels[buttonindex].SetActive(true);
@@ -220,7 +220,7 @@ public class ManualManager : MonoBehaviour
         isOnManual = false;
         StartCoroutine(MovingManualCamera(false));
 
-        // ¸ðµç ÆÐ³Î ²ô±â
+        // ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½
         if (ManualPanel != null) ManualPanel.SetActive(true);
         if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
         CloseAllDetailPanels();
@@ -233,7 +233,7 @@ public class ManualManager : MonoBehaviour
     {
         CloseAllDetailPanels();
 
-        // ¸®½ºÆ®(½ºÅ©·Ñºä) ´Ù½Ã ÄÑ±â
+        // ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½Å©ï¿½Ñºï¿½) ï¿½Ù½ï¿½ ï¿½Ñ±ï¿½
         if (ScrollViewPanel != null) ScrollViewPanel.SetActive(true);
     }
 
