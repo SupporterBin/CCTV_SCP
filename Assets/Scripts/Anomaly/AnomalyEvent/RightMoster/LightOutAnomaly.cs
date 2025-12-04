@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Anomalies/Event/RightRoom/Anomaly_LightOut")]
 public class LightOutAnomaly : BasicEventAnomaly
 {
-    [SerializeField, Header("차단기")]
+    
     private GameObject CrossingGats;
     private float[] lights_Intensity;
 

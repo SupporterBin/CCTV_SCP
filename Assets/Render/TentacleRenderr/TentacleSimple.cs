@@ -28,16 +28,22 @@ public class TentacleSimple : MonoBehaviour
 
     void Start()
     {
-        //for (int i = 0; i < count; i++)
-        //{
-        var t = Instantiate(tentaclePrefab, transform);
-        instance = t;
-        t.transform.localPosition = new Vector3(
-            Random.Range(-spawnRadius.x, spawnRadius.x),
-            Random.Range(-spawnRadius.y, spawnRadius.y),
-            Random.Range(-spawnRadius.z, spawnRadius.z)
-        );
-
+        SimpleTentacleSine t = null;
+        for (int i = 0; i < count; i++)
+        {
+            t = Instantiate(tentaclePrefab, transform);
+            instance = t;
+            t.transform.localPosition = new Vector3(
+                Random.Range(-spawnRadius.x, spawnRadius.x),
+                Random.Range(-spawnRadius.y, spawnRadius.y),
+                Random.Range(-spawnRadius.z, spawnRadius.z)
+            );
+            var tube = Instantiate(tubePrefab, t.transform);
+            tube.Init(rootRadius, tipRadius);
+            tube.transform.localPosition = Vector3.zero;
+            tube.source = t;
+            if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
+        }
         // NavMesh 모드 세팅
         if (useNavPathMode)
         {
@@ -50,11 +56,6 @@ public class TentacleSimple : MonoBehaviour
             //t.StartPathToTarget();
         }
 
-        var tube = Instantiate(tubePrefab, t.transform);
-        tube.Init(rootRadius, tipRadius);
-        tube.transform.localPosition = Vector3.zero;
-        tube.source = t;
-        if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
         //}
     }
 

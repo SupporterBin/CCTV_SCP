@@ -29,6 +29,10 @@ public class InteractiveObject : MonoBehaviour
 
     [SerializeField]
     private GameObject BarrelObject;//Pills Obj
+    [SerializeField]
+    private GameObject CrossingGatObject;//Crossing gate Obj
+    [SerializeField]
+    private GameObject FeedBarObject;//FeedBar Obj
 
     private GameObject rayCollisionObject;
 
@@ -100,6 +104,14 @@ public class InteractiveObject : MonoBehaviour
             {
                 InteractBarrel();
             }
+            else if(rayCollisionObject == CrossingGatObject)
+            {
+                InteractCrossingGat();
+            }
+            else if(rayCollisionObject == FeedBarObject)
+            {
+                InteractFeedBar();
+            }
         }
     }
 
@@ -117,6 +129,20 @@ public class InteractiveObject : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject == LeftMonitor || hitObject == CenterMonitor ||
                 hitObject == RightMonitor || hitObject == Tablet || hitObject == ManualObject || hitObject == BarrelObject)
+            {
+                rayCollisionObject = hitObject;
+                outLineObject = hitObject;
+            }
+            // This Is SetOutline Conditional
+            else if (hitObject == CrossingGatObject)
+            {
+                if (CrossingGatObject.transform.parent.GetComponent<CrossingGats>().isCrossingGateShutDown)
+                {
+                    rayCollisionObject = hitObject;
+                    outLineObject = hitObject;
+                }
+            }
+            else if (hitObject == FeedBarObject)
             {
                 rayCollisionObject = hitObject;
                 outLineObject = hitObject;
@@ -156,9 +182,21 @@ public class InteractiveObject : MonoBehaviour
     }
     private void InteractManual()
     {
+        // Here Is Manual Interaction Timing
         manualManager.MovingManualView();
     }
     private void InteractBarrel()
+    {
+        GameManager.Instance.anomalySystem.ClearSpecial();
+    }
+    private void InteractCrossingGat()
+    {
+        CrossingGats gatComp = CrossingGatObject.transform.parent.GetComponent<CrossingGats>();
+        if (gatComp)
+            gatComp.TryActionEvent();
+        GameManager.Instance.anomalySystem.ClearSpecial();
+    }
+    private void InteractFeedBar()
     {
         GameManager.Instance.anomalySystem.ClearSpecial();
     }

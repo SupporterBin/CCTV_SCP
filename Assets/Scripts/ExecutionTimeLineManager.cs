@@ -22,7 +22,11 @@ public class ExecutionTimeLineManager : MonoBehaviour
 
     public void PlayExecutionTimeline(int index)
     {
-        if(executionTimelineAssets.Length > index)
+        // Stop GameTime
+        GameManager.Instance.isGameStop = true;
+        // Stop Illusion
+        ShaderEffect_CorruptedVram.Instance.shift = 0;
+        if (executionTimelineAssets.Length > index)
             playableDirector.Play(executionTimelineAssets[index]);
     }
 
