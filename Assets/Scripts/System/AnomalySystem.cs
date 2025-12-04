@@ -340,11 +340,29 @@ public class AnomalySystem : MonoBehaviour
     }
 
     // --- 유니티 버튼 연결부 (변경 없음) ---
-    public void ClearCCTVSystemCheck(int index) { ProcessEventClear(EventType.CCTV_SystemCheck, index); }
-    public void ClearCCTVResonance(int index) { ProcessEventClear(EventType.CCTV_Resonance, index); }
-    public void ClearCCTVIncinerate(int index) { ProcessEventClear(EventType.CCTV_Incinerate, index); }
-    public void ClearCCTVElectricity(int index) { ProcessEventClear(EventType.CCTV_Electricity, index); }
-    public void ClearCCTVFoodRefeel(int index) { ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
+    public void ClearCCTVSystemCheck(int index) {
+        AudioClip clip = SoundManager.Instance.Data.ingameCctvSystemCheckButtonClick;
+        SoundManager.Instance.PlayGlobalSFX(clip);
+        ProcessEventClear(EventType.CCTV_SystemCheck, index); }
+    public void ClearCCTVResonance(int index)
+    {
+        AudioClip clip = SoundManager.Instance.Data.ingameCctvResonanceButtonClick;
+        SoundManager.Instance.PlayGlobalSFX(clip);
+        ProcessEventClear(EventType.CCTV_Resonance, index); }
+    public void ClearCCTVIncinerate(int index)
+    {
+        AudioClip clip = SoundManager.Instance.Data.ingameCctvBurnButtonClick;
+        SoundManager.Instance.PlayGlobalSFX(clip);
+        ProcessEventClear(EventType.CCTV_Incinerate, index); }
+    public void ClearCCTVElectricity(int index)
+    {
+        AudioClip clip = SoundManager.Instance.Data.ingameCctvShockButtonClick;
+        SoundManager.Instance.PlayGlobalSFX(clip);
+        ProcessEventClear(EventType.CCTV_Electricity, index); }
+    public void ClearCCTVFoodRefeel(int index) { 
+        AudioClip clip = SoundManager.Instance.Data.ingameCctvFeedButtonClick;
+        SoundManager.Instance.PlayGlobalSFX(clip);
+        ProcessEventClear(EventType.CCTV_FoodRefeel, index); }
     public void ClearMission(int index) { ProcessEventClear(EventType.Mission, index); }
     public void ClearSpecial() { ProcessEventClear(EventType.Special, -1); }
 }
