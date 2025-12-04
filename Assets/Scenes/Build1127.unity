@@ -17108,7 +17108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.99966
+      value: 44.99999
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -30396,10 +30396,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f224a77f8e71ee64e956b3647ae84d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayBaseDecayRates: []
-  activeAnomalyExtraDrain: 1
-  failureDropAmount: 8
-  dayGetMaskValue: []
+  dayBaseDecayRates:
+  - 0.25
+  - 0
+  - 0
+  - 0
+  - 0
+  activeAnomalyExtraDrain: 0.4
+  failureDropAmount: 4
+  dayGetMaskValue:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   currentGetMask: 0
   saveSound: {fileID: 0}
 --- !u!4 &1529692178 stripped
