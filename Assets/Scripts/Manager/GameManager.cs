@@ -20,8 +20,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isDeadWarring;
 
     [Header("미상개체 방 빛 모음집")]
-    public Light[] lights; 
-    
+    public Light[] lights;
+
+    [SerializeField, Header("메뉴창")]
+    private GameObject optionMenu;
+
+    [Header("프로토콜 비밀번호")]
     public int protocolNum;
 
 
@@ -34,6 +38,23 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (optionMenu.activeSelf)
+            {
+                OptionOff();
+                optionMenu.SetActive(false);
+            }
+            else
+            {
+                OptionOn();
+                optionMenu.SetActive(true);
+            }
+        }
     }
 
     private void Start()

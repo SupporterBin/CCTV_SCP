@@ -69,4 +69,9 @@ public class PlayerMove : MonoBehaviour
         if (isStop) return;
         moveInput = value.Get<Vector2>();
     }
+
+    public void SetSensitivity(float value)
+    {
+        sensitivity = value;
+    }
 }
