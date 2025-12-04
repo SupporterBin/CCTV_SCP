@@ -1,5 +1,6 @@
 using UnityEngine.AI;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TentacleSimple : MonoBehaviour
 {
@@ -7,12 +8,15 @@ public class TentacleSimple : MonoBehaviour
     SimpleTentacleSine instance;
     public TentacleSplineTube tubePrefab;
     public int count = 12;
+    [Header("진폭")]
+    public float amplitude= 0.1f;
     public Vector3 spawnRadius = new Vector3(0.05f, 0.05f, 0.05f);
 
 
     [SerializeField] private Transform tipTransform;
 
     public Material tubeMaterial;
+    public List<Material>tubeMaterials;
     [Header("TubeRad A-B")]
     public float rootRadius = 0;
     public float tipRadius = 0;
@@ -38,11 +42,25 @@ public class TentacleSimple : MonoBehaviour
                 Random.Range(-spawnRadius.y, spawnRadius.y),
                 Random.Range(-spawnRadius.z, spawnRadius.z)
             );
+            t.amplitude = amplitude;
             var tube = Instantiate(tubePrefab, t.transform);
             tube.Init(rootRadius, tipRadius);
             tube.transform.localPosition = Vector3.zero;
             tube.source = t;
-            if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
+            if (tubeMaterials.Count > 0)
+            {
+                int randomValue = Random.Range(0, 101);
+                Material mat;
+                if (randomValue > 30)
+                    mat = tubeMaterials[0];
+                else if (randomValue > 15)
+                    mat = tubeMaterials[1];
+                else
+                    mat = tubeMaterials[2];
+
+                tube.GetComponent<MeshRenderer>().sharedMaterial = mat;
+            }
+            else if (tubeMaterial) tube.GetComponent<MeshRenderer>().sharedMaterial = tubeMaterial;
         }
         // NavMesh 모드 세팅
         if (useNavPathMode)
