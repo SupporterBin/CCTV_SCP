@@ -50,9 +50,15 @@ public class ProtocolSystem : MonoBehaviour
         // 위험 상태 확인 1번만 작동하는거 다 넣어
         if (!isWarringStartEventCheck)
         {
+            SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.deathCommonStabilityZeroGeneratorExplode);
+            SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorOpenHydraulic, GameManager.Instance.anomalySystem.specialObjects[2].transform.position, 20, false);
+
             // 1, 2. 문열기, 여기에 워링 이펙트 활성화 (불빛 난다거나 하는거)
             GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Open");
             GameManager.Instance.anomalySystem.specialObjects[1].GetComponent<Animator>().Play("On");
+
+            SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorOpenHydraulic, GameManager.Instance.anomalySystem.specialObjects[2].transform.position, 20, false);
+
             GameManager.Instance.isGameStop = true;
             GameManager.Instance.isDeadWarring = true;
             isWarringStartEventCheck = true;
@@ -84,6 +90,7 @@ public class ProtocolSystem : MonoBehaviour
     {
         protocol_Activated = true;
         GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Close");
+        SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorCloseHydraulic, GameManager.Instance.anomalySystem.specialObjects[2].transform.position, 20, false);
         GameManager.Instance.isGameStop = false;
     }
 

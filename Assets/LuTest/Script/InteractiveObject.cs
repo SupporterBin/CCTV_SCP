@@ -202,6 +202,9 @@ public class InteractiveObject : MonoBehaviour
 
             GameManager.Instance.anomalySystem.specialObjects[3].GetComponent<Animator>().Play("Close");
             GameManager.Instance.anomalySystem.specialObjects[2].GetComponent<Animator>().Play("Close");
+
+            SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorCloseHydraulic, GameManager.Instance.anomalySystem.specialObjects[3].transform.position, 20, false);
+            SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.ingameDoorCloseHydraulic, GameManager.Instance.anomalySystem.specialObjects[2].transform.position, 20, false);
         }
 
         manualManager.MovingManualView();

@@ -10,6 +10,11 @@ public class GetMask : MonoBehaviour
         if(guideUI != null) guideUI.SetActive(false);
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalMaskCreationWeepingMan, gameObject.transform.position, 10, false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -33,6 +38,7 @@ public class GetMask : MonoBehaviour
                 StabilityManager.Instance.currentGetMask = 0;
             }
 
+            SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.abnormalMaskBreakCeramic, gameObject.transform.position, 10, false);
             Destroy(gameObject);
         }
     }
