@@ -16,7 +16,7 @@ MonoBehaviour:
   systemUiTitleButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
   systemUiNextDayButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
   systemUiRetryButtonClick: {fileID: 8300000, guid: 9a232c99dffb6644cb4b3beab8d89b63, type: 3}
-  systemUiDayEndEnterAlarmClock: {fileID: 8300000, guid: 388403f393046e442921d61c5a16e2da, type: 3}
+  systemUiDayEndEnterAlarmClock: {fileID: 8300000, guid: a9a99cb913cc9104f9cfb6ba83fe2b86, type: 3}
   systemUiBgmTitle: {fileID: 0}
   systemUiBgmGameOver: {fileID: 0}
   systemUiBgmEnding: {fileID: 0}
