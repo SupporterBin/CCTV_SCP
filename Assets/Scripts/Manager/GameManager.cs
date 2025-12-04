@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [Header("세팅 해야되는 시스템들")]
     public AnomalySystem anomalySystem;
+    public GameObject player;
 
     public bool isGameStop;
     [HideInInspector] public bool isTimeStop;
@@ -46,11 +47,13 @@ public class GameManager : MonoBehaviour
         {
             if (optionMenu.activeSelf)
             {
+                player.GetComponent<PlayerMove>().isStop = false;
                 OptionOff();
                 optionMenu.SetActive(false);
             }
             else
             {
+                player.GetComponent<PlayerMove>().isStop = true;
                 OptionOn();
                 optionMenu.SetActive(true);
             }
