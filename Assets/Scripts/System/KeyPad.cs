@@ -123,6 +123,11 @@ public class KeyPad : MonoBehaviour
             StabilityManager.Instance.StabilizationUp(-StabilityManager.Instance.CurrentStability[i] + 15f, i);
         }
 
+        if(StabilityManager.Instance.saveSound != null)
+        {
+            SoundManager.Instance.StopSFX(StabilityManager.Instance.saveSound);
+        }
+
         isSuccess = true;
         GameManager.Instance.isDeadWarring = false;
         successTextObj.SetActive(true);
