@@ -15616,7 +15616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999825
+      value: 44.999992
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -25920,7 +25920,7 @@ MonoBehaviour:
   dayText: {fileID: 434739703}
   clockText: {fileID: 845401878}
   MINUTEUP_TIME: 2
-  TIME_START: 1420
+  TIME_START: 0
 --- !u!114 &1429709053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37486,8 +37486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anomaly_MinMinute: 10
   anomaly_MaxMinute: 20
-  special_MinMinute: 20
-  special_MaxMinute: 35
+  special_MinMinute: 60
+  special_MaxMinute: 80
   anomaly_Threshold: 40
   monsters:
   - {fileID: 181871582}
