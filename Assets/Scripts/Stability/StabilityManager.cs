@@ -6,41 +6,43 @@ public class StabilityManager : MonoBehaviour
     private static StabilityManager instance;
     public static StabilityManager Instance => instance;
 
-    // 안정 수치 최대치
+    // 안정 수치 최대치 (100)
     static public float maxStability = 100;
 
     // 현재 안정수치들
     private float[] currentStability;
     public float[] CurrentStability => currentStability;
 
-    [Header("평상 시에 떨어지는 안정수치 소모량 (초당)")]
-    public float normalDownStabilityValue = 0.5f; // 값을 조금 키우고 Time.deltaTime을 곱하는 방식 추천
+    [Header("=== 이미지 설정값 적용 영역 ===")]
 
-    [Header("Day별 이상현상 발생 시 '추가로' 빨라지는 소모량 (초당)")]
-    // 예: 0번(1일차)엔 0.5, 4번(5일차)엔 2.0 등 점점 빨라지게 설정
-    public float[] dayDownStabilityValue;
+    [Tooltip("일차별 초당 기본 감소량 (1일차: 0.37, 2일차: 0.392 ...)")]
+    public float[] dayBaseDecayRates;
 
+    [Tooltip("이상현상 활성화 중일 때 추가되는 초당 감소량 (이미지 기준: 1)")]
+    public float activeAnomalyExtraDrain = 1.0f;
+
+    [Tooltip("이상현상 대처 실패 시 즉시 감소하는 양 (이미지 기준: 8)")]
+    public float failureDropAmount = 8.0f;
+
+    [Header("=== 기타 설정 ===")]
     [SerializeField, Header("가면 주워야하는 개수 Day별")]
     public float[] dayGetMaskValue;
     public float currentGetMask = 0;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
 
         currentStability = new float[3];
-        currentStability[0] = maxStability;
-        currentStability[1] = maxStability;
-        currentStability[2] = maxStability;
+        // 시작 시 모든 방 100으로 초기화
+        for (int i = 0; i < 3; i++) currentStability[i] = maxStability;
     }
 
     bool dam = true;
     private void Update()
     {
-        // (기존 프로토콜 실행 로직 동일)
+        // 프로토콜 시스템 발동 로직 (기존 유지)
         if (currentStability[2] <= 0 && dam)
         {
             dam = false;
@@ -58,7 +60,7 @@ public class StabilityManager : MonoBehaviour
         }
     }
 
-    // 단발성 감소 (오답 패널티 등)
+    // 단발성 감소 (대처 실패, 오답 등)
     public void StabilizationDown(float value, int index)
     {
         currentStability[index] = Mathf.Clamp(currentStability[index] -= value, 0f, maxStability);
@@ -69,24 +71,31 @@ public class StabilityManager : MonoBehaviour
         currentStability[index] = Mathf.Clamp(currentStability[index] += value, 0f, maxStability);
     }
 
-    // [변경] 통합된 안정도 감소 로직
-    // isAnomalyActive가 true면 '기본 속도 + Day별 추가 속도'로 깎입니다.
+    // =========================================================
+    // [핵심 변경] 이미지 로직 적용된 안정도 감소 함수
+    // =========================================================
     public void UpdateStabilityDrain(int roomIndex, int dayIndex, bool isAnomalyActive)
     {
-        // 1. 기본 감소 속도
-        float drainRate = normalDownStabilityValue;
+        // 1. 현재 일차에 맞는 기본 감소량 가져오기 (예: 1일차면 0.37)
+        float currentDrainRate = 0f;
 
-        // 2. 이상현상이 있으면 Day별 설정값만큼 속도 '추가' (가속)
-        if (isAnomalyActive)
+        if (dayBaseDecayRates != null && dayIndex < dayBaseDecayRates.Length)
         {
-            // 배열 범위 체크 안전장치
-            if (dayDownStabilityValue != null && dayIndex < dayDownStabilityValue.Length)
-            {
-                drainRate += dayDownStabilityValue[dayIndex];
-            }
+            currentDrainRate = dayBaseDecayRates[dayIndex];
+        }
+        else
+        {
+            // 배열 인덱스 에러 방지용 기본값 (혹시 설정 안했을 경우)
+            currentDrainRate = 0.37f;
         }
 
-        // 3. 최종 감소 적용 (FixedUpdate에서 호출되므로 fixedDeltaTime 사용)
-        currentStability[roomIndex] = Mathf.Clamp(currentStability[roomIndex] -= drainRate * Time.fixedDeltaTime, 0f, maxStability);
+        // 2. 이상현상 활성화 시 +1 추가 (이미지 로직)
+        if (isAnomalyActive)
+        {
+            currentDrainRate += activeAnomalyExtraDrain;
+        }
+
+        // 3. 최종 적용 (FixedUpdate에서 호출되므로 Time.fixedDeltaTime 곱함)
+        currentStability[roomIndex] = Mathf.Clamp(currentStability[roomIndex] -= currentDrainRate * Time.fixedDeltaTime, 0f, maxStability);
     }
 }

@@ -251,41 +251,37 @@ public class AnomalySystem : MonoBehaviour
     }
 
     // --- 실패 처리 로직 ---
+    // --- 실패 처리 로직 ---
     private void ProcessFail(ActiveAnomaly anomaly, bool isStandard)
     {
         Debug.Log($"이상현상 방어 실패 (타임오버): {anomaly.place}...");
 
-        // [수정] 무조건 0번이 아니라, 해당 이상현상의 방 번호(mapValue)를 깎음
-        // mapValue는 생성자에서 이미 계산됨 (0:Left, 1:Center, 2:Right)
+        // [변경] 이미지 로직: 대처 실패 시 정해진 값(8)만큼 즉시 감소
+        float dropAmount = StabilityManager.Instance.failureDropAmount;
+
         if (anomaly.mapValue >= 0 && anomaly.mapValue <= 2)
         {
-            StabilityManager.Instance?.StabilizationDown(15, anomaly.mapValue);
+            // 해당 방의 안정도만 8 감소
+            StabilityManager.Instance?.StabilizationDown(dropAmount, anomaly.mapValue);
         }
         else if (anomaly.mapValue == 10)
         {
+            // (예외 처리) 모든 방 감소가 필요한 특수 상황이라면
             for (int i = 0; i < 3; i++)
             {
-                StabilityManager.Instance?.StabilizationDown(15, i);
+                StabilityManager.Instance?.StabilizationDown(dropAmount, i);
             }
-            Debug.Log("타임오버 패널티: 모든 방 안정도 감소 (-15)");
         }
-        // 3. 예외 상황 (None 등)
         else
         {
             Debug.Log("None 상황 실패");
         }
 
-        // --- 아래는 기존 안전장치 코드 유지 ---
+        // (이하 기존 안전장치 및 제거 로직 동일)
         if (anomaly.eventScript != null)
         {
-            try
-            {
-                anomaly.eventScript.Fail();
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"[System] 실패 연출 에러 방지: {e.Message}");
-            }
+            try { anomaly.eventScript.Fail(); }
+            catch (System.Exception e) { Debug.LogError(e.Message); }
         }
 
         if (isStandard)

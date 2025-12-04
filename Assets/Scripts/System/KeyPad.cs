@@ -95,6 +95,8 @@ public class KeyPad : MonoBehaviour
 
         loding_Obj.SetActive(true);
 
+        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.protocolLoadingLoop);
+
         yield return new WaitForSecondsRealtime(2.0f);
 
         loding_Obj.SetActive(false);
@@ -111,6 +113,7 @@ public class KeyPad : MonoBehaviour
 
     private void TrueEnter()
     {
+        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.protocolSuccess);
         GameManager.Instance.anomalySystem.specialObjects[1].GetComponent<Animator>().Play("Off");
 
         for (int i = 0; i < 3; i++)
@@ -126,6 +129,7 @@ public class KeyPad : MonoBehaviour
 
     private void FalseEnter()
     {
+        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.protocolFail);
         ClearKey();
         failTextObj.SetActive(true);
         isEnter = false;
