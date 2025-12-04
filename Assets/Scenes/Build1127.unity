@@ -3156,6 +3156,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &134044327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3613,6 +3625,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVResonance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5152,6 +5176,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVResonance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10917,7 +10953,7 @@ PlayableDirector:
   m_GameObject: {fileID: 580823133}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 32131245bcbc14647b2514a24a9468f4, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 75d60a6ca3edf22458cebe959d206bd6, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -11533,6 +11569,7 @@ Transform:
   - {fileID: 1087285336}
   - {fileID: 30126781}
   - {fileID: 490858439}
+  - {fileID: 1375463577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &621903396 stripped
@@ -13223,6 +13260,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &728099538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13420,6 +13469,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVIncinerate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13835,6 +13896,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0336b3abc831b5a4fbc47d8611f8f3b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 965939935}
+    - targetCorrespondingSourceObject: {fileID: -4488099832971048186, guid: 0336b3abc831b5a4fbc47d8611f8f3b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1786404972}
   m_SourcePrefab: {fileID: 100100000, guid: 0336b3abc831b5a4fbc47d8611f8f3b1, type: 3}
 --- !u!4 &742260482 stripped
 Transform:
@@ -15709,7 +15773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999207
+      value: 44.999996
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -16219,6 +16283,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890009584}
   m_CullTransparentMesh: 1
+--- !u!1 &891120092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 891120093}
+  - component: {fileID: 891120094}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &891120093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891120092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1113930493}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &891120094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891120092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28f49ce270e6df48a622cdf7dc51a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bgmSource: {fileID: 0}
+  _globalSfxSource: {fileID: 0}
 --- !u!1 &891335778
 GameObject:
   m_ObjectHideFlags: 0
@@ -17278,7 +17388,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -17295,6 +17405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guide: {fileID: 501455623}
+  anomaly: {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
 --- !u!4 &972700261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3107598063948010452, guid: d84dd8bf81f04d946bbd34bc605c435b, type: 3}
@@ -17902,6 +18013,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1025196034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18134,6 +18257,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVSystemCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19963,6 +20098,7 @@ Transform:
   - {fileID: 891335780}
   - {fileID: 654306793}
   - {fileID: 1489156964}
+  - {fileID: 891120093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1116736176
@@ -22532,6 +22668,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1295110725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22859,6 +23007,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVElectricity
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24882,12 +25042,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375463574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.288, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 615967505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1382504599
 PrefabInstance:
@@ -27630,6 +27790,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1525887904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27787,13 +27959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f224a77f8e71ee64e956b3647ae84d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalDownStabilityValue: 0.01
-  dayDownStabilityValue:
-  - 0.1
-  - 0.2
-  - 0.3
-  - 0.4
-  - 0.5
+  dayBaseDecayRates: []
+  activeAnomalyExtraDrain: 1
+  failureDropAmount: 8
   dayGetMaskValue: []
   currentGetMask: 0
 --- !u!4 &1529692178 stripped
@@ -27892,6 +28060,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVElectricity
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29404,6 +29584,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2030100009}
         m_TargetAssemblyTypeName: AnomalySystem, Assembly-CSharp
         m_MethodName: ClearCCTVResonance
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1716232407}
+        m_TargetAssemblyTypeName: UISystem, Assembly-CSharp
+        m_MethodName: SubButtonOpen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33968,6 +34160,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -4488099832971048186, guid: 0336b3abc831b5a4fbc47d8611f8f3b1, type: 3}
   m_PrefabInstance: {fileID: 740369782}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1786404972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786404968}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6950995, y: 2.4064083, z: 0.79778486}
+  m_Center: {x: 0.0000018924463, y: 0.19181935, z: 0.1196718}
 --- !u!1 &1788275544
 GameObject:
   m_ObjectHideFlags: 0
@@ -37650,7 +37863,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 156ac1a1fd02a1748a09704aaf1a9a1b, type: 2}
   - {fileID: 11400000, guid: 3a1be9cc7ee468d46be6cece97aabf00, type: 2}
   - {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
-  - {fileID: 11400000, guid: 637164ad13098a146a687eaf97cb4d85, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: c84b609bda1aa50499f11973c972c09f, type: 2}
   specialEventPool:
   - {fileID: 11400000, guid: c391712167fcd4c44826990189ed17a4, type: 2}
   activeStandardAnomalies: []
@@ -39383,6 +39597,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: rootRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: spawnRadius.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: tubeMaterials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a9bd418c0cc265459d3cdca74c9948a, type: 2}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c6317c3353066b4997d042be1b0ba56, type: 2}
+    - target: {fileID: 7314504963755437088, guid: e414f4f24d20bf747882b95b2ac6e5eb, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f5ad024faebf6184b99706dfe80516da, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39436,6 +39674,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: rootRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: spawnRadius.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: tubeMaterials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a9bd418c0cc265459d3cdca74c9948a, type: 2}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c6317c3353066b4997d042be1b0ba56, type: 2}
+    - target: {fileID: 5412771938656210520, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
+      propertyPath: 'tubeMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f5ad024faebf6184b99706dfe80516da, type: 2}
     - target: {fileID: 7953670932122697339, guid: 489f23e85129ea3469e0b9f3419f196c, type: 3}
       propertyPath: m_Name
       value: WallTentacle1
@@ -39524,7 +39786,6 @@ SceneRoots:
   - {fileID: 1113930493}
   - {fileID: 832575519}
   - {fileID: 216343719}
-  - {fileID: 1375463577}
   - {fileID: 615967505}
   - {fileID: 240802979}
   - {fileID: 127442187}
