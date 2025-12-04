@@ -58,7 +58,7 @@ public class DaySystem : MonoBehaviour
         if (GameManager.Instance.isGameStop) { return; }
 
         //만약 일정 시간(24시간)을 지나면. (Day 클리어)
-        if (totalMinute >= 1440 && !isDayClear) {
+        if (totalMinute >= 360 && !isDayClear) {
             isDayClear = true;
 
             NextDayEvent();
