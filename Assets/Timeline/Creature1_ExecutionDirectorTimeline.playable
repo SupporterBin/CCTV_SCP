@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 0bc3fe35fd47f2646950773aba814ae7, type: 3}
+  m_Clip: {fileID: 8300000, guid: 4e2b9be75683c514b9a910ef35d0b9f2, type: 3}
   m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: DeathScene_Lightsout1
   - m_Version: 1
-    m_Start: 8.45122448979592
+    m_Start: 9.616666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 6762163247693259038}
     m_Duration: 1.824
@@ -1246,7 +1246,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: RopeThrow
   - m_Version: 1
-    m_Start: 9.572666666666667
+    m_Start: 10.738108843537415
     m_ClipIn: 0
     m_Asset: {fileID: -2676239434287130368}
     m_Duration: 2.544
@@ -1315,7 +1315,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Circuit_DeathSceneLine1
   - m_Version: 1
-    m_Start: 11.6
+    m_Start: 12.765442176870748
     m_ClipIn: 0
     m_Asset: {fileID: 1032168112653649092}
     m_Duration: 7.732244897959184
