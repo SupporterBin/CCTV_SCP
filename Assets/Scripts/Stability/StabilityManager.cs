@@ -13,20 +13,19 @@ public class StabilityManager : MonoBehaviour
     private float[] currentStability;
     public float[] CurrentStability => currentStability;
 
-    [Header("=== 이미지 설정값 적용 영역 ===")]
-
-    [Tooltip("일차별 초당 기본 감소량 (1일차: 0.37, 2일차: 0.392 ...)")]
+    [Header("일차별 초당 기본 감소량 (1일차: 0.37, 2일차: 0.392 ...)")]
     public float[] dayBaseDecayRates;
 
-    [Tooltip("이상현상 활성화 중일 때 추가되는 초당 감소량 (이미지 기준: 1)")]
+    [Header("이상현상 활성화 중일 때 추가되는 초당 감소량")]
     public float activeAnomalyExtraDrain = 1.0f;
 
-    [Tooltip("이상현상 대처 실패 시 즉시 감소하는 양 (이미지 기준: 8)")]
+    [Header("이상현상 대처 실패 시 즉시 감소하는 양")]
     public float failureDropAmount = 8.0f;
 
-    [Header("=== 기타 설정 ===")]
-    [SerializeField, Header("가면 주워야하는 개수 Day별")]
+    [Header("=== 가면 설정 ===")]
+    [Header("Day 별 주워야하는 가면 개수")]
     public float[] dayGetMaskValue;
+    [HideInInspector]
     public float currentGetMask = 0;
 
     private void Awake()
