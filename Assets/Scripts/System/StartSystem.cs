@@ -13,7 +13,7 @@ public class StartSystem : MonoBehaviour
 
     private IEnumerator GameStartTimeline()
     {
-        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.abnormalTentacleAggressiveWindowHit);
+        SoundManager.Instance.PlayGlobalSFX(SoundManager.Instance.Data.ingameElevatorArriveDing);
 
         yield return new WaitForSecondsRealtime(5.5f);
 

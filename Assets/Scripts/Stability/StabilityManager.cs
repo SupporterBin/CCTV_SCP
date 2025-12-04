@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class StabilityManager : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class StabilityManager : MonoBehaviour
     [HideInInspector]
     public float currentGetMask = 0;
 
+    [HideInInspector] //사이렌 사운드 끄기 위한 용도
+    public AudioSource saveSound;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -39,23 +43,43 @@ public class StabilityManager : MonoBehaviour
     }
 
     bool dam = true;
+    bool uDead = false;
     private void Update()
     {
         // 프로토콜 시스템 발동 로직 (기존 유지)
         if (currentStability[2] <= 0 && dam)
         {
             dam = false;
+            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(0);
         }
         else if (currentStability[1] <= 1 && dam)
         {
             dam = false;
+            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(1);
         }
         else if (currentStability[0] <= 1 && dam)
         {
             dam = false;
+            saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
             ProtocolSystem.instance.StartProtocol(2);
+        }
+
+        if (dam) return;
+        for(int i = 0; i<3; i++)
+        {
+            if (currentStability[i] <= 1)
+            {
+                ExecutionTimeLineManager.instance.PlayExecutionTimeline(i);
+
+                if(!uDead)
+                {
+                    GameManager.Instance.anomalySystem.specialObjects[1].GetComponent<Animator>().Play("On");
+                    saveSound = SoundManager.Instance.Play3DSFX(SoundManager.Instance.Data.deathCommonSirenLoopBeforeDeath, GameManager.Instance.anomalySystem.specialObjects[1].transform.position, 20, true);
+                    uDead = true;
+                }
+            }
         }
     }
 
