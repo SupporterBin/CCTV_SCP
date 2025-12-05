@@ -9417,12 +9417,12 @@ MonoBehaviour:
     \uBBF8\uC0C1\uAC1C\uCCB4\uB294 \uC885\uC885 <b>\uC774\uC0C1\uD604\uC0C1</b>\uC744
     \uBC1C\uC0DD\uC2DC\uCF1C \uC2DC\uC124\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4.\n-
     <indent=3%>\uB2F9\uC2E0\uC740 <b>CCTV\uC758 \uAD00\uB9AC \uAE30\uB2A5</b>\uACFC
-    <b>\uBCBD\uBA74\uC758 \uAD00\uB9AC \uC2DC\uC124</b>\uC744 \uC0AC\uC6A9\uD558\uC5EC\n\uC774\uC0C1\uD604\uC0C1\uC744
-    \uD574\uACB0\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC62C\uBC14\uB978 \uAD00\uB9AC
+    <b>\uBCBD\uBA74\uC758 \uAD00\uB9AC \uC2DC\uC124</b>\uC744 \uC0AC\uC6A9\uD558\uC5EC\n<b>\uC774\uC0C1\uD604\uC0C1\uC744
+    \uD574\uACB0</b>\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC62C\uBC14\uB978 \uAD00\uB9AC
     \uBC29\uBC95\uC740 <b>\uBBF8\uC0C1\uAC1C\uCCB4 \n\uAD00\uB9AC \uBB38\uC11C</b>\uC758
-    \uAC1C\uCCB4 \uC5F0\uAD6C \uACB0\uACFC\uB97C \uCC38\uACE0\uD558\uC2ED\uC2DC\uC624</indent>.\n-
-    \uD658\uAC01 \uB4F1\uC758 \uC2E0\uCCB4 \uC774\uC0C1\uC740 <b>\uC2E0\uCCB4 \uC774\uC0C1
-    \uBB38\uC11C</b>\uB97C \uD655\uC778\uD558\uC2ED\uC2DC\uC624.\r\n\n"
+    \uAC1C\uCCB4 <b>\uC774\uC0C1\uD604\uC0C1 \uC5F0\uAD6C \uACB0\uACFC</b>\uB97C
+    \uCC38\uACE0\uD558\uC2ED\uC2DC\uC624</indent>.\n- \uD658\uAC01 \uB4F1\uC758 \uC2E0\uCCB4
+    \uC774\uC0C1\uC740 <b>\uC2E0\uCCB4 \uC774\uC0C1 \uBB38\uC11C</b>\uB97C \uD655\uC778\uD558\uC2ED\uC2DC\uC624.\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 81c38172c200fac46a973ad1a44abbd5, type: 2}
   m_sharedMaterial: {fileID: -6902038219003035648, guid: 81c38172c200fac46a973ad1a44abbd5, type: 2}
@@ -9763,15 +9763,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1.
-    <indent=5%>\uAC1C\uCCB4\uAC00 <b>'\uC18D\uBC15\uB41C \uD68C\uB85C'</b>\uC758
-    \uBAA8\uC2B5\uC744 \uCDE8\uD588\uC744 \uB54C <b>\uC804\uAE30\uC801 \uC790\uADF9</b>\uC5D0
-    \uCDE8\uC57D\uD55C \uBAA8\uC2B5\uC744 \uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\n\r</line-height>2.
-    <indent=5%>\uAC1C\uCCB4\uAC00 <b>\u2018\uCD09\uC218 \uAD70\uC9D1\u2019</b> \uC758
-    \uBAA8\uC2B5\uC744 \uCDE8\uD588\uC744 \uB54C <b>\uACE0\uC628\uC758 \uC790\uADF9</b>\uC744
-    \uC8FC\uC790 \uC6D0 \uD615\uD0DC\uB85C \uB3CC\uC544\uC654\uB2E4.</indent><line-height=0.08>\n</line-height>3.
-    <indent=6%>\uAC1C\uCCB4\uAC00 \uB4A4\uC9D1\uC5B4 \uC4F4  <b>\uC778\uAC04\uD615
-    \uAECD\uC9C8</b>\uC740 <b>\uACE0\uC628</b>\uC5D0 \uCDE8\uC57D\uD568\uC744 \n\uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\r\n</line-height>4.
+  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC774\uC0C1\uD604\uC0C1
+    \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1. <indent=5%>\uAC1C\uCCB4\uAC00
+    <b>'\uC18D\uBC15\uB41C \uD68C\uB85C'</b>\uC758 \uBAA8\uC2B5\uC744 \uCDE8\uD588\uC744
+    \uB54C <b>\uC804\uAE30\uC801 \uC790\uADF9</b>\uC5D0 \uCDE8\uC57D\uD55C \uBAA8\uC2B5\uC744
+    \uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\n\r</line-height>2. <indent=5%>\uAC1C\uCCB4\uAC00
+    <b>\u2018\uCD09\uC218 \uAD70\uC9D1\u2019</b> \uC758 \uBAA8\uC2B5\uC744 \uCDE8\uD588\uC744
+    \uB54C <b>\uACE0\uC628\uC758 \uC790\uADF9</b>\uC744 \uC8FC\uC790 \uC6D0 \uD615\uD0DC\uB85C
+    \uB3CC\uC544\uC654\uB2E4.</indent><line-height=0.08>\n</line-height>3. <indent=6%>\uAC1C\uCCB4\uAC00
+    \uB4A4\uC9D1\uC5B4 \uC4F4  <b>\uC778\uAC04\uD615 \uAECD\uC9C8</b>\uC740 <b>\uACE0\uC628</b>\uC5D0
+    \uCDE8\uC57D\uD568\uC744 \n\uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\r\n</line-height>4.
     <indent=6%>\uC8FC\uAE30\uC801\uC73C\uB85C <b>\uAC00\uBA74\uC744 \uC0DD\uC131</b>\uD558\uC5EC
     \uC2DC\uC124 \uB0B4\uBD80\uC5D0 \uC124\uCE58\uD558\uB294\uB370, \n\uC2DC\uC2A4\uD15C\uC5D0
     \uAC04\uC12D\uD558\uB294 \uB2A5\uB825\uC774 \uC788\uC5B4 \uC2E0\uC18D\uD788 <b>\uD30C\uAD34</b>
@@ -14143,11 +14144,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1.
-    <indent=5%>\uAC1C\uCCB4\uAC00 \uC804\uAE30\uB97C \uBC29\uCD9C\uD574 <b>\uC2A4\uD30C\uD06C</b>\uB97C
-    \uC77C\uC73C\uD0A4\uC790 \uC8FC\uBCC0 \uC2DC\uC124\uC758 \n\uC2DC\uC2A4\uD15C\uC5D0
-    \uC774\uC0C1\uC774 \uBC1C\uC0DD\uD558\uC5EC <b>\uC2DC\uC2A4\uD15C \uC810\uAC80</b>\uC744
-    \uC2E4\uD589\uD574\uC57C\uD588\uB2E4.</indent><line-height=0.08>\n\r</line-height>2.
+  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC774\uC0C1\uD604\uC0C1
+    \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1. <indent=5%>\uAC1C\uCCB4\uAC00
+    \uC804\uAE30\uB97C \uBC29\uCD9C\uD574 <b>\uC2A4\uD30C\uD06C</b>\uB97C \uC77C\uC73C\uD0A4\uC790
+    \uC8FC\uBCC0 \uC2DC\uC124\uC758 \n\uC2DC\uC2A4\uD15C\uC5D0 \uC774\uC0C1\uC774
+    \uBC1C\uC0DD\uD558\uC5EC <b>\uC2DC\uC2A4\uD15C \uC810\uAC80</b>\uC744 \uC2E4\uD589\uD574\uC57C\uD588\uB2E4.</indent><line-height=0.08>\n\r</line-height>2.
     <indent=5%>\uAC1C\uCCB4\uAC00 \uAD6C\uC18D \uC758\uC790\uC5D0\uC11C <b>\uC77C\uC5B4\uB09C</b>
     \uACBD\uC6B0 <b>\uBB3C\uB9AC\uC801 \uCDA9\uACA9</b>\uC73C\uB85C \n\uC9C4\uC555
     \uAC00\uB2A5\uD558\uB2E4\uB294 \uC0AC\uC2E4\uC744 \uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\n</line-height>3.
@@ -17109,7 +17110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.999954
+      value: 44.999992
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
@@ -17147,6 +17148,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5011330463846279831, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5332734163523019892, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17157,6 +17162,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5332734163523019892, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334745770052187130, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5405572136866219857, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
@@ -17217,7 +17226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6103389382649576201, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6374465635126479720, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Sprite
@@ -17389,7 +17398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8027386128000643984, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.02178806
       objectReference: {fileID: 0}
     - target: {fileID: 9066517753649752605, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_LocalScale.x
@@ -20482,8 +20491,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.045
-  m_fontSizeBase: 0.045
+  m_fontSize: 0.04
+  m_fontSizeBase: 0.04
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -33169,9 +33178,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1.
-    <indent=5%>\uC774\uC0C1 \uBC88\uC2DD\uC73C\uB85C <b>\uCD09\uC218\uAC00 \uC99D\uAC00</b>\uD560
-    \uB54C <b>\uACE0\uC628\uC758 \uC790\uADF9</b>\uC744 \uAC00\uD558\uBA74 \uBC88\uC2DD\uC774
+  m_text: "<line-height=0.08><size=0.045><b>\uAC1C\uCCB4 \uC774\uC0C1\uD604\uC0C1
+    \uC5F0\uAD6C \uACB0\uACFC</size></b>\n</line-height>1. <indent=5%>\uC774\uC0C1
+    \uBC88\uC2DD\uC73C\uB85C <b>\uCD09\uC218\uAC00 \uC99D\uAC00</b>\uD560 \uB54C
+    <b>\uACE0\uC628\uC758 \uC790\uADF9</b>\uC744 \uAC00\uD558\uBA74 \uBC88\uC2DD\uC774
     \uC885\uB8CC\uB428\uC744 \uD655\uC778\uD588\uB2E4.</indent><line-height=0.08>\n\r</line-height>2.
     <indent=5%>\uAD70\uC9D1\uC758 \uACF5\uACA9\uC131\uC774 \uC99D\uAC00\uD574  <b>\uC8FC\uBCC0
     \uC2DC\uC124\uC744 \uACF5\uACA9</b> \uD560 \uB54C <b>\uBB3C\uB9AC\uC801 \uCDA9\uACA9</b>\uC73C\uB85C
