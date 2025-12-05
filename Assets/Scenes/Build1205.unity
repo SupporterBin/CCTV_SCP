@@ -11858,6 +11858,7 @@ PlayableDirector:
     m_References:
     - 121e79e708a020d47821e757c617b255: {fileID: 173336514}
     - 04e5c8a7667c02a499ba91608d91f190: {fileID: 102950882}
+    - 782041f110994644d96f6c4799d7c0e6: {fileID: 960385770}
     - a0262a380613afd439bdba25d257e4c6: {fileID: 1190363909}
     - 0c4b3c7e39d884c45a4c4b3ab5027afd: {fileID: 571818321}
     - e53702796e4dcb544a7ca5e56015150c: {fileID: 330585548}
@@ -17108,7 +17109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4100959447813982162, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.99995
+      value: 44.999973
       objectReference: {fileID: 0}
     - target: {fileID: 4170802374136823179, guid: 42436475e5ba7dc49b768015842c7306, type: 3}
       propertyPath: m_Name
